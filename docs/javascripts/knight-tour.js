@@ -1,6 +1,6 @@
-// Runs on every page view, including instant navigation.
+// Phase 5 will add the full trajectory animation here.
+// document$ fires on every page view, including instant navigation.
 document$.subscribe(function () {
-  const hero = document.querySelector("[data-knight-tour]");
-  if (!hero) return;
-  // Knight's tour animation will go here.
+  const board = document.querySelector(".ev-board__svg");
+  if (!board) return;
 });

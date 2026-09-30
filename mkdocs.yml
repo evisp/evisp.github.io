@@ -1,12 +1,17 @@
 site_name: Evis Plaku
 site_url: https://evisp.github.io/
-site_description: Lecturer, researcher and mentor in AI and robotics
-repo_url: https://github.com/evisp/evisp.github.io
+site_description: Lecturer, AI researcher and mentor in Tirana. Teaching algorithms, researching autonomous navigation, and helping people grow.
+site_author: Evis Plaku
+copyright: © 2026 Evis Plaku
 
 theme:
   name: material
   custom_dir: overrides
   language: en
+  font: false                     # fonts are self-hosted in notebook.css
+  favicon: assets/images/favicon.svg
+  icon:
+    logo: lucide/chess-knight
   features:
     - navigation.tabs
     - navigation.indexes
@@ -18,40 +23,44 @@ theme:
     - content.footnote.tooltips
   palette:
     - scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: lucide/moon
-        name: Switch to dark mode
+        name: Switch to night notebook
     - scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: lucide/sun
-        name: Switch to light mode
+        name: Switch to day notebook
 
 plugins:
   - search
   - blog:
       blog_dir: writing
 
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/orcid
+      link: https://orcid.org/0009-0002-4042-2673
+      name: ORCID
+    - icon: fontawesome/brands/google-scholar
+      link: https://scholar.google.com/citations?user=NRYpvpcAAAAJ
+      name: Google Scholar
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/evisplaku/
+      name: LinkedIn
+
 extra_css:
   - stylesheets/notebook.css
 extra_javascript:
   - javascripts/knight-tour.js
 
-markdown_extensions:
-  - abbr
-  - admonition
-  - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
-  - toc:
-      permalink: true
-  - pymdownx.details
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.superfences
-  - pymdownx.mark
-  - pymdownx.tabbed:
-      alternate_style: true
+# Markdown extensions: none listed on purpose. Zensical then enables its full
+# default set (admonitions, attr_list, md_in_html, footnotes, ==highlight==,
+# icons like :lucide-chess-pawn:, tabs, code highlighting, and more).
 
 nav:
   - Home: index.md
