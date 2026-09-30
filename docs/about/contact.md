@@ -41,6 +41,6 @@ sentences of context help me reply sooner.
   <a href="https://www.linkedin.com/in/evisplaku/"><strong>LinkedIn</strong><span>in/evisplaku</span></a>
 </div>
 
-Metropolitan University of Tirana, Tirana, Albania. Office location and hours:
-*placeholder, to be added*.
+Office hours: Monday 12:00 to 14:00 and Wednesday 08:30 to 10:30, Room 104,
+Metropolitan University of Tirana.
 { .ev-note }

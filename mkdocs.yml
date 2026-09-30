@@ -43,6 +43,7 @@ plugins:
       render_by_default: false    # only pages with render_macros: true use {{ }}
       include_yaml:
         - data/publications.yml
+        - data/topics.yml
 
 extra:
   generator: false

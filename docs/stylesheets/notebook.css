@@ -7,6 +7,7 @@
    5. Paper and type       10. Home: the board         15. Motion
   16. Inner pages          18. Publications            20. CV
   17. Research             19. About                   21. Contact
+  22. Teaching             23. Mentoring               24. Initiatives
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -216,7 +217,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 58%;
   background-position: 0 84%;
-  padding: 0 0.14em;
+  padding: 0 0.22em 0 0.14em;
   margin: 0 -0.04em;
   border-radius: 0.35em 0.15em 0.45em 0.2em;
   -webkit-box-decoration-break: clone;
@@ -788,6 +789,11 @@ body {
   border-radius: 14px;
 }
 
+.md-typeset h2 + .ev-empty,
+.md-typeset h2 + .ev-callout {
+  margin-top: 0;
+}
+
 .md-typeset .ev-callout {
   background-color: var(--ev-mint-soft);
   box-shadow: inset 3px 0 0 var(--ev-teal-ink);
@@ -1296,7 +1302,7 @@ body {
 
 .md-typeset .ev-rows__row {
   display: grid;
-  grid-template-columns: 11rem minmax(0, 1fr);
+  grid-template-columns: 9rem minmax(0, 1fr);
   gap: 1rem;
   padding: 0.95rem 1.2rem;
   border-top: 1px solid var(--ev-line);
@@ -1384,6 +1390,351 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .ev-profiles a {
+    transition: none;
+  }
+}
+
+/* 22. Teaching ------------------------------------------------------------- */
+
+.md-typeset .ev-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.md-typeset a.ev-course {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.1rem 1.1rem 1.2rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+  color: var(--ev-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.md-typeset a.ev-course:hover {
+  border-color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-course__where {
+  font-family: var(--ev-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset a.ev-course strong {
+  font-family: var(--ev-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.md-typeset .ev-course__line {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ev-muted);
+}
+
+.md-typeset dl.ev-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-facts > div {
+  padding: 0.8rem 1rem;
+}
+
+.md-typeset .ev-facts > div + div {
+  border-left: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-facts dt {
+  font-family: var(--ev-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-facts dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-hours {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.md-typeset .ev-hours > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 12px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-hours__where {
+  border-style: dashed !important;
+  background-color: var(--ev-mint-soft) !important;
+}
+
+.md-typeset .ev-hours span {
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-hours strong {
+  font-family: var(--ev-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ev-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 23. Mentoring ------------------------------------------------------------ */
+
+.md-typeset .ev-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.md-typeset .ev-two__col {
+  padding: 1rem 1.2rem 0.4rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-two__col > p:first-child {
+  margin: 0 0 0.4rem;
+  font-family: var(--ev-sans);
+}
+
+.md-typeset .ev-two__col ul {
+  margin-top: 0;
+  font-size: 0.82rem;
+}
+
+.md-typeset .ev-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.md-typeset .ev-topic {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-topic p {
+  margin: 0;
+}
+
+.md-typeset .ev-topic__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.md-typeset .ev-topic__level,
+.md-typeset .ev-topic__status {
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-topic__status {
+  color: var(--ev-oxblood);
+}
+
+.md-typeset h3.ev-topic__title {
+  margin: 0.6rem 0 0.35rem;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.md-typeset .ev-topic__summary {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-topic__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: auto !important;
+  padding-top: 0.8rem;
+}
+
+.md-typeset .ev-topic__skills span {
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ev-line);
+  font-family: var(--ev-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-topic--taken {
+  opacity: 0.6;
+  border-style: dashed;
+  background-color: transparent;
+}
+
+.md-typeset .ev-tag--agents   { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
+.md-typeset .ev-tag--rag      { background-color: var(--ev-tag-program-bg); color: var(--ev-tag-program); }
+.md-typeset .ev-tag--robotics { background-color: var(--ev-tag-talk-bg);    color: var(--ev-tag-talk); }
+
+/* 24. Initiatives ---------------------------------------------------------- */
+
+.md-typeset .ev-programs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.md-typeset .ev-program {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.2rem 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-program > p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-program__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--ev-sans);
+  font-size: 0.66rem !important;
+  font-weight: 600;
+  color: var(--ev-muted) !important;
+}
+
+.md-typeset .ev-program h3 {
+  margin: 0.6rem 0 0.4rem;
+  font-size: 1rem;
+}
+
+.md-typeset dl.ev-program__facts {
+  margin: auto 0 0;
+  padding-top: 0.9rem;
+}
+
+.md-typeset .ev-program__facts > div {
+  display: grid;
+  grid-template-columns: 3.6rem minmax(0, 1fr);
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  border-top: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-program__facts dt {
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-program__facts dd {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.md-typeset .ev-programs > .ev-program:only-child {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  column-gap: 2rem;
+}
+
+.md-typeset .ev-program:only-child > :not(dl) {
+  grid-column: 1;
+}
+
+.md-typeset .ev-program:only-child > dl.ev-program__facts {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: end;
+  margin: 0;
+}
+
+/* Responsive for sections 22 to 24 */
+
+@media screen and (max-width: 76.1875em) {
+  .md-typeset .ev-courses-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md-typeset dl.ev-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md-typeset .ev-facts > div:nth-child(3) {
+    border-left: 0;
+  }
+
+  .md-typeset .ev-facts > div:nth-child(n + 3) {
+    border-top: 1px dashed var(--ev-line-strong);
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .ev-programs > .ev-program:only-child {
+    display: flex;
+  }
+
+  .md-typeset .ev-program:only-child > dl.ev-program__facts {
+    margin-top: 0.9rem;
+  }
+
+  .md-typeset .ev-courses-grid,
+  .md-typeset .ev-hours,
+  .md-typeset .ev-two,
+  .md-typeset .ev-topics,
+  .md-typeset .ev-programs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset a.ev-course {
     transition: none;
   }
 }
