@@ -1,0 +1,80 @@
+site_name: Evis Plaku
+site_url: https://.github.io//
+site_description: Lecturer, researcher and mentor in AI and robotics
+repo_url: https://github.com//
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.instant
+    - navigation.top
+    - toc.follow
+    - search.highlight
+    - content.code.copy
+    - content.footnote.tooltips
+  palette:
+    - scheme: default
+      toggle:
+        icon: lucide/moon
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: lucide/sun
+        name: Switch to light mode
+
+plugins:
+  - search
+  - blog:
+      blog_dir: writing
+
+extra_css:
+  - stylesheets/notebook.css
+extra_javascript:
+  - javascripts/knight-tour.js
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.mark
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Research:
+      - research/index.md
+      - Publications: research/publications.md
+      - Talks & Media: research/talks.md
+      - Code & Data: research/code.md
+  - Teaching:
+      - teaching/index.md
+      - Data Structures & Algorithms: teaching/dsa.md
+      - OOP in Java: teaching/oop-java.md
+      - Machine Learning: teaching/machine-learning.md
+      - For Students: teaching/for-students.md
+  - Mentoring:
+      - mentoring/index.md
+      - Thesis Topics: mentoring/thesis-topics.md
+      - Students & Alumni: mentoring/students.md
+  - Initiatives: initiatives/index.md
+  - Writing:
+      - writing/index.md
+  - About:
+      - about/index.md
+      - CV: about/cv.md
+      - Beyond Work: about/beyond-work.md
+      - Contact: about/contact.md

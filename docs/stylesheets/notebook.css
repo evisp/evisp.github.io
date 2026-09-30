@@ -1,0 +1,11 @@
+/* Tokens only for now. Paper background proves the file loads. */
+:root {
+  --ev-paper: #F6F4EE;
+  --ev-ink: #16213A;
+  --ev-mint: #B9F5E9;
+  --ev-oxblood: #8B2E2E;
+}
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: var(--ev-paper);
+  --md-typeset-color: var(--ev-ink);
+}
