@@ -1,7 +1,7 @@
 site_name: Evis Plaku
-site_url: https://.github.io//
+site_url: https://evisp.github.io/
 site_description: Lecturer, researcher and mentor in AI and robotics
-repo_url: https://github.com//
+repo_url: https://github.com/evisp/evisp.github.io
 
 theme:
   name: material
