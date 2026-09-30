@@ -1,12 +1,14 @@
 ---
 title: Teaching
-description: "Courses taught by Evis Plaku, office hours, and how students can reach him."
+description: "Courses taught by Evis Plaku at UMT and Holberton, with open course materials, office hours and how to reach him."
 hide:
   - navigation
   - toc
 ---
 
-<div class="ev-pagehead" markdown>
+<div class="ev-pagehead ev-pagehead--split" markdown>
+
+<div class="ev-pagehead__text" markdown>
 
 Algorithms, programming and machine learning
 { .ev-kicker }
@@ -14,67 +16,79 @@ Algorithms, programming and machine learning
 # Teaching
 
 I teach the way a good plan works: start from where students are, set a clear
-goal, and make every step one they can take ==on their own==.
+goal, and make every step one they can take ==on their own==. Every course
+builds one real project, and all materials are open for anyone to learn from.
 { .ev-lead }
 
-[Office hours and contact](#for-students){ .ev-btn .ev-btn--primary }
-[Thesis topics](../mentoring/index.md){ .ev-btn .ev-btn--ghost }
-{ .ev-actions }
+<p class="ev-hourspill"><span>Office hours</span>Mon 12:00 to 14:00, Wed 08:30 to 10:30, Room 104 <a href="#for-students">Details</a></p>
+
+</div>
+
+<figure class="ev-grow" markdown="0">
+<svg class="ev-grow__svg" viewBox="0 0 236 272" role="img" aria-labelledby="ev-grow-title"><title id="ev-grow-title">Six pawns advancing up a chessboard at different speeds; one has reached the last rank and become a queen</title><g class="ev-grow__dark"><rect x="22" y="218" width="30" height="30"/><rect x="82" y="218" width="30" height="30"/><rect x="142" y="218" width="30" height="30"/><rect x="52" y="188" width="30" height="30"/><rect x="112" y="188" width="30" height="30"/><rect x="172" y="188" width="30" height="30"/><rect x="22" y="158" width="30" height="30"/><rect x="82" y="158" width="30" height="30"/><rect x="142" y="158" width="30" height="30"/><rect x="52" y="128" width="30" height="30"/><rect x="112" y="128" width="30" height="30"/><rect x="172" y="128" width="30" height="30"/><rect x="22" y="98" width="30" height="30"/><rect x="82" y="98" width="30" height="30"/><rect x="142" y="98" width="30" height="30"/><rect x="52" y="68" width="30" height="30"/><rect x="112" y="68" width="30" height="30"/><rect x="172" y="68" width="30" height="30"/><rect x="22" y="38" width="30" height="30"/><rect x="82" y="38" width="30" height="30"/><rect x="142" y="38" width="30" height="30"/><rect x="52" y="8" width="30" height="30"/><rect x="112" y="8" width="30" height="30"/><rect x="172" y="8" width="30" height="30"/></g><rect class="ev-grow__edge" x="22" y="8" width="180" height="240"/><g class="ev-grow__files"><text x="37" y="264">a</text><text x="67" y="264">b</text><text x="97" y="264">c</text><text x="127" y="264">d</text><text x="157" y="264">e</text><text x="187" y="264">f</text></g><g class="ev-grow__ranks"><text x="13" y="236.5">1</text><text x="13" y="206.5">2</text><text x="13" y="176.5">3</text><text x="13" y="146.5">4</text><text x="13" y="116.5">5</text><text x="13" y="86.5">6</text><text x="13" y="56.5">7</text><text x="13" y="26.5">8</text></g><g class="ev-grow__trails"><line class="ev-grow__trail" x1="37" y1="203" x2="37" y2="152" pathLength="1" style="--i:0"/><circle class="ev-grow__origin" cx="37" cy="203" r="2.6"/><line class="ev-grow__trail" x1="67" y1="203" x2="67" y2="92" pathLength="1" style="--i:1"/><circle class="ev-grow__origin" cx="67" cy="203" r="2.6"/><line class="ev-grow__trail" x1="97" y1="203" x2="97" y2="32" pathLength="1" style="--i:2"/><circle class="ev-grow__origin" cx="97" cy="203" r="2.6"/><line class="ev-grow__trail" x1="127" y1="203" x2="127" y2="182" pathLength="1" style="--i:3"/><circle class="ev-grow__origin" cx="127" cy="203" r="2.6"/><line class="ev-grow__trail" x1="157" y1="203" x2="157" y2="122" pathLength="1" style="--i:4"/><circle class="ev-grow__origin" cx="157" cy="203" r="2.6"/><line class="ev-grow__trail" x1="187" y1="203" x2="187" y2="62" pathLength="1" style="--i:5"/><circle class="ev-grow__origin" cx="187" cy="203" r="2.6"/></g><g class="ev-grow__pieces"><g class="ev-grow__pawn" transform="translate(28 134) scale(0.75)"><path d="M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zM14.5 10l1.5 8M7 10h10M8 18l1.5-8"/><circle cx="12" cy="6" r="4"/></g><g class="ev-grow__pawn" transform="translate(58 74) scale(0.75)"><path d="M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zM14.5 10l1.5 8M7 10h10M8 18l1.5-8"/><circle cx="12" cy="6" r="4"/></g><g class="ev-grow__queen"><circle class="ev-grow__halo" cx="97" cy="23" r="14"/><g class="ev-grow__qicon" transform="translate(87 13) scale(0.8333)"><path d="M4 20a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1zM12.474 5.943l1.567 5.34a1 1 0 0 0 1.75.328l2.616-3.402M20 9l-3 9M5.594 8.209l2.615 3.403a1 1 0 0 0 1.75-.329l1.567-5.34M7 18 4 9"/><circle cx="12" cy="4" r="2"/><circle cx="20" cy="7" r="2"/><circle cx="4" cy="7" r="2"/></g><text class="ev-grow__note" x="112" y="15">=Q</text></g><g class="ev-grow__pawn" transform="translate(118 164) scale(0.75)"><path d="M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zM14.5 10l1.5 8M7 10h10M8 18l1.5-8"/><circle cx="12" cy="6" r="4"/></g><g class="ev-grow__pawn" transform="translate(148 104) scale(0.75)"><path d="M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zM14.5 10l1.5 8M7 10h10M8 18l1.5-8"/><circle cx="12" cy="6" r="4"/></g><g class="ev-grow__pawn" transform="translate(178 44) scale(0.75)"><path d="M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1zM14.5 10l1.5 8M7 10h10M8 18l1.5-8"/><circle cx="12" cy="6" r="4"/></g></g></svg>
+<figcaption>Every student moves at their own pace. The goal is that each one keeps moving.</figcaption>
+</figure>
 
 </div>
 
 ## Courses
 
-<div class="ev-courses-row">
+<div class="ev-courses-row ev-courses-row--path">
+
 <article class="ev-course">
-<p class="ev-course__where">UMT, bachelor</p>
+<p class="ev-course__where">UMT, bachelor, 14 weeks</p>
 <h3>Object-Oriented Programming in Java</h3>
-<p class="ev-course__line">Designing programs as collaborating objects.</p>
-<p class="ev-chips"><span>Classes and interfaces</span><span>Inheritance</span><span>Collections</span><span>Testing</span></p>
+<p class="ev-course__line">Learn to think in objects. One application, built in three sprints and public on GitHub from week one.</p>
+<p class="ev-chips"><span>Class design</span><span>Error handling</span><span>Testing</span><span>Saving data</span><span>A desktop GUI</span></p>
+<p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/java-oop-course/">Open the course</a></p>
 </article>
+
 <article class="ev-course">
-<p class="ev-course__where">UMT, bachelor</p>
+<p class="ev-course__where">UMT, bachelor year 2</p>
 <h3>Data Structures &amp; Algorithms</h3>
-<p class="ev-course__line">Organizing data so programs stay fast as problems grow.</p>
-<p class="ev-chips"><span>Lists and trees</span><span>Graphs</span><span>Backtracking</span><span>Big-O</span></p>
+<p class="ev-course__line">Programs that stay correct and fast as the input grows. Slides and practice for every lecture, and a three-sprint project.</p>
+<p class="ev-chips"><span>Complexity</span><span>Linked lists</span><span>Recursion</span><span>Search trees</span><span>Dijkstra and A*</span></p>
+<p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/dsa-algorithms/">Open the course</a></p>
 </article>
+
 <article class="ev-course">
-<p class="ev-course__where">UMT and Holberton</p>
+<p class="ev-course__where">UMT, bachelor year 3, 14 weeks</p>
 <h3>Machine Learning</h3>
-<p class="ev-course__line">From data to models, with the tools used in industry.</p>
-<p class="ev-chips"><span>Supervised learning</span><span>Neural networks</span><span>scikit-learn</span><span>LLMs</span></p>
+<p class="ev-course__line">Building things that work on real data. Three team projects, and a system you defend in front of the room.</p>
+<p class="ev-chips"><span>Problem framing</span><span>Honest evaluation</span><span>Feature engineering</span><span>Tree models</span><span>PCA</span></p>
+<p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/ml-course-umt/">Open the course</a><a class="ev-course__alt" href="https://evisp.github.io/ml-handbook/">Holberton ML Handbook</a></p>
 </article>
+
 </div>
 
 <div class="ev-principles">
-<p><strong>Trace before you code.</strong> Run every algorithm by hand first.</p>
-<p><strong>Build, then improve.</strong> Every course ends in working software.</p>
-<p><strong>Mistakes are data.</strong> Feedback is frequent and specific.</p>
+<p><strong>One project, not twelve exercises.</strong> Each course builds one thing that grows across the semester.</p>
+<p><strong>Public from week one.</strong> Work lives on GitHub, so students leave with a portfolio.</p>
+<p><strong>Defend what you build.</strong> A result you can explain beats a score that flatters you.</p>
 </div>
 
 ## For students { #for-students }
 
 <div class="ev-students">
 
-<div class="ev-students__hours">
+<div class="ev-students__card">
 <p class="ev-students__label">Office hours</p>
-<div class="ev-hours">
-<div class="ev-hours__slot"><span>Monday</span><strong>12:00 to 14:00</strong></div>
-<div class="ev-hours__slot"><span>Wednesday</span><strong>08:30 to 10:30</strong></div>
-<div class="ev-hours__where"><span>Where</span><strong>Room 104, UMT</strong></div>
-</div>
-<p class="ev-students__small">No appointment needed. If these clash with your classes, email me for another time.</p>
+<dl class="ev-mini">
+<div><dt>Monday</dt><dd>12:00 to 14:00</dd></div>
+<div><dt>Wednesday</dt><dd>08:30 to 10:30</dd></div>
+<div><dt>Where</dt><dd>Room 104, UMT. No appointment needed</dd></div>
+</dl>
 </div>
 
-<div class="ev-students__email">
+<div class="ev-students__card">
 <p class="ev-students__label">Emailing me</p>
 <dl class="ev-mini">
-<div><dt>From</dt><dd>Your university address to <a href="mailto:evis.plaku@umt.edu.al">evis.plaku@umt.edu.al</a></dd></div>
-<div><dt>Subject</dt><dd>Course first: <em>DSA: question about assignment 2</em></dd></div>
-<div><dt>Include</dt><dd>Name, group, the question, and what you already tried</dd></div>
-<div><dt>Reply</dt><dd>Within two working days</dd></div>
-<div><dt>Letters</dt><dd>Ask three weeks ahead, with your CV and the program</dd></div>
+<div><dt>To</dt><dd><a href="mailto:evis.plaku@umt.edu.al">evis.plaku@umt.edu.al</a>, from your university address</dd></div>
+<div><dt>Subject</dt><dd>Course first: <em>DSA: assignment 2</em></dd></div>
+<div><dt>Include</dt><dd>Your group, the question, and what you tried</dd></div>
 </dl>
 </div>
 
 </div>
+
+<p class="ev-students__small">Replies usually within two working days. For a recommendation letter, ask three weeks ahead and send your CV and the program you are applying to.</p>

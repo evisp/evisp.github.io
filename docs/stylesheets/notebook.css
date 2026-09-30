@@ -9,7 +9,7 @@
   17. Research directions  19. About                   21. Contact
   22. Teaching             23. Mentoring               24. Initiatives
   25. Writing              26. Manuscript (Ancient Algorithms)
-  28. Filter chips         29. About: one page
+  28. Filter chips         29. About: one page         30. Teaching header
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -1938,9 +1938,18 @@ body {
 
 .md-typeset .ev-students {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: 1.6rem;
-  align-items: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.md-typeset .ev-students__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.md-typeset .ev-students__card dl.ev-mini {
+  flex: 1;
 }
 
 .md-typeset .ev-students__label {
@@ -2850,5 +2859,210 @@ body {
   .md-typeset a.ev-chip,
   .md-typeset a.ev-email__address {
     transition: none;
+  }
+}
+
+/* 30. Teaching header and course path -------------------------------------- */
+
+.md-typeset figure.ev-grow {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  margin: 0 1.5rem 0 auto;
+}
+
+.ev-grow__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ev-grow__svg rect { shape-rendering: crispEdges; }
+.ev-grow__dark rect { fill: var(--ev-board-dark); }
+
+.ev-grow__svg rect.ev-grow__edge {
+  fill: none;
+  stroke: var(--ev-line-strong);
+  stroke-width: 1;
+}
+
+.ev-grow__files text,
+.ev-grow__ranks text {
+  font-family: var(--ev-sans);
+  font-size: 9px;
+  font-weight: 500;
+  fill: var(--ev-muted);
+  text-anchor: middle;
+}
+
+.ev-grow__trail {
+  stroke: var(--ev-teal-ink);
+  stroke-width: 1.4;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.55;
+  animation: ev-tour 0.9s calc(0.3s + var(--i) * 0.12s) cubic-bezier(0.45, 0.05, 0.35, 1) both;
+}
+
+.ev-grow__origin {
+  fill: var(--ev-sheet);
+  stroke: var(--ev-teal-ink);
+  stroke-width: 1.2;
+  opacity: 0.7;
+}
+
+.ev-grow__pawn {
+  fill: var(--ev-sheet);
+  stroke: var(--ev-ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ev-grow__qicon {
+  fill: var(--ev-mint);
+  stroke: #16213A;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ev-grow__halo {
+  fill: var(--ev-mint);
+  opacity: 0.9;
+}
+
+.ev-grow__queen {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-arrive 0.5s 1.6s ease-out both;
+}
+
+.ev-grow__note {
+  font-family: var(--ev-sans);
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--ev-oxblood);
+}
+
+.md-typeset .ev-grow figcaption {
+  max-width: none;
+  margin: 0.8rem 0 0 1.4rem;
+  padding-left: 0.7rem;
+  border-left: 2px solid var(--ev-mint);
+  font-size: 0.7rem;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--ev-muted);
+}
+
+/* Office hours at a glance, right under the lead */
+.md-typeset .ev-hourspill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem 0.7rem;
+  margin: 1.3rem 0 0;
+  padding: 0.45rem 0.9rem 0.45rem 0.5rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-hourspill span {
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--ev-mint-soft);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-hourspill a {
+  font-weight: 600;
+  color: var(--ev-ink);
+  text-decoration-color: var(--ev-teal-ink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+/* Courses read as a path: small chevrons between the cards */
+.md-typeset .ev-courses-row--path {
+  gap: 1.4rem;
+}
+
+.md-typeset .ev-courses-row--path .ev-course:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -0.95rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-top: 2px solid var(--ev-line-strong);
+  border-right: 2px solid var(--ev-line-strong);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.md-typeset .ev-course__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  margin-top: 1rem !important;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-course__links a.ev-textlink {
+  font-size: 0.74rem;
+}
+
+.md-typeset a.ev-course__alt {
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-course .ev-chips {
+  margin-top: auto !important;
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset figure.ev-grow {
+    max-width: 12rem;
+    margin: 0;
+  }
+
+  .md-typeset .ev-courses-row--path .ev-course:not(:last-child)::after {
+    top: auto;
+    right: auto;
+    bottom: -0.95rem;
+    left: 50%;
+    transform: translateX(-50%) rotate(135deg);
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .ev-students {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-hourspill {
+    display: flex;
+    border-radius: 14px;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-grow__trail,
+  .ev-grow__queen {
+    animation: none;
   }
 }
