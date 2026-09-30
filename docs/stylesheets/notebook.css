@@ -9,6 +9,7 @@
   17. Research             19. About                   21. Contact
   22. Teaching             23. Mentoring               24. Initiatives
   25. Writing              26. Manuscript (Ancient Algorithms)
+  27. Research map         28. Filter chips
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -76,7 +77,7 @@
   --ev-teal-ink: #0B6E63;
   --ev-oxblood: #8B2E2E;
 
-  --ev-board-dark: #DCEEE9;
+  --ev-board-dark: #E3F1ED;
   --ev-board-light: #FFFFFF;
 
   --ev-tag-program-bg: #E3F6F1;  --ev-tag-program: #0B5E55;
@@ -411,10 +412,11 @@ body {
 .ev-board__svg rect { shape-rendering: crispEdges; }
 .ev-board__dark rect { fill: var(--ev-board-dark); }
 
+/* Soft edges: the board sits on the notebook, it doesn't frame it */
 .ev-board__svg rect.ev-board__edge {
   fill: none;
-  stroke: var(--ev-ink);
-  stroke-width: 1.25;
+  stroke: var(--ev-line-strong);
+  stroke-width: 1;
 }
 
 .ev-board__files text,
@@ -428,47 +430,20 @@ body {
 
 .ev-board__dots circle {
   fill: var(--ev-ink);
-  opacity: 0.28;
-}
-
-/* The signature moment, in three beats:
-   1. the knight's tour draws move by move (discrete search),
-   2. it fades back,
-   3. a smooth trajectory with a mint safety tube is drawn over it.
-   With reduced motion, visitors see the final frame. */
-.ev-board__path {
   opacity: 0.2;
-  animation: ev-fade-back 0.6s 3.7s ease-out both;
 }
 
+/* The signature moment: the tour draws itself move by move.
+   Early moves are faint, later ones darker, so the eye reads direction.
+   With reduced motion, visitors see the finished tour. */
 .ev-board__path line {
   fill: none;
   stroke: var(--ev-ink);
-  stroke-width: 1.5;
+  stroke-width: 1.4;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
   animation: ev-tour 0.14s calc(0.3s + var(--i) * 0.05s) linear both;
-}
-
-.ev-board__traj path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-  animation: ev-tour 2.2s 4s cubic-bezier(0.45, 0.05, 0.35, 1) both;
-}
-
-.ev-board__tube {
-  stroke: var(--ev-mint);
-  stroke-width: 10;
-  opacity: 0.75;
-}
-
-.ev-board__line {
-  stroke: var(--ev-ink);
-  stroke-width: 2;
 }
 
 .ev-board__start {
@@ -480,7 +455,7 @@ body {
 .ev-board__end {
   transform-box: fill-box;
   transform-origin: center;
-  animation: ev-arrive 0.6s 6.1s ease-out both;
+  animation: ev-arrive 0.6s 3.6s ease-out both;
 }
 
 .ev-board__end circle { fill: var(--ev-ink); }
@@ -597,13 +572,6 @@ body {
 
 /* 12. Home: recent moves and notes ----------------------------------------- */
 
-.md-typeset .ev-split {
-  display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-  gap: 3.5rem;
-  align-items: start;
-}
-
 .md-typeset ol.ev-moves {
   margin: 0;
   padding: 0;
@@ -640,44 +608,6 @@ body {
   color: var(--ev-ink-2);
 }
 
-.md-typeset ul.ev-notes {
-  margin: 0 0 1.2rem;
-  padding: 0;
-  list-style: none;
-}
-
-.md-typeset ul.ev-notes li {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  margin: 0 0 0.7rem;
-  padding: 0.9rem 1rem 0.95rem;
-  border: 1px solid var(--ev-line);
-  border-radius: 12px;
-  background-color: var(--ev-sheet);
-}
-
-.md-typeset .ev-notes__series {
-  font-family: var(--ev-sans);
-  font-size: 0.64rem;
-  font-weight: 600;
-  color: var(--ev-teal-ink);
-}
-
-.md-typeset .ev-notes strong {
-  font-family: var(--ev-sans);
-  font-size: 0.86rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--ev-ink);
-}
-
-.md-typeset .ev-notes li > span:last-child {
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: var(--ev-muted);
-}
-
 /* 13. Footer --------------------------------------------------------------- */
 
 .md-footer,
@@ -710,11 +640,6 @@ body {
 
   .md-typeset figure.ev-board {
     margin: 0;
-  }
-
-  .md-typeset .ev-split {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2.8rem;
   }
 }
 
@@ -753,11 +678,6 @@ body {
   to   { stroke-dashoffset: 0; }
 }
 
-@keyframes ev-fade-back {
-  from { opacity: 1; }
-  to   { opacity: 0.2; }
-}
-
 @keyframes ev-arrive {
   from { opacity: 0; transform: scale(0.6); }
   to   { opacity: 1; transform: scale(1); }
@@ -765,9 +685,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .ev-hero h1 mark,
-  .ev-board__path,
   .ev-board__path line,
-  .ev-board__traj path,
   .ev-board__end {
     animation: none;
   }
@@ -911,11 +829,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.4rem;
-  margin: 1.6rem 0 0.6rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--ev-line);
-  border-radius: 12px;
-  background-color: var(--ev-sheet);
+  margin: 0 0 0.4rem;
 }
 
 .md-typeset .ev-legend__item {
@@ -1179,151 +1093,275 @@ body {
   white-space: nowrap;
 }
 
-/* 20. CV ------------------------------------------------------------------- */
+/* 20. CV: career lanes ----------------------------------------------------
+   Bars are positioned from data/cv.yml as percentages of the axis. */
 
-.md-typeset ol.ev-waypoints {
-  position: relative;
-  margin: 1.2rem 0 0;
-  padding: 0 0 0 1.8rem;
-  list-style: none;
+.md-typeset figure.ev-lanes-fig,
+.md-typeset figure.ev-map-fig {
+  display: block;
+  width: auto;
+  max-width: none;
 }
 
-.md-typeset ol.ev-waypoints::before {
+.md-typeset .ev-lanes-fig {
+  margin: 0 0 2.4rem;
+  padding: 1.2rem 1.3rem 0.9rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 16px;
+  background-color: var(--ev-sheet);
+}
+
+.ev-lanes-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+}
+
+.ev-lanes {
+  --name: 9.5rem;
+  min-width: 40rem;
+}
+
+.ev-lanes__axis {
+  position: relative;
+  height: 1.4rem;
+  margin-left: var(--name);
+  font-family: var(--ev-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--ev-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ev-lanes__axis span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.ev-lanes__axis .ev-lanes__now {
+  color: var(--ev-teal-ink);
+}
+
+.ev-lanes__axis span:first-child {
+  transform: none;
+}
+
+.ev-lane {
+  display: grid;
+  grid-template-columns: var(--name) minmax(0, 1fr);
+  align-items: center;
+  min-height: 3.1rem;
+  border-top: 1px dashed var(--ev-line);
+}
+
+.ev-lane__name {
+  padding-right: 1rem;
+  text-align: left;
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ev-ink);
+}
+
+.ev-lane__track {
+  position: relative;
+  height: 3.1rem;
+}
+
+.ev-lane__tick {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: var(--ev-line);
+}
+
+.ev-bar {
+  --bar: var(--ev-ink);
+  --bar-ink: var(--ev-paper);
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  height: 1.6rem;
+  min-width: 0.6rem;
+  padding: 0 0.5rem;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  border-radius: 6px;
+  background-color: var(--bar);
+  color: var(--bar-ink);
+  cursor: default;
+  outline: none;
+}
+
+.ev-lane--education .ev-bar { --bar: var(--ev-mint); --bar-ink: #0B4F47; }
+.ev-lane--academia .ev-bar  { --bar: var(--ev-ink); --bar-ink: var(--ev-paper); }
+.ev-lane--programs .ev-bar  { --bar: var(--ev-tag-paper); --bar-ink: #FFFFFF; }
+
+[data-md-color-scheme="slate"] .ev-lane--programs .ev-bar { --bar-ink: #121C30; }
+
+/* Ongoing roles run off the end of the axis with an arrow */
+.ev-bar--ongoing {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ev-bar--ongoing::after {
   content: "";
   position: absolute;
-  top: 0.45rem;
-  bottom: 0.6rem;
-  left: 0.42rem;
-  width: 2px;
-  border-radius: 2px;
-  background: linear-gradient(180deg, var(--ev-teal-ink), var(--ev-line-strong) 60%);
+  top: 0;
+  right: -0.7rem;
+  border-top: 0.8rem solid transparent;
+  border-bottom: 0.8rem solid transparent;
+  border-left: 0.7rem solid var(--bar);
 }
 
-.md-typeset ol.ev-waypoints li {
-  position: relative;
+.ev-bar__label {
+  overflow: hidden;
+  font-family: var(--ev-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.ev-bar--short .ev-bar__label {
+  position: absolute;
+  left: calc(100% + 0.35rem);
+  overflow: visible;
+  color: var(--ev-ink-2);
+}
+
+.ev-bar__tip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  margin: 0 0 1.4rem;
-}
-
-.md-typeset ol.ev-waypoints li::before {
-  content: "";
-  position: absolute;
-  top: 0.3rem;
-  left: -1.8rem;
-  box-sizing: border-box;
-  width: 0.95rem;
-  height: 0.95rem;
-  border: 2px solid var(--ev-line-strong);
-  border-radius: 50%;
-  background-color: var(--ev-paper);
-}
-
-.md-typeset ol.ev-waypoints li.ev-waypoints__now::before {
-  border-color: var(--ev-ink);
+  width: max-content;
+  max-width: 16rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
   background-color: var(--ev-ink);
-  box-shadow: 0 0 0 0.3rem var(--ev-mint);
+  box-shadow: 0 10px 24px -12px rgba(15, 27, 61, 0.5);
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  line-height: 1.45;
+  color: var(--ev-paper);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease;
+  pointer-events: none;
 }
 
-.md-typeset .ev-waypoints__when {
+.ev-bar__tip strong {
+  font-size: 0.72rem;
+}
+
+.ev-bar:hover .ev-bar__tip,
+.ev-bar:focus-visible .ev-bar__tip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ev-bar:focus-visible {
+  box-shadow: 0 0 0 2px var(--ev-paper), 0 0 0 4px var(--ev-teal-ink);
+}
+
+.md-typeset .ev-lanes-fig figcaption {
+  max-width: none;
+  margin: 0.6rem 0 0;
   font-family: var(--ev-sans);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
+  text-align: left;
+  color: var(--ev-muted);
+}
+
+/* The detail lists under the chart, side by side */
+.md-typeset .ev-cvcols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.4rem;
+}
+
+.md-typeset .ev-cvcols h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.05rem;
+}
+
+.md-typeset .ev-cvcols h2 + ul {
+  margin-top: 0;
+}
+
+.md-typeset ul.ev-cvlist {
+  margin: 0 0 1.8rem;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset ul.ev-cvlist li {
+  display: grid;
+  grid-template-columns: 6.6rem minmax(0, 1fr);
+  column-gap: 0.8rem;
+  margin: 0;
+  padding: 0.55rem 0;
+  border-top: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-cvlist__when {
+  grid-row: span 2;
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
   font-weight: 600;
+  line-height: 1.9;
   color: var(--ev-teal-ink);
   font-variant-numeric: tabular-nums;
 }
 
-.md-typeset ol.ev-waypoints strong {
+.md-typeset ul.ev-cvlist strong {
   font-family: var(--ev-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--ev-ink);
-}
-
-.md-typeset .ev-waypoints__where {
-  font-size: 0.82rem;
-  font-style: italic;
-  color: var(--ev-ink-2);
-}
-
-.md-typeset ol.ev-waypoints p {
-  margin: 0.25rem 0 0;
   font-size: 0.8rem;
-  line-height: 1.55;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.md-typeset .ev-cvlist__where {
+  font-size: 0.76rem;
+  font-style: italic;
   color: var(--ev-muted);
 }
 
-.md-typeset .ev-courses {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.8rem;
-}
-
-.md-typeset .ev-courses > div {
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--ev-line);
-  border-radius: 12px;
-  background-color: var(--ev-sheet);
-}
-
-.md-typeset .ev-courses strong {
-  font-family: var(--ev-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.md-typeset .ev-courses p {
-  margin: 0.3rem 0 0;
-  font-size: 0.78rem;
-  line-height: 1.55;
-  color: var(--ev-ink-2);
-}
-
-.md-typeset dl.ev-skills,
-.md-typeset dl.ev-langs {
+.md-typeset .ev-langline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
   margin: 0;
 }
 
-.md-typeset .ev-skills > div,
-.md-typeset .ev-langs > div {
-  display: grid;
-  grid-template-columns: 11rem minmax(0, 1fr);
-  gap: 0.4rem 1rem;
-  padding: 0.75rem 0;
-  border-top: 1px dashed var(--ev-line-strong);
+.md-typeset .ev-langline span {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ev-line-strong);
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  color: var(--ev-ink-2);
 }
 
-.md-typeset .ev-skills dt,
-.md-typeset .ev-langs dt {
-  font-family: var(--ev-sans);
-  font-size: 0.76rem;
-  font-weight: 600;
-  line-height: 1.7;
+.md-typeset .ev-langline strong {
   color: var(--ev-ink);
 }
 
-.md-typeset .ev-skills dd,
-.md-typeset .ev-langs dd {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
+.md-typeset blockquote.ev-bio {
   margin: 0;
-  font-size: 0.8rem;
-  line-height: 1.7;
-  color: var(--ev-ink-2);
-}
-
-.md-typeset .ev-skills dd span {
-  padding: 0.05rem 0.55rem;
-  border-radius: 999px;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--ev-mint);
+  border-radius: 0 12px 12px 0;
   background-color: var(--ev-sheet);
-  box-shadow: inset 0 0 0 1px var(--ev-line);
-  font-family: var(--ev-sans);
-  font-size: 0.66rem;
-  font-weight: 500;
-  line-height: 1.7;
+  font-size: 0.86rem;
   color: var(--ev-ink-2);
 }
 
@@ -1411,13 +1449,57 @@ body {
 }
 
 @media screen and (max-width: 44.9375em) {
-  .md-typeset .ev-courses,
-  .md-typeset .ev-profiles {
-    grid-template-columns: minmax(0, 1fr);
+  /* On phones: lane names above their track, whole chart fits the screen,
+     labels move into the tap tooltips. */
+  .ev-lanes {
+    --name: 0rem;
+    min-width: 0;
   }
 
-  .md-typeset .ev-skills > div,
-  .md-typeset .ev-langs > div,
+  .ev-lane {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 0.5rem;
+  }
+
+  .ev-lane__track {
+    height: 2.2rem;
+  }
+
+  .ev-bar {
+    height: 1.1rem;
+    padding: 0;
+  }
+
+  .ev-bar__label {
+    display: none;
+  }
+
+  .ev-bar__tip {
+    left: auto;
+    right: 0;
+  }
+
+  .ev-lanes {
+    padding: 0 0.8rem 0 0.4rem;
+  }
+
+  .ev-bar--ongoing::after {
+    right: -0.5rem;
+    border-top-width: 0.55rem;
+    border-bottom-width: 0.55rem;
+    border-left-width: 0.5rem;
+  }
+
+  .ev-lanes__axis .ev-lanes__now {
+    display: none;
+  }
+
+  .md-typeset .ev-profiles,
+  .md-typeset .ev-cvcols {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
   .md-typeset .ev-rows__row {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.3rem;
@@ -1425,34 +1507,33 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .md-typeset .ev-profiles a {
+  .md-typeset .ev-profiles a,
+  .ev-bar__tip {
     transition: none;
   }
 }
 
 /* 22. Teaching ------------------------------------------------------------- */
 
-.md-typeset .ev-courses-grid {
+.md-typeset .ev-courses-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
 }
 
-.md-typeset a.ev-course {
+/* A course card reads left to right, like the order students take them */
+.md-typeset .ev-course {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  padding: 1.1rem 1.1rem 1.2rem;
+  padding: 1.1rem 1.15rem 1.1rem;
   border: 1px solid var(--ev-line);
   border-radius: 14px;
   background-color: var(--ev-sheet);
-  color: var(--ev-ink);
-  text-decoration: none;
-  transition: border-color 0.15s ease;
 }
 
-.md-typeset a.ev-course:hover {
-  border-color: var(--ev-teal-ink);
+.md-typeset .ev-course p {
+  margin: 0;
 }
 
 .md-typeset .ev-course__where {
@@ -1462,115 +1543,158 @@ body {
   color: var(--ev-teal-ink);
 }
 
-.md-typeset a.ev-course strong {
-  font-family: var(--ev-sans);
-  font-size: 0.92rem;
-  font-weight: 600;
+.md-typeset .ev-course h3 {
+  margin: 0.4rem 0 0.3rem;
+  font-size: 0.95rem;
   line-height: 1.3;
 }
 
 .md-typeset .ev-course__line {
-  font-size: 0.78rem;
-  line-height: 1.5;
-  color: var(--ev-muted);
-}
-
-.md-typeset dl.ev-facts {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: 0 0 1rem;
-  border: 1px solid var(--ev-line);
-  border-radius: 14px;
-  background-color: var(--ev-sheet);
-}
-
-.md-typeset .ev-facts > div {
-  padding: 0.8rem 1rem;
-}
-
-.md-typeset .ev-facts > div + div {
-  border-left: 1px dashed var(--ev-line-strong);
-}
-
-.md-typeset .ev-facts dt {
-  font-family: var(--ev-sans);
-  font-size: 0.64rem;
-  font-weight: 600;
-  color: var(--ev-muted);
-}
-
-.md-typeset .ev-facts dd {
-  margin: 0.15rem 0 0;
   font-size: 0.8rem;
-  line-height: 1.45;
+  line-height: 1.5;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: auto !important;
+  padding-top: 0.9rem;
+}
+
+.md-typeset .ev-chips span,
+.md-typeset .ev-topic__skills span {
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ev-line);
+  font-family: var(--ev-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0 0;
+}
+
+.md-typeset .ev-principles p {
+  margin: 0;
+  padding: 0.2rem 0 0 0.9rem;
+  border-left: 2px solid var(--ev-mint);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-principles strong {
+  display: block;
+  font-family: var(--ev-sans);
+  font-weight: 600;
   color: var(--ev-ink);
+}
+
+.md-typeset .ev-students {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.md-typeset .ev-students__label {
+  margin: 0 0 0.6rem;
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-students__small {
+  margin: 0.6rem 0 0;
+  font-size: 0.74rem;
+  font-style: italic;
+  color: var(--ev-muted);
 }
 
 .md-typeset .ev-hours {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.7rem;
+  gap: 0.5rem;
 }
 
 .md-typeset .ev-hours > div {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 0.9rem;
   border: 1px solid var(--ev-line);
   border-radius: 12px;
   background-color: var(--ev-sheet);
 }
 
-.md-typeset .ev-hours__where {
-  border-style: dashed !important;
-  background-color: var(--ev-mint-soft) !important;
+.md-typeset .ev-hours > .ev-hours__where {
+  border-style: dashed;
+  background-color: var(--ev-mint-soft);
 }
 
 .md-typeset .ev-hours span {
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 600;
-  color: var(--ev-teal-ink);
+  color: var(--ev-muted);
 }
 
 .md-typeset .ev-hours strong {
   font-family: var(--ev-sans);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  line-height: 1.3;
   color: var(--ev-ink);
   font-variant-numeric: tabular-nums;
 }
 
-/* 23. Mentoring ------------------------------------------------------------ */
-
-.md-typeset .ev-two {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.md-typeset .ev-two__col {
-  padding: 1rem 1.2rem 0.4rem;
+.md-typeset dl.ev-mini {
+  margin: 0;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: 12px;
   background-color: var(--ev-sheet);
 }
 
-.md-typeset .ev-two__col > p:first-child {
-  margin: 0 0 0.4rem;
-  font-family: var(--ev-sans);
+.md-typeset .ev-mini > div {
+  display: grid;
+  grid-template-columns: 4.4rem minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.55rem 0.9rem;
+  border-top: 1px solid var(--ev-line);
 }
 
-.md-typeset .ev-two__col ul {
-  margin-top: 0;
-  font-size: 0.82rem;
+.md-typeset .ev-mini > div:first-child {
+  border-top: 0;
 }
+
+.md-typeset .ev-mini dt {
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-mini dd {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+/* 23. Mentoring ------------------------------------------------------------ */
 
 .md-typeset .ev-topics {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
 }
 
@@ -1581,6 +1705,10 @@ body {
   border: 1px solid var(--ev-line);
   border-radius: 14px;
   background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-topic[hidden] {
+  display: none;
 }
 
 .md-typeset .ev-topic p {
@@ -1597,7 +1725,7 @@ body {
 .md-typeset .ev-topic__level,
 .md-typeset .ev-topic__status {
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 600;
   color: var(--ev-muted);
 }
@@ -1608,12 +1736,12 @@ body {
 
 .md-typeset h3.ev-topic__title {
   margin: 0.6rem 0 0.35rem;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.35;
 }
 
 .md-typeset .ev-topic__summary {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   line-height: 1.55;
   color: var(--ev-ink-2);
 }
@@ -1626,17 +1754,6 @@ body {
   padding-top: 0.8rem;
 }
 
-.md-typeset .ev-topic__skills span {
-  padding: 0.05rem 0.5rem;
-  border-radius: 999px;
-  box-shadow: inset 0 0 0 1px var(--ev-line);
-  font-family: var(--ev-sans);
-  font-size: 0.62rem;
-  font-weight: 500;
-  line-height: 1.7;
-  color: var(--ev-ink-2);
-}
-
 .md-typeset .ev-topic--taken {
   opacity: 0.6;
   border-style: dashed;
@@ -1646,6 +1763,98 @@ body {
 .md-typeset .ev-tag--agents   { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
 .md-typeset .ev-tag--rag      { background-color: var(--ev-tag-program-bg); color: var(--ev-tag-program); }
 .md-typeset .ev-tag--robotics { background-color: var(--ev-tag-talk-bg);    color: var(--ev-tag-talk); }
+
+/* The thesis process as one horizontal line of five waypoints */
+.md-typeset ol.ev-stepper {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 0.4rem 0 1.4rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.md-typeset ol.ev-stepper li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 1.7rem 0.4rem 0 0;
+  counter-increment: step;
+}
+
+.md-typeset ol.ev-stepper li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 2px solid var(--ev-ink);
+  border-radius: 50%;
+  background-color: var(--ev-paper);
+  font-family: var(--ev-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--ev-ink);
+}
+
+.md-typeset ol.ev-stepper li:last-child::before {
+  background-color: var(--ev-ink);
+  color: var(--ev-paper);
+  box-shadow: 0 0 0 0.25rem var(--ev-mint);
+}
+
+.md-typeset ol.ev-stepper li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 0.64rem;
+  left: 1.3rem;
+  right: -0.6rem;
+  border-top: 2px dashed var(--ev-line-strong);
+}
+
+.md-typeset ol.ev-stepper strong {
+  font-family: var(--ev-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.md-typeset ol.ev-stepper span {
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.md-typeset .ev-two__col {
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-two__col p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.md-typeset .ev-two__col p.ev-students__label {
+  margin-bottom: 0.3rem;
+  font-size: 0.72rem;
+}
 
 /* 24. Initiatives ---------------------------------------------------------- */
 
@@ -1734,20 +1943,37 @@ body {
 /* Responsive for sections 22 to 24 */
 
 @media screen and (max-width: 76.1875em) {
-  .md-typeset .ev-courses-grid {
+  .md-typeset .ev-topics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md-typeset dl.ev-facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .md-typeset .ev-students {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset .ev-courses-row,
+  .md-typeset .ev-principles {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .md-typeset .ev-facts > div:nth-child(3) {
-    border-left: 0;
+  .md-typeset ol.ev-stepper {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
   }
 
-  .md-typeset .ev-facts > div:nth-child(n + 3) {
-    border-top: 1px dashed var(--ev-line-strong);
+  .md-typeset ol.ev-stepper li {
+    padding: 0 0 1rem 2.1rem;
+  }
+
+  .md-typeset ol.ev-stepper li:not(:last-child)::after {
+    top: 1.3rem;
+    bottom: 0;
+    left: 0.6rem;
+    right: auto;
+    border-top: 0;
+    border-left: 2px dashed var(--ev-line-strong);
   }
 }
 
@@ -1760,18 +1986,11 @@ body {
     margin-top: 0.9rem;
   }
 
-  .md-typeset .ev-courses-grid,
   .md-typeset .ev-hours,
   .md-typeset .ev-two,
   .md-typeset .ev-topics,
   .md-typeset .ev-programs {
     grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .md-typeset a.ev-course {
-    transition: none;
   }
 }
 
@@ -1922,4 +2141,244 @@ body {
 
 .md-content--post:has(a[href*="category/ancient-algorithms"]) .md-typeset h1 + p {
   font-size: 1rem;
+}
+
+/* 27. Research map: threads by year, one dot per paper --------------------- */
+
+.md-typeset .ev-map-fig {
+  margin: 0 0 1.6rem;
+  padding: 1.1rem 1.2rem 0.9rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 16px;
+  background-color: var(--ev-sheet);
+  overflow-x: auto;
+}
+
+.ev-map {
+  display: grid;
+  text-align: left;
+  grid-template-columns: 10rem repeat(var(--years), minmax(2.4rem, 1fr));
+  min-width: 36rem;
+}
+
+.ev-map__year {
+  padding-bottom: 0.4rem;
+  font-family: var(--ev-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--ev-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ev-map__thread {
+  display: flex;
+  align-items: center;
+  min-height: 2.3rem;
+  padding-right: 0.8rem;
+  border-top: 1px dashed var(--ev-line);
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.md-typeset .ev-map__thread a {
+  color: var(--ev-ink);
+  text-decoration: none;
+}
+
+.md-typeset .ev-map__thread a:hover {
+  color: var(--ev-teal-ink);
+}
+
+.ev-map__cell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  border-top: 1px dashed var(--ev-line);
+  border-left: 1px solid var(--ev-line);
+}
+
+.ev-map__dot {
+  --dot: var(--ev-ink);
+  position: relative;
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid var(--dot);
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: var(--dot);
+  transition: transform 0.12s ease;
+}
+
+.ev-map__dot--conference {
+  background-color: var(--ev-sheet);
+}
+
+.ev-dot--motion     { --dot: var(--ev-tag-paper); }
+.ev-dot--safety     { --dot: var(--ev-tag-program); }
+.ev-dot--control    { --dot: var(--ev-tag-talk); }
+.ev-dot--perception { --dot: var(--ev-ink-2); }
+.ev-dot--learning   { --dot: var(--ev-muted); }
+
+a.ev-map__dot:hover,
+a.ev-map__dot:focus-visible {
+  transform: scale(1.35);
+  outline: none;
+}
+
+/* Tooltip with the paper title */
+a.ev-map__dot::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  z-index: 3;
+  width: max-content;
+  max-width: 14rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
+  background-color: var(--ev-ink);
+  font-family: var(--ev-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ev-paper);
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+a.ev-map__dot:hover::after,
+a.ev-map__dot:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.md-typeset .ev-map-fig figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 1.2rem;
+  max-width: none;
+  margin: 0.7rem 0 0;
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-style: normal;
+  text-align: left;
+  color: var(--ev-muted);
+}
+
+.ev-map__short {
+  display: none;
+}
+
+@media screen and (max-width: 44.9375em) {
+  .ev-map {
+    grid-template-columns: 5.4rem repeat(var(--years), minmax(0, 1fr));
+    min-width: 0;
+  }
+
+  .ev-map__thread {
+    font-size: 0.62rem;
+    line-height: 1.25;
+  }
+
+  .ev-map__full {
+    display: none;
+  }
+
+  .ev-map__year {
+    font-size: 0.54rem;
+  }
+
+  .ev-map__cell {
+    flex-direction: column;
+  }
+
+  .ev-map__short {
+    display: inline;
+  }
+
+  .ev-map__dot {
+    width: 0.62rem;
+    height: 0.62rem;
+  }
+
+  .md-typeset .ev-map-fig {
+    padding: 0.9rem 0.7rem 0.8rem;
+  }
+}
+
+.ev-map__key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ev-map__key .ev-map__dot {
+  --dot: var(--ev-ink-2);
+}
+
+/* 28. Filter chips --------------------------------------------------------- */
+
+.md-typeset .ev-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 1.1rem;
+}
+
+.md-typeset .ev-filter button {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ev-ink-2);
+  cursor: pointer;
+  transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.md-typeset .ev-filter button:hover {
+  border-color: var(--ev-teal-ink);
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-filter button[aria-pressed="true"] {
+  border-color: var(--ev-ink);
+  background-color: var(--ev-ink);
+  color: var(--ev-paper);
+}
+
+.md-typeset .ev-filter button:focus-visible {
+  outline: 2px solid var(--ev-teal-ink);
+  outline-offset: 2px;
+}
+
+.md-typeset .ev-filter__count {
+  margin-left: 0.4rem;
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  color: var(--ev-muted);
+}
+
+.md-typeset [data-filter-section][hidden],
+.md-typeset .ev-pub[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-map__dot,
+  .md-typeset .ev-filter button {
+    transition: none;
+  }
 }

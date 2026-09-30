@@ -1,5 +1,8 @@
 ---
 title: Research
+render_macros: true
+hide:
+  - toc
 description: "Research on motion planning, risk-aware navigation, predictive control and perception for autonomous robots."
 ---
 
@@ -15,6 +18,24 @@ trusted when they act on their own? Four threads, each with its key results.
 { .ev-lead }
 
 </div>
+
+<figure class="ev-map-fig" markdown="0">
+{% set years = range(2017, 2027) %}
+{% set anchors = {"motion": "#motion-planning", "safety": "#risk-aware-planning", "control": "#predictive-control", "perception": "#perception-for-navigation", "learning": "publications.md"} %}
+<div class="ev-map" style="--years: {{ years | length }}">
+<div class="ev-map__corner"></div>
+{% for y in years %}<div class="ev-map__year"><span class="ev-map__full">{{ y }}</span><span class="ev-map__short">’{{ (y | string)[2:] }}</span></div>{% endfor %}
+{% for key, label in threads.items() %}
+<div class="ev-map__thread"><a href="{{ anchors[key] }}">{{ label }}</a></div>
+{% for y in years %}<div class="ev-map__cell">{% for p in publications if p.thread == key and p.year == y %}<a class="ev-map__dot ev-map__dot--{{ p.type }} ev-dot--{{ key }}" href="publications/#{{ p.id }}" data-tip="{{ p.title }}" aria-label="{{ p.title }}, {{ p.year }}"></a>{% endfor %}</div>{% endfor %}
+{% endfor %}
+</div>
+<figcaption>
+<span class="ev-map__key"><i class="ev-map__dot ev-map__dot--journal"></i> journal</span>
+<span class="ev-map__key"><i class="ev-map__dot ev-map__dot--conference"></i> conference</span>
+<span>Each dot is a paper. Select one to open it.</span>
+</figcaption>
+</figure>
 
 <div class="ev-legend" title="Marks borrowed from chess annotation">
 <span class="ev-legend__item"><span class="ev-glyph ev-glyph--key">!</span> key result</span>

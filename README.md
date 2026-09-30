@@ -9,7 +9,9 @@ Where things live:
 
 - `docs/`                    pages (Markdown)
 - `data/publications.yml`    papers, rendered on Research > Publications
-- `data/topics.yml`          thesis topics, rendered on Mentoring > Thesis Topics
+- `data/topics.yml`          thesis topics, rendered on Mentoring
+- `data/cv.yml`              roles on the CV career chart
 - `docs/writing/posts/`      blog posts (remove `draft: true` to publish)
 - `docs/stylesheets/notebook.css`  the whole design system, in numbered sections
+- `docs/javascripts/filters.js`  filter chips on Publications and Mentoring
 - `overrides/`               home page, 404 and link-preview templates

@@ -49,6 +49,17 @@ plugins:
         - Essays
         - Notes
       pagination_per_page: 10
+  - redirects:
+      redirect_maps:
+        research/talks.md: about/contact.md
+        research/code.md: research/publications.md
+        mentoring/students.md: mentoring/index.md
+        mentoring/thesis-topics.md: mentoring/index.md
+        about/beyond-work.md: about/index.md
+        teaching/dsa.md: teaching/index.md
+        teaching/oop-java.md: teaching/index.md
+        teaching/machine-learning.md: teaching/index.md
+        teaching/for-students.md: teaching/index.md
   - rss:
       match_path: "writing/posts/.*"
       date_from_meta:
@@ -60,6 +71,7 @@ plugins:
       include_yaml:
         - data/publications.yml
         - data/topics.yml
+        - data/cv.yml
 
 extra:
   generator: false
@@ -79,6 +91,8 @@ extra:
 
 extra_css:
   - stylesheets/notebook.css
+extra_javascript:
+  - javascripts/filters.js
 
 # Markdown extensions: none listed on purpose. Zensical then enables its full
 # default set (admonitions, attr_list, md_in_html, footnotes, ==highlight==,
@@ -89,23 +103,12 @@ nav:
   - Research:
       - research/index.md
       - Publications: research/publications.md
-      - Talks & Media: research/talks.md
-      - Code & Data: research/code.md
-  - Teaching:
-      - teaching/index.md
-      - Data Structures & Algorithms: teaching/dsa.md
-      - OOP in Java: teaching/oop-java.md
-      - Machine Learning: teaching/machine-learning.md
-      - For Students: teaching/for-students.md
-  - Mentoring:
-      - mentoring/index.md
-      - Thesis Topics: mentoring/thesis-topics.md
-      - Students & Alumni: mentoring/students.md
+  - Teaching: teaching/index.md
+  - Mentoring: mentoring/index.md
   - Initiatives: initiatives/index.md
   - Writing:
       - writing/index.md
   - About:
       - about/index.md
       - CV: about/cv.md
-      - Beyond Work: about/beyond-work.md
       - Contact: about/contact.md

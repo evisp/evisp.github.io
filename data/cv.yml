@@ -1,0 +1,78 @@
+# Career lanes on the CV page. Years can be fractional: 2018.75 is about October 2018.
+# Leave "end" empty for roles that continue today.
+cv_axis:
+  start: 2005
+  end: 2027
+  ticks: [2005, 2010, 2015, 2020, 2025]
+
+cv_lanes:
+  - id: education
+    name: Education
+  - id: academia
+    name: University teaching
+  - id: programs
+    name: Industry and programs
+
+cv_roles:
+  - lane: education
+    label: BSc
+    title: BSc Computer Science
+    place: University of Tirana
+    start: 2005.75
+    end: 2008.5
+  - lane: education
+    label: MSc
+    title: MSc Computer Science
+    place: University of Tirana
+    start: 2008.75
+    end: 2010.5
+  - lane: education
+    label: MSc Freiburg
+    title: MSc Artificial Intelligence and Robotics
+    place: University of Freiburg
+    start: 2010.75
+    end: 2013.55
+  - lane: education
+    label: CUA
+    title: Advanced Studies in Machine Learning and Robotics
+    place: Catholic University of America
+    start: 2016.0
+    end: 2016.7
+  - lane: education
+    label: PhD
+    title: PhD candidate, AI and Intelligent Systems
+    place: Metropolitan University of Tirana
+    start: 2022.75
+    end:
+
+  - lane: academia
+    label: TA Freiburg
+    title: Teaching Assistant
+    place: University of Freiburg
+    start: 2010.75
+    end: 2013.55
+  - lane: academia
+    label: UMT
+    title: Lecturer in Computer Science
+    place: Metropolitan University of Tirana
+    start: 2017.2
+    end: 2018.7
+  - lane: academia
+    label: CIT
+    title: Lecturer in Computer Science and AI
+    place: Canadian Institute of Technology
+    start: 2018.75
+    end: 2022.7
+  - lane: academia
+    label: UMT
+    title: Lecturer, Researcher and Program Director for AI
+    place: Metropolitan University of Tirana
+    start: 2022.75
+    end:
+
+  - lane: programs
+    label: Holberton
+    title: Education Lead, AI Engineer and ML Curriculum Lead
+    place: Holberton School
+    start: 2022.1
+    end:

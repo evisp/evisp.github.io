@@ -30,7 +30,8 @@ campuses.
 
 My research, and my PhD at UMT, is about robots that navigate complex
 environments on their own. I studied in Tirana, Freiburg and Washington D.C.,
-and have written three university coursebooks along the way.
+and have written three university coursebooks along the way. Away from work
+you will find me at a chessboard or with a book of poems.
 
 </div>
 
@@ -54,18 +55,6 @@ and have written three university coursebooks along the way.
 
 </div>
 
-## Bios for organizers
+## Short bio
 
-Ready to copy for event programs and introductions.
-
-??? quote "Short bio (one sentence)"
-
-    ```text
-    Evis Plaku is a lecturer and AI researcher at the Metropolitan University of Tirana, working on motion planning and safe navigation for autonomous robots.
-    ```
-
-??? quote "Medium bio (about 80 words)"
-
-    ```text
-    Evis Plaku is a lecturer, researcher and Program Director for AI at the Metropolitan University of Tirana, where he teaches algorithms and programming and is completing a PhD on the autonomy of mobile robots in complex environments. His research covers motion planning, risk-aware navigation, predictive control and perception, with papers in IEEE Access, Robotica and IEEE Robotics and Automation Letters. He is also Education Lead and AI Engineer at Holberton School Albania and leads its international machine learning curriculum. He studied at the University of Tirana and the University of Freiburg.
-    ```
+<blockquote class="ev-bio">Evis Plaku is a lecturer and AI researcher at the Metropolitan University of Tirana, working on motion planning and safe navigation for autonomous robots.</blockquote>
