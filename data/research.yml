@@ -51,6 +51,10 @@ questions:
     status: open
     question: When is a set of trajectories diverse in a way that is useful for the task?
 
+  - direction: motion
+    status: open
+    question: Can a planner explain why it chose one path over another?
+
   - direction: safety
     status: result
     question: How can safety margins be built into the planner itself?
@@ -66,6 +70,10 @@ questions:
   - direction: safety
     status: open
     question: How should risk be traded against progress when the map itself is uncertain?
+
+  - direction: safety
+    status: open
+    question: How should safety zones adapt to the way people actually move around a robot?
 
   - direction: control
     status: exploring

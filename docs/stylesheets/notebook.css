@@ -1089,6 +1089,113 @@ body {
   text-underline-offset: 0.2em;
 }
 
+/* If a direction ever ends on a single card, let it span the full row */
+.md-typeset .ev-q:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+/* Research header: statement on the left, a small planning sketch on the right */
+.md-typeset .ev-pagehead--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.md-typeset .ev-pagehead--split .ev-lead {
+  max-width: 34em;
+}
+
+.md-typeset figure.ev-illus {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  margin: 0 0 0 auto;
+}
+
+.ev-illus__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ev-illus__edges line {
+  stroke: var(--ev-line-strong);
+  stroke-width: 1;
+}
+
+.ev-illus__nodes circle {
+  fill: var(--ev-ink);
+  opacity: 0.22;
+}
+
+.ev-illus__obstacle {
+  fill: var(--ev-board-dark);
+  stroke: var(--ev-line-strong);
+}
+
+.ev-illus__zone {
+  fill: none;
+  stroke: var(--ev-teal-ink);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+  opacity: 0.55;
+}
+
+.ev-illus__cone {
+  fill: var(--ev-mint);
+  opacity: 0.45;
+}
+
+.ev-illus__path {
+  fill: none;
+  stroke: var(--ev-ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: ev-tour 1.8s 0.3s cubic-bezier(0.45, 0.05, 0.35, 1) both;
+}
+
+.ev-illus__start {
+  fill: var(--ev-sheet);
+  stroke: var(--ev-ink);
+  stroke-width: 2;
+}
+
+.ev-illus__goal circle {
+  fill: var(--ev-ink);
+}
+
+.ev-illus__goal circle.ev-illus__halo {
+  fill: var(--ev-mint);
+}
+
+.ev-illus__goal {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-arrive 0.5s 2s ease-out both;
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset .ev-pagehead--split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.4rem;
+  }
+
+  .md-typeset figure.ev-illus {
+    max-width: 18rem;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-illus__path,
+  .ev-illus__goal {
+    animation: none;
+  }
+}
+
 /* Open questions: no fill, dashed, and an invitation instead of papers */
 .md-typeset .ev-q--open {
   border-style: dashed;
