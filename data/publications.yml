@@ -1,7 +1,7 @@
 # Publications. Add a new paper by copying one entry and editing it.
 # type: journal | conference
 # thread: motion | safety | control | perception | learning
-# doi and pages are optional. Newest first within each type.
+# short is the venue abbreviation shown on the Research page. doi and pages are optional. Newest first within each type.
 
 threads:
   motion: Motion planning
@@ -13,6 +13,7 @@ threads:
 publications:
 
   - id: plaku-2026-diverse
+    short: IEEE Access
     type: journal
     authors: E. Plaku, A. Çela, E. Plaku
     title: Generating Diverse Trajectories Using Roadmap Search and Sampling-Based Motion Planning
@@ -23,6 +24,7 @@ publications:
     thread: motion
 
   - id: plaku-2026-semantic
+    short: IJCAS
     type: journal
     authors: E. Plaku
     title: Semantic-Aware Graphs for Safe Path Planning in Urban Driving Environments
@@ -32,6 +34,7 @@ publications:
     thread: safety
 
   - id: plaku-2024-safety-zones
+    short: LNEE
     type: journal
     authors: E. Plaku, A. Çela, E. Plaku
     title: "Enhancing Robot Navigation: Integrating Safety Zones into Path Planning"
@@ -40,6 +43,7 @@ publications:
     thread: safety
 
   - id: plaku-2018-clearance
+    short: Robotica
     type: journal
     authors: E. Plaku, E. Plaku, P. Simari
     title: Clearance-Driven Motion Planning for Mobile Agents with Differential Constraints
@@ -48,6 +52,7 @@ publications:
     thread: motion
 
   - id: plaku-2017-superfacets
+    short: RA-L
     type: journal
     authors: E. Plaku, E. Plaku, P. Simari
     title: "Direct Path Superfacets: An Intermediate Representation for Motion Planning"
@@ -56,6 +61,7 @@ publications:
     thread: motion
 
   - id: plaku-2026-urban-route
+    short: MED
     type: conference
     authors: E. Plaku, G. Lici, S.-I. Niculescu, A. Çela
     title: Safe Urban Route Planning via Semantic Graphs and Neural Cost Shaping
@@ -64,6 +70,7 @@ publications:
     thread: safety
 
   - id: lici-2026-adaptive-mpc
+    short: MED
     type: conference
     authors: G. Lici, E. Plaku, S.-I. Niculescu, A. Çela
     title: An Adaptive-Horizon Model Predictive Control Approach for Robot Navigation in Dynamic Environments
@@ -72,6 +79,7 @@ publications:
     thread: control
 
   - id: plaku-2025-llm-paths
+    short: ICITEE
     type: conference
     authors: E. Plaku
     title: "Motion Planning with Large Language Models: Language-to-Paths Guidance over Superfacets"
@@ -80,6 +88,7 @@ publications:
     thread: motion
 
   - id: plaku-2024-safety-analysis
+    short: CoNTESA
     type: conference
     authors: E. Plaku, A. Çela, N. Civici
     title: Safety Analysis for Autonomous Mobile Robot Navigation Using Traffic Sign Recognition, Dynamic Object Detection, and Semantic Segmentation
@@ -91,6 +100,7 @@ publications:
     thread: perception
 
   - id: plaku-2024-albanian-news
+    short: INISTA
     type: conference
     authors: E. Plaku, K. Jahaj, A. Çela, N. Civici
     title: A Machine Learning Framework for Automated Albanian News Article Title Classification
@@ -99,6 +109,7 @@ publications:
     thread: learning
 
   - id: plaku-2023-safety-zones
+    short: ICINCO
     type: conference
     authors: E. Plaku, A. Çela, E. Plaku
     title: Robot Path Planning with Safety Zones
@@ -107,6 +118,7 @@ publications:
     thread: safety
 
   - id: plaku-2017-irl
+    short: ICCITBA
     type: conference
     authors: E. Plaku
     title: Inverse Reinforcement Learning for Computing Navigation Actions From Demonstrations

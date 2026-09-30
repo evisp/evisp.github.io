@@ -6,10 +6,10 @@
    4. Theme mapping         9. Home: hero              14. Responsive
    5. Paper and type       10. Home: the board         15. Motion
   16. Inner pages          18. Publications            20. CV
-  17. Research             19. About                   21. Contact
+  17. Research directions  19. About                   21. Contact
   22. Teaching             23. Mentoring               24. Initiatives
   25. Writing              26. Manuscript (Ancient Algorithms)
-  27. Research map         28. Filter chips            29. About: one page
+  28. Filter chips         29. About: one page
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -823,87 +823,319 @@ body {
   line-height: 1.6;
 }
 
-/* 17. Research ------------------------------------------------------------- */
+/* 17. Research: direction cards and question cards ------------------------
+   Content comes from data/research.yml. Each direction has one accent colour,
+   shared with its tag on the Publications page. */
 
-.md-typeset .ev-legend {
+.ev-dir--motion     { --dir: var(--ev-tag-paper);   --dir-bg: var(--ev-tag-paper-bg); }
+.ev-dir--safety     { --dir: var(--ev-tag-program); --dir-bg: var(--ev-tag-program-bg); }
+.ev-dir--control    { --dir: var(--ev-tag-talk);    --dir-bg: var(--ev-tag-talk-bg); }
+.ev-dir--perception { --dir: var(--ev-ink-2);       --dir-bg: var(--ev-board-dark); }
+
+.md-typeset .ev-dirs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 0 0 2.2rem;
+}
+
+.md-typeset a.ev-dir {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.05rem 1rem 0.9rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+  color: var(--ev-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* a thin accent along the top edge */
+.md-typeset a.ev-dir::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 1rem;
+  right: 1rem;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background-color: var(--dir);
+  opacity: 0.85;
+}
+
+.md-typeset a.ev-dir:hover {
+  border-color: var(--dir);
+}
+
+.md-typeset a.ev-dir.is-active {
+  border-color: var(--dir);
+  box-shadow: 0 0 0 1px var(--dir), 0 14px 28px -20px rgba(15, 27, 61, 0.45);
+}
+
+/* a small pointer from the selected card down to its questions */
+.md-typeset a.ev-dir.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: -0.45rem;
+  left: 1.6rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-right: 1px solid var(--dir);
+  border-bottom: 1px solid var(--dir);
+  background-color: var(--ev-sheet);
+  box-shadow: 1px 1px 0 0 var(--dir);
+  transform: rotate(45deg);
+}
+
+.md-typeset a.ev-dir:focus-visible {
+  outline: 2px solid var(--dir);
+  outline-offset: 3px;
+}
+
+.md-typeset .ev-dir__icon {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin: 0 0 0.9rem;
+  border-radius: 10px;
+  background-color: var(--dir-bg);
+  color: var(--dir);
+}
+
+.md-typeset .ev-dir__icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.md-typeset .ev-dir__name {
+  font-family: var(--ev-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.md-typeset .ev-dir__line {
+  margin-top: 0.2rem;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-dir__count {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-family: var(--ev-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--dir);
+}
+
+/* One direction's questions */
+.md-typeset .ev-dirpanel {
+  margin: 0 0 2.4rem;
+  scroll-margin-top: 6rem;
+}
+
+.md-typeset .ev-dirpanel[hidden] {
+  display: none;
+}
+
+.md-typeset .ev-dirpanel__head {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.4rem;
-  margin: 0 0 0.4rem;
+  align-items: baseline;
+  gap: 0.2rem 0.9rem;
+  margin: 0 0 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px dashed var(--ev-line-strong);
 }
 
-.md-typeset .ev-legend__item {
-  display: inline-flex;
+.md-typeset .ev-dirpanel__head h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.md-typeset .ev-dirpanel__head p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-qs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.md-typeset .ev-q {
+  display: flex;
+  flex-direction: column;
+  padding: 1.05rem 1.2rem 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-q p {
+  margin: 0;
+}
+
+.md-typeset .ev-q__status {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   font-family: var(--ev-sans);
-  font-size: 0.74rem;
-  color: var(--ev-ink-2);
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--ev-muted);
 }
 
-.md-typeset .ev-glyph {
+.md-typeset .ev-q__glyph {
   display: inline-grid;
   place-items: center;
-  flex: none;
-  min-width: 1.6rem;
-  height: 1.6rem;
-  padding: 0 0.3rem;
-  border-radius: 6px;
-  font-family: var(--ev-sans);
-  font-size: 0.8rem;
+  min-width: 1.3rem;
+  height: 1.3rem;
+  padding: 0 0.25rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
   font-weight: 700;
   line-height: 1;
 }
 
-.md-typeset .ev-glyph--key  { background-color: var(--ev-tag-talk-bg);    color: var(--ev-oxblood); }
-.md-typeset .ev-glyph--idea { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
-.md-typeset .ev-glyph--open { background-color: var(--ev-mint-soft);      color: var(--ev-teal-ink); }
+.md-typeset .ev-q--result .ev-q__glyph    { background-color: var(--ev-tag-talk-bg);  color: var(--ev-oxblood); }
+.md-typeset .ev-q--exploring .ev-q__glyph { background-color: var(--ev-tag-paper-bg); color: var(--ev-tag-paper); }
+.md-typeset .ev-q--open .ev-q__glyph      { background-color: var(--ev-mint-soft);    color: var(--ev-teal-ink); }
 
-.md-typeset ul.ev-annotated {
-  margin: 1.2rem 0 0;
-  padding: 0;
+.md-typeset h3.ev-q__title {
+  margin: 0.55rem 0 0.4rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset .ev-q__finding {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset ul.ev-q__papers {
+  margin: auto 0 0;
+  padding: 0.8rem 0 0;
   list-style: none;
 }
 
-.md-typeset ul.ev-annotated li {
-  display: grid;
-  grid-template-columns: 1.9rem minmax(0, 1fr);
-  gap: 0.8rem;
-  align-items: start;
+.md-typeset ul.ev-q__papers li {
   margin: 0;
-  padding: 0.75rem 0;
+  padding: 0;
+}
+
+.md-typeset ul.ev-q__papers li:first-child {
+  margin-top: 0.1rem;
   border-top: 1px dashed var(--ev-line-strong);
 }
 
-.md-typeset ul.ev-annotated li:last-child {
-  border-bottom: 1px dashed var(--ev-line-strong);
+.md-typeset ul.ev-q__papers a {
+  display: grid;
+  grid-template-columns: 2.2rem auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--ev-line);
+  color: var(--ev-ink);
+  text-decoration: none;
 }
 
-.md-typeset ul.ev-annotated .ev-glyph {
-  margin-top: 0.1rem;
+.md-typeset ul.ev-q__papers li:last-child a {
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 
-.md-typeset ul.ev-annotated p {
-  margin: 0;
-  font-size: 0.84rem;
-  line-height: 1.6;
-}
-
-.md-typeset ul.ev-annotated strong {
+.md-typeset .ev-q__year {
   font-family: var(--ev-sans);
+  font-size: 0.66rem;
   font-weight: 600;
+  color: var(--ev-muted);
+  font-variant-numeric: tabular-nums;
 }
 
-.md-typeset ul.ev-annotated a {
+.md-typeset .ev-q__venue {
+  padding: 0.02rem 0.45rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--ev-line-strong);
   font-family: var(--ev-sans);
-  font-size: 0.72rem;
+  font-size: 0.6rem;
   font-weight: 600;
   white-space: nowrap;
+  color: var(--ev-ink-2);
 }
 
-.md-typeset ul.ev-annotated li:has(.ev-glyph--open) p {
+.md-typeset .ev-q__ptitle {
+  overflow: hidden;
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.md-typeset ul.ev-q__papers a:hover .ev-q__ptitle {
+  color: var(--ev-teal-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+/* Open questions: no fill, dashed, and an invitation instead of papers */
+.md-typeset .ev-q--open {
+  border-style: dashed;
+  border-color: var(--ev-line-strong);
+  background-color: transparent;
+}
+
+.md-typeset .ev-q__invite {
+  margin-top: auto !important;
+  padding-top: 0.7rem;
+  font-size: 0.78rem;
   font-style: italic;
-  color: var(--ev-ink-2);
+  color: var(--ev-muted);
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset .ev-dirs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .ev-qs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-dirs {
+    gap: 0.5rem;
+  }
+
+  .md-typeset a.ev-dir {
+    padding: 0.85rem 0.85rem 0.75rem;
+  }
+
+  .md-typeset .ev-dir__line {
+    display: none;
+  }
+
+  .md-typeset .ev-dir__icon {
+    margin-bottom: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset a.ev-dir {
+    transition: none;
+  }
 }
 
 /* 18. Publications --------------------------------------------------------- */
@@ -1096,8 +1328,7 @@ body {
 /* 20. CV: career lanes ----------------------------------------------------
    Bars are positioned from data/cv.yml as percentages of the axis. */
 
-.md-typeset figure.ev-lanes-fig,
-.md-typeset figure.ev-map-fig {
+.md-typeset figure.ev-lanes-fig {
   display: block;
   width: auto;
   max-width: none;
@@ -2143,188 +2374,6 @@ body {
   font-size: 1rem;
 }
 
-/* 27. Research map: threads by year, one dot per paper --------------------- */
-
-.md-typeset .ev-map-fig {
-  margin: 0 0 1.6rem;
-  padding: 1.1rem 1.2rem 0.9rem;
-  border: 1px solid var(--ev-line);
-  border-radius: 16px;
-  background-color: var(--ev-sheet);
-  overflow-x: auto;
-}
-
-.ev-map {
-  display: grid;
-  text-align: left;
-  grid-template-columns: 10rem repeat(var(--years), minmax(2.4rem, 1fr));
-  min-width: 36rem;
-}
-
-.ev-map__year {
-  padding-bottom: 0.4rem;
-  font-family: var(--ev-sans);
-  font-size: 0.62rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--ev-muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.ev-map__thread {
-  display: flex;
-  align-items: center;
-  min-height: 2.3rem;
-  padding-right: 0.8rem;
-  border-top: 1px dashed var(--ev-line);
-  font-family: var(--ev-sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-
-.md-typeset .ev-map__thread a {
-  color: var(--ev-ink);
-  text-decoration: none;
-}
-
-.md-typeset .ev-map__thread a:hover {
-  color: var(--ev-teal-ink);
-}
-
-.ev-map__cell {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  border-top: 1px dashed var(--ev-line);
-  border-left: 1px solid var(--ev-line);
-}
-
-.ev-map__dot {
-  --dot: var(--ev-ink);
-  position: relative;
-  display: inline-block;
-  width: 0.8rem;
-  height: 0.8rem;
-  border: 2px solid var(--dot);
-  border-radius: 50%;
-  box-sizing: border-box;
-  background-color: var(--dot);
-  transition: transform 0.12s ease;
-}
-
-.ev-map__dot--conference {
-  background-color: var(--ev-sheet);
-}
-
-.ev-dot--motion     { --dot: var(--ev-tag-paper); }
-.ev-dot--safety     { --dot: var(--ev-tag-program); }
-.ev-dot--control    { --dot: var(--ev-tag-talk); }
-.ev-dot--perception { --dot: var(--ev-ink-2); }
-.ev-dot--learning   { --dot: var(--ev-muted); }
-
-a.ev-map__dot:hover,
-a.ev-map__dot:focus-visible {
-  transform: scale(1.35);
-  outline: none;
-}
-
-/* Tooltip with the paper title */
-a.ev-map__dot::after {
-  content: attr(data-tip);
-  position: absolute;
-  bottom: calc(100% + 0.5rem);
-  left: 50%;
-  z-index: 3;
-  width: max-content;
-  max-width: 14rem;
-  padding: 0.45rem 0.65rem;
-  border-radius: 8px;
-  background-color: var(--ev-ink);
-  font-family: var(--ev-sans);
-  font-size: 0.62rem;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--ev-paper);
-  white-space: normal;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-a.ev-map__dot:hover::after,
-a.ev-map__dot:focus-visible::after {
-  opacity: 1;
-  visibility: visible;
-}
-
-.md-typeset .ev-map-fig figcaption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem 1.2rem;
-  max-width: none;
-  margin: 0.7rem 0 0;
-  font-family: var(--ev-sans);
-  font-size: 0.66rem;
-  font-style: normal;
-  text-align: left;
-  color: var(--ev-muted);
-}
-
-.ev-map__short {
-  display: none;
-}
-
-@media screen and (max-width: 44.9375em) {
-  .ev-map {
-    grid-template-columns: 5.4rem repeat(var(--years), minmax(0, 1fr));
-    min-width: 0;
-  }
-
-  .ev-map__thread {
-    font-size: 0.62rem;
-    line-height: 1.25;
-  }
-
-  .ev-map__full {
-    display: none;
-  }
-
-  .ev-map__year {
-    font-size: 0.54rem;
-  }
-
-  .ev-map__cell {
-    flex-direction: column;
-  }
-
-  .ev-map__short {
-    display: inline;
-  }
-
-  .ev-map__dot {
-    width: 0.62rem;
-    height: 0.62rem;
-  }
-
-  .md-typeset .ev-map-fig {
-    padding: 0.9rem 0.7rem 0.8rem;
-  }
-}
-
-.ev-map__key {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.ev-map__key .ev-map__dot {
-  --dot: var(--ev-ink-2);
-}
-
 /* 28. Filter chips --------------------------------------------------------- */
 
 .md-typeset .ev-filter {
@@ -2377,7 +2426,6 @@ a.ev-map__dot:focus-visible::after {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ev-map__dot,
   .md-typeset .ev-filter button {
     transition: none;
   }

@@ -56,3 +56,39 @@ document$.subscribe(function () {
     });
   });
 });
+
+// Research directions: the cards select which direction's questions are shown.
+// Without JavaScript every direction stays visible and the cards are jump links.
+document$.subscribe(function () {
+  const cards = document.querySelectorAll("[data-dir]");
+  const panels = document.querySelectorAll("[data-dir-panel]");
+  if (!cards.length || !panels.length) return;
+
+  function show(id, updateUrl) {
+    let found = false;
+    panels.forEach(function (panel) {
+      const match = panel.dataset.dirPanel === id;
+      panel.hidden = !match;
+      if (match) found = true;
+    });
+    if (!found) return show(cards[0].dataset.dir, false);
+    cards.forEach(function (card) {
+      const active = card.dataset.dir === id;
+      card.classList.toggle("is-active", active);
+      if (active) card.setAttribute("aria-current", "true");
+      else card.removeAttribute("aria-current");
+    });
+    if (updateUrl) history.replaceState(null, "", "#" + id);
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener("click", function (event) {
+      event.preventDefault();
+      show(card.dataset.dir, true);
+    });
+  });
+  show(location.hash.slice(1) || cards[0].dataset.dir, false);
+  window.onhashchange = function () {
+    if (location.hash) show(location.hash.slice(1), false);
+  };
+});

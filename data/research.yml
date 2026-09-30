@@ -1,0 +1,88 @@
+# Research page: directions and the questions under each.
+# status: result | exploring | open
+# papers: ids from data/publications.yml (leave empty for open questions)
+# icon: the inner markup of a 24x24 line icon (from lucide.dev)
+
+directions:
+  - id: motion
+    name: Motion planning
+    line: Good, varied paths, found quickly
+    icon: '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>'
+  - id: safety
+    name: Risk-aware planning
+    line: Safety built into the plan
+    icon: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>'
+  - id: control
+    name: Predictive control
+    line: Re-planning as the world moves
+    icon: '<path d="M10 2h4M12 14l3-3"/><circle cx="12" cy="14" r="8"/>'
+  - id: perception
+    name: Perception
+    line: From seeing to moving safely
+    icon: '<path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="1"/><path d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0"/>'
+
+questions:
+
+  - direction: motion
+    status: result
+    question: How can high-level guidance make sampling-based planners faster?
+    finding: Superfacets, a layer between geometry and search that points planners toward direct paths.
+    papers: [plaku-2017-superfacets, plaku-2018-clearance]
+
+  - direction: motion
+    status: result
+    question: How do we generate trajectories that are meaningfully different?
+    finding: Roadmap search combined with sampling-based planning to produce distinct routes, not small variations.
+    papers: [plaku-2026-diverse]
+
+  - direction: motion
+    status: result
+    question: Can a robot learn how to navigate from demonstrations?
+    finding: Inverse reinforcement learning recovers the goals behind demonstrated paths and turns them into actions.
+    papers: [plaku-2017-irl]
+
+  - direction: motion
+    status: exploring
+    question: Can people steer a planner in plain language?
+    finding: A language model translates instructions into guidance over superfacets.
+    papers: [plaku-2025-llm-paths]
+
+  - direction: motion
+    status: open
+    question: When is a set of trajectories diverse in a way that is useful for the task?
+
+  - direction: safety
+    status: result
+    question: How can safety margins be built into the planner itself?
+    finding: Explicit safety zones around hazards, planned with rather than checked afterwards.
+    papers: [plaku-2023-safety-zones, plaku-2024-safety-zones]
+
+  - direction: safety
+    status: result
+    question: How can semantic maps make urban routes safer?
+    finding: Graphs that know about crossings, lanes and zones, with learned costs for weighing them.
+    papers: [plaku-2026-semantic, plaku-2026-urban-route]
+
+  - direction: safety
+    status: open
+    question: How should risk be traded against progress when the map itself is uncertain?
+
+  - direction: control
+    status: exploring
+    question: How far ahead should a controller look among moving people and vehicles?
+    finding: Model predictive control that adapts its horizon to how dynamic the scene is.
+    papers: [lici-2026-adaptive-mpc]
+
+  - direction: control
+    status: open
+    question: When is a longer horizon worth its computational cost?
+
+  - direction: perception
+    status: result
+    question: Can perception measure how safe a route is?
+    finding: Traffic signs, moving objects and scene segmentation combined into a safety analysis.
+    papers: [plaku-2024-safety-analysis]
+
+  - direction: perception
+    status: open
+    question: How should uncertainty in what the robot sees change the plan it commits to?

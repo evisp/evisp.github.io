@@ -1,9 +1,10 @@
 ---
 title: Research
+description: "Research directions and open questions in motion planning, risk-aware navigation, predictive control and perception for autonomous robots."
 render_macros: true
 hide:
+  - navigation
   - toc
-description: "Research on motion planning, risk-aware navigation, predictive control and perception for autonomous robots."
 ---
 
 <div class="ev-pagehead" markdown>
@@ -14,78 +15,56 @@ Motion planning and safe autonomy
 # Research
 
 How do we build robots that need ==less and less human guidance==, and can be
-trusted when they act on their own? Four threads, each with its key results.
+trusted when they act on their own? Four directions, each a set of questions:
+some answered, some being explored, some still open.
 { .ev-lead }
 
+[All publications](publications.md){ .ev-btn .ev-btn--ghost }
+{ .ev-actions }
+
 </div>
 
-<figure class="ev-map-fig" markdown="0">
-{% set years = range(2017, 2027) %}
-{% set anchors = {"motion": "#motion-planning", "safety": "#risk-aware-planning", "control": "#predictive-control", "perception": "#perception-for-navigation", "learning": "publications.md"} %}
-<div class="ev-map" style="--years: {{ years | length }}">
-<div class="ev-map__corner"></div>
-{% for y in years %}<div class="ev-map__year"><span class="ev-map__full">{{ y }}</span><span class="ev-map__short">’{{ (y | string)[2:] }}</span></div>{% endfor %}
-{% for key, label in threads.items() %}
-<div class="ev-map__thread"><a href="{{ anchors[key] }}">{{ label }}</a></div>
-{% for y in years %}<div class="ev-map__cell">{% for p in publications if p.thread == key and p.year == y %}<a class="ev-map__dot ev-map__dot--{{ p.type }} ev-dot--{{ key }}" href="publications/#{{ p.id }}" data-tip="{{ p.title }}" aria-label="{{ p.title }}, {{ p.year }}"></a>{% endfor %}</div>{% endfor %}
+{% set pubs = {} %}{% for p in publications %}{% set _ = pubs.update({p.id: p}) %}{% endfor %}
+{% set glyph = {"result": "!", "exploring": "!?", "open": "∞"} %}
+{% set label = {"result": "Result", "exploring": "Exploring", "open": "Open question"} %}
+
+<nav class="ev-dirs" aria-label="Research directions">
+{% for d in directions %}{% set ids = [] %}{% for q in questions if q.direction == d.id %}{% for pid in (q.papers or []) %}{% if pid not in ids %}{% set _ = ids.append(pid) %}{% endif %}{% endfor %}{% endfor %}
+<a class="ev-dir ev-dir--{{ d.id }}" href="{{ "#" ~ d.id }}" data-dir="{{ d.id }}">
+<span class="ev-dir__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{{ d.icon }}</svg></span>
+<strong class="ev-dir__name">{{ d.name }}</strong>
+<span class="ev-dir__line">{{ d.line }}</span>
+<span class="ev-dir__count">{{ ids | length }} {{ "paper" if ids | length == 1 else "papers" }}</span>
+</a>
+{% endfor %}
+</nav>
+
+{% for d in directions %}
+<section class="ev-dirpanel ev-dir--{{ d.id }}" id="{{ d.id }}" data-dir-panel="{{ d.id }}" aria-label="{{ d.name }}">
+<header class="ev-dirpanel__head">
+<h2>{{ d.name }}</h2>
+<p>{{ d.line }}</p>
+</header>
+<div class="ev-qs">
+{% for q in questions if q.direction == d.id %}
+<article class="ev-q ev-q--{{ q.status }}">
+<p class="ev-q__status"><span class="ev-q__glyph" aria-hidden="true">{{ glyph[q.status] }}</span>{{ label[q.status] }}</p>
+<h3 class="ev-q__title">{{ q.question }}</h3>
+{% if q.finding %}<p class="ev-q__finding">{{ q.finding }}</p>{% endif %}
+{% if q.papers %}<ul class="ev-q__papers">
+{% for pid in q.papers %}{% set p = pubs[pid] %}<li><a href="publications/#{{ p.id }}"><span class="ev-q__year">{{ p.year }}</span><span class="ev-q__venue">{{ p.short }}</span><span class="ev-q__ptitle">{{ p.title }}</span></a></li>
+{% endfor %}</ul>
+{% else %}<p class="ev-q__invite">Interested in this question? It could be a <a href="../mentoring/">thesis</a> or <a href="../about/#contact">joint work</a>.</p>{% endif %}
+</article>
 {% endfor %}
 </div>
-<figcaption>
-<span class="ev-map__key"><i class="ev-map__dot ev-map__dot--journal"></i> journal</span>
-<span class="ev-map__key"><i class="ev-map__dot ev-map__dot--conference"></i> conference</span>
-<span>Each dot is a paper. Select one to open it.</span>
-</figcaption>
-</figure>
-
-<div class="ev-legend" title="Marks borrowed from chess annotation">
-<span class="ev-legend__item"><span class="ev-glyph ev-glyph--key">!</span> key result</span>
-<span class="ev-legend__item"><span class="ev-glyph ev-glyph--idea">!?</span> promising idea</span>
-<span class="ev-legend__item"><span class="ev-glyph ev-glyph--open">∞</span> open problem</span>
-</div>
-
-## Motion planning
-
-Finding good, varied paths quickly for robots with real dynamics.
-
-<ul class="ev-annotated">
-  <li><span class="ev-glyph ev-glyph--key">!</span><p><strong>Superfacets.</strong> An intermediate representation between geometry and search that guides sampling-based planners toward direct paths. <a href="publications.md#plaku-2017-superfacets">RA-L 2017</a>, <a href="publications.md#plaku-2018-clearance">Robotica 2018</a></p></li>
-  <li><span class="ev-glyph ev-glyph--key">!</span><p><strong>Diverse trajectories.</strong> Combining roadmap search with sampling-based planning to produce trajectories that differ in meaningful ways, not only in small details. <a href="publications.md#plaku-2026-diverse">IEEE Access 2026</a></p></li>
-  <li><span class="ev-glyph ev-glyph--idea">!?</span><p><strong>Language as guidance.</strong> Letting a large language model turn instructions into guidance over superfacets, so people can steer a planner in plain words. <a href="publications.md#plaku-2025-llm-paths">ICITEE 2025</a></p></li>
-  <li><span class="ev-glyph ev-glyph--open">∞</span><p>When is a set of trajectories diverse in a way that is useful for the task, rather than merely different?</p></li>
-</ul>
-
-## Risk-aware planning
-
-Building safety into the plan from the start, not checking it at the end.
-
-<ul class="ev-annotated">
-  <li><span class="ev-glyph ev-glyph--key">!</span><p><strong>Safety zones.</strong> Planning with explicit safety regions around obstacles and hazards. <a href="publications.md#plaku-2023-safety-zones">ICINCO 2023</a>, <a href="publications.md#plaku-2024-safety-zones">LNEE 2024</a></p></li>
-  <li><span class="ev-glyph ev-glyph--key">!</span><p><strong>Semantic-aware graphs.</strong> Urban driving graphs that carry meaning (crossings, lanes, zones) so the planner can prefer safe paths. <a href="publications.md#plaku-2026-semantic">IJCAS 2026</a></p></li>
-  <li><span class="ev-glyph ev-glyph--idea">!?</span><p><strong>Neural cost shaping.</strong> Learning how to weigh semantic information in route costs. <a href="publications.md#plaku-2026-urban-route">MED 2026</a></p></li>
-  <li><span class="ev-glyph ev-glyph--open">∞</span><p>How should a planner trade risk against progress when the map itself is uncertain?</p></li>
-</ul>
-
-## Predictive control
-
-Re-planning continuously as people and vehicles move around the robot.
-
-<ul class="ev-annotated">
-  <li><span class="ev-glyph ev-glyph--idea">!?</span><p><strong>Adaptive horizons.</strong> Letting the controller decide how far ahead to look, depending on how dynamic the environment is. <a href="publications.md#lici-2026-adaptive-mpc">MED 2026</a></p></li>
-  <li><span class="ev-glyph ev-glyph--open">∞</span><p>When is looking further ahead worth its computational cost, and when is a short horizon the safer choice?</p></li>
-</ul>
-
-## Perception for navigation
-
-Connecting what the robot sees to how safely it moves.
-
-<ul class="ev-annotated">
-  <li><span class="ev-glyph ev-glyph--key">!</span><p><strong>Perception-driven safety analysis.</strong> Traffic sign recognition, dynamic object detection and semantic segmentation combined to assess the safety of a robot's route. <a href="publications.md#plaku-2024-safety-analysis">CoNTESA 2024</a></p></li>
-  <li><span class="ev-glyph ev-glyph--open">∞</span><p>How should uncertainty in what the robot sees change the plan it commits to?</p></li>
-</ul>
+</section>
+{% endfor %}
 
 <div class="ev-callout" markdown>
 
-**Working on something related?** I'm open to collaborations, co-supervision and joint proposals.
+**Working on something related?** I'm open to collaborations, co-supervision and
+joint proposals. All papers, with citations, are on [Publications](publications.md).
 [Get in touch](../about/index.md#contact){ .ev-textlink }
 
 </div>
