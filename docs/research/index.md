@@ -86,6 +86,6 @@ Connecting what the robot sees to how safely it moves.
 <div class="ev-callout" markdown>
 
 **Working on something related?** I'm open to collaborations, co-supervision and joint proposals.
-[Get in touch](../about/contact.md){ .ev-textlink }
+[Get in touch](../about/index.md#contact){ .ev-textlink }
 
 </div>

@@ -60,6 +60,6 @@ to use AI well in their own work.
 
 **Want a program for your school or team?** Tell me who it's for and what they
 should be able to do afterwards, and I'll propose a format.
-[Get in touch](../about/contact.md){ .ev-textlink }
+[Get in touch](../about/index.md#contact){ .ev-textlink }
 
 </div>

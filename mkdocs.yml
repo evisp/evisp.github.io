@@ -51,7 +51,9 @@ plugins:
       pagination_per_page: 10
   - redirects:
       redirect_maps:
-        research/talks.md: about/contact.md
+        research/talks.md: about/index.md#contact
+        about/cv.md: about/index.md#career
+        about/contact.md: about/index.md#contact
         research/code.md: research/publications.md
         mentoring/students.md: mentoring/index.md
         mentoring/thesis-topics.md: mentoring/index.md
@@ -108,7 +110,4 @@ nav:
   - Initiatives: initiatives/index.md
   - Writing:
       - writing/index.md
-  - About:
-      - about/index.md
-      - CV: about/cv.md
-      - Contact: about/contact.md
+  - About: about/index.md

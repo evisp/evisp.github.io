@@ -16,9 +16,8 @@ Journal and conference papers, 2017 to 2026
 Papers on motion planning, safe navigation, predictive control and perception.
 { .ev-lead }
 
-[Google Scholar](https://scholar.google.com/citations?user=NRYpvpcAAAAJ){ .ev-btn .ev-btn--ghost }
-[ORCID](https://orcid.org/0009-0002-4042-2673){ .ev-btn .ev-btn--ghost }
-{ .ev-actions }
+Also on [Google Scholar](https://scholar.google.com/citations?user=NRYpvpcAAAAJ){ .ev-textlink } and [ORCID](https://orcid.org/0009-0002-4042-2673){ .ev-textlink }
+{ .ev-alsoon }
 
 </div>
 
@@ -70,6 +69,6 @@ Papers on motion planning, safe navigation, predictive control and perception.
 </div>
 
 Looking for the code or data behind a paper? Most research code stays private
-while work is in progress, but [ask me](../about/contact.md) with the paper title
+while work is in progress, but [ask me](../about/index.md#contact) with the paper title
 and I will share what I can.
 { .ev-note }

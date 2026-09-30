@@ -35,3 +35,24 @@ document$.subscribe(function () {
   });
 });
 
+
+// Copy buttons: data-copy="text" or data-copy-from="#element".
+document$.subscribe(function () {
+  document.querySelectorAll(".ev-copy").forEach(function (btn) {
+    if (btn.dataset.ready) return;
+    btn.dataset.ready = "1";
+    btn.addEventListener("click", function () {
+      const source = btn.dataset.copyFrom && document.querySelector(btn.dataset.copyFrom);
+      const text = source ? source.textContent.trim() : btn.dataset.copy;
+      navigator.clipboard.writeText(text).then(function () {
+        const label = btn.textContent;
+        btn.textContent = "Copied";
+        btn.classList.add("is-copied");
+        setTimeout(function () {
+          btn.textContent = label;
+          btn.classList.remove("is-copied");
+        }, 1600);
+      });
+    });
+  });
+});

@@ -9,7 +9,7 @@
   17. Research             19. About                   21. Contact
   22. Teaching             23. Mentoring               24. Initiatives
   25. Writing              26. Manuscript (Ancient Algorithms)
-  27. Research map         28. Filter chips
+  27. Research map         28. Filter chips            29. About: one page
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -2379,6 +2379,321 @@ a.ev-map__dot:focus-visible::after {
 @media (prefers-reduced-motion: reduce) {
   .ev-map__dot,
   .md-typeset .ev-filter button {
+    transition: none;
+  }
+}
+
+/* 29. About: one page ------------------------------------------------------ */
+
+/* Profile links as small chips under the lead */
+.md-typeset .ev-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.2rem 0 0;
+}
+
+.md-typeset a.ev-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.7rem;
+  padding: 0 0.75rem 0 0.6rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  font-family: var(--ev-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ev-ink);
+  text-decoration: none;
+  transition: border-color 0.12s ease, color 0.12s ease;
+}
+
+.md-typeset a.ev-chip:hover {
+  border-color: var(--ev-teal-ink);
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset a.ev-chip .twemoji,
+.md-typeset a.ev-chip .twemoji svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  max-height: none;
+}
+
+.md-typeset a.ev-chip .twemoji svg {
+  fill: currentColor;
+}
+
+.md-typeset a.ev-chip .twemoji svg.lucide {
+  fill: none;
+  stroke: currentColor;
+}
+
+.md-typeset .ev-alsoon {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-alsoon a.ev-textlink {
+  font-size: 0.76rem;
+}
+
+.md-typeset .ev-sheet__updated {
+  font-family: var(--ev-sans);
+  font-size: 0.64rem;
+  color: var(--ev-muted);
+}
+
+/* Sections on the About page */
+.md-typeset .ev-section-block {
+  margin-top: 3.4rem;
+  padding-top: 0.2rem;
+}
+
+.md-typeset .ev-section-block > h2 {
+  margin: 0 0 0.3rem;
+}
+
+.md-typeset .ev-sublead {
+  max-width: 36em;
+  margin: 0 0 1.2rem;
+  font-size: 0.86rem;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset h2[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* The collapsed list of all roles */
+.md-typeset details.ev-roles {
+  margin: -1.4rem 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  font-size: inherit;
+}
+
+.md-typeset details.ev-roles > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.35rem 0.9rem 0.35rem 0.8rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ev-ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.md-typeset details.ev-roles > summary::-webkit-details-marker {
+  display: none;
+}
+
+.md-typeset details.ev-roles > summary::before {
+  content: "+";
+  position: static;
+  width: auto;
+  height: auto;
+  background: none;
+  -webkit-mask: none;
+  mask: none;
+  font-weight: 700;
+  color: var(--ev-teal-ink);
+  transform: none;
+}
+
+.md-typeset details.ev-roles[open] > summary::before {
+  content: "\2212";
+}
+
+.md-typeset details.ev-roles > summary::after {
+  display: none;
+}
+
+.md-typeset details.ev-roles > summary:hover {
+  border-color: var(--ev-teal-ink);
+}
+
+.md-typeset details.ev-roles[open] > .ev-cvcols {
+  margin-top: 1.2rem;
+}
+
+.md-typeset .ev-roles__head {
+  margin: 0 0 0.5rem;
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+/* Get in touch */
+.md-typeset .ev-email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin: 0.8rem 0 1.6rem;
+}
+
+.md-typeset a.ev-email__address {
+  font-family: var(--ev-sans);
+  font-size: clamp(1.4rem, 1rem + 1.6vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--ev-ink);
+  text-decoration: none;
+  background-image: linear-gradient(var(--ev-mint), var(--ev-mint));
+  background-repeat: no-repeat;
+  background-size: 100% 0.28em;
+  background-position: 0 92%;
+  transition: background-size 0.2s ease;
+}
+
+.md-typeset a.ev-email__address:hover {
+  background-size: 100% 0.55em;
+}
+
+.md-typeset .ev-copy {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ev-ink-2);
+  cursor: pointer;
+}
+
+.md-typeset .ev-copy:hover {
+  border-color: var(--ev-teal-ink);
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-copy:focus-visible {
+  outline: 2px solid var(--ev-teal-ink);
+  outline-offset: 2px;
+}
+
+.md-typeset .ev-copy.is-copied {
+  border-color: var(--ev-teal-ink);
+  background-color: var(--ev-mint-soft);
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-audiences {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--ev-line-strong);
+  border-bottom: 1px solid var(--ev-line-strong);
+}
+
+.md-typeset .ev-audiences > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.9rem 1.1rem 0.95rem 0;
+}
+
+.md-typeset .ev-audiences > div + div {
+  padding-left: 1.1rem;
+  border-left: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-audiences strong {
+  font-family: var(--ev-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.md-typeset .ev-audiences span {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-hoursline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.8rem;
+  margin: 1rem 0 0;
+  font-size: 0.82rem;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-hoursline span {
+  font-family: var(--ev-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-orgbio {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.2rem 1rem;
+  margin: 1.8rem 0 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--ev-mint);
+  border-radius: 0 12px 12px 0;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-orgbio p {
+  margin: 0;
+}
+
+.md-typeset .ev-orgbio__label {
+  grid-column: 1 / -1;
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-orgbio__text {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ev-ink-2);
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .ev-audiences {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-audiences > div + div {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px dashed var(--ev-line-strong);
+  }
+
+  .md-typeset .ev-orgbio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-orgbio .ev-copy {
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset a.ev-chip,
+  .md-typeset a.ev-email__address {
     transition: none;
   }
 }

@@ -61,6 +61,6 @@ becomes less necessary over time: the aim is for you to ==plan your own next mov
 <div class="ev-callout" markdown>
 
 **Interested?** Email me the topic title, your program (BSc or MSc) and one
-paragraph on why it interests you. [Contact](../about/contact.md){ .ev-textlink }
+paragraph on why it interests you. [Contact](../about/index.md#contact){ .ev-textlink }
 
 </div>
