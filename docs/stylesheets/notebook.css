@@ -8,6 +8,7 @@
   16. Inner pages          18. Publications            20. CV
   17. Research             19. About                   21. Contact
   22. Teaching             23. Mentoring               24. Initiatives
+  25. Writing              26. Manuscript (Ancient Algorithms)
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -1737,4 +1738,153 @@ body {
   .md-typeset a.ev-course {
     transition: none;
   }
+}
+
+/* 25. Writing -------------------------------------------------------------- */
+
+/* The list of posts reads like dated notebook entries */
+.md-typeset + .md-post--excerpt,
+.md-post--excerpt {
+  margin: 0;
+  padding: 1.4rem 0 1.5rem;
+  border-top: 1px dashed var(--ev-line-strong);
+}
+
+.md-post--excerpt:first-of-type {
+  border-top: 0;
+  padding-top: 0.4rem;
+}
+
+.md-post--excerpt .md-post__authors {
+  display: none;
+}
+
+.md-post__meta .md-meta__list {
+  font-family: var(--ev-sans);
+  font-size: 0.68rem;
+  color: var(--ev-muted);
+}
+
+.md-post__meta .md-meta__link {
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-draft {
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  background-color: var(--ev-tag-talk-bg);
+  font-family: var(--ev-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--ev-oxblood);
+}
+
+.md-post--excerpt .md-post__content h2 {
+  margin: 0.5rem 0 0.5rem;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.md-post--excerpt .md-post__content h2 a {
+  color: var(--ev-ink);
+  text-decoration: none;
+}
+
+.md-post--excerpt .md-post__content h2 a:hover {
+  color: var(--ev-teal-ink);
+}
+
+.md-post--excerpt .md-post__content > p {
+  max-width: 36em;
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--ev-ink-2);
+}
+
+.md-post__action {
+  margin-top: 0.8rem;
+}
+
+.md-typeset .md-post__action a {
+  font-family: var(--ev-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ev-ink);
+  text-decoration-color: var(--ev-teal-ink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35em;
+}
+
+/* A single post */
+.md-content--post .md-typeset h1 {
+  font-size: clamp(1.7rem, 1.2rem + 1.5vw, 2.3rem);
+  letter-spacing: -0.03em;
+}
+
+.md-content--post .md-typeset > p,
+.md-content--post .md-typeset > ul,
+.md-content--post .md-typeset > ol {
+  max-width: 34em;
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.md-post__title {
+  text-transform: none;
+  font-family: var(--ev-sans);
+  color: var(--ev-muted);
+}
+
+/* Margin notes: in the right margin on wide screens, inline on small ones.
+   Write <aside class="ev-margin" markdown> ... </aside> after a paragraph. */
+.md-typeset aside.ev-margin {
+  margin: 0 0 1em;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--ev-mint);
+  font-size: 0.74rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ev-muted);
+}
+
+.md-typeset aside.ev-margin p {
+  margin: 0;
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-typeset aside.ev-margin {
+    float: right;
+    clear: right;
+    width: 11rem;
+    margin: -4.2rem -13.5rem 0 0;
+  }
+}
+
+/* 26. Manuscript: Ancient Algorithms only -----------------------------------
+   Applied automatically to posts in the Ancient Algorithms series. */
+
+.md-content--post:has(a[href*="category/ancient-algorithms"]) .md-typeset h1 + p::first-letter {
+  float: left;
+  margin: 0.08em 0.14em 0 0;
+  padding: 0.12em 0.14em 0.02em;
+  border-radius: 6px;
+  background-color: var(--ev-mint-soft);
+  box-shadow: inset 0 0 0 1px var(--ev-mint);
+  font-family: var(--ev-serif);
+  font-size: 3.3em;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 0.8;
+  color: var(--ev-oxblood);
+}
+
+.md-content--post:has(a[href*="category/ancient-algorithms"]) .md-typeset h1 {
+  font-family: var(--ev-serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.md-content--post:has(a[href*="category/ancient-algorithms"]) .md-typeset h1 + p {
+  font-size: 1rem;
 }

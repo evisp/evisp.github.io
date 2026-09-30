@@ -39,6 +39,22 @@ plugins:
   - search
   - blog:
       blog_dir: writing
+      post_url_format: "{slug}"
+      post_readtime: true
+      post_excerpt: required
+      archive_name: Archive
+      categories_name: Series
+      categories_allowed:
+        - Ancient Algorithms
+        - Essays
+        - Notes
+      pagination_per_page: 10
+  - rss:
+      match_path: "writing/posts/.*"
+      date_from_meta:
+        as_creation: date.created
+      categories:
+        - categories
   - macros:
       render_by_default: false    # only pages with render_macros: true use {{ }}
       include_yaml:
@@ -57,6 +73,9 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/evisplaku/
       name: LinkedIn
+    - icon: lucide/rss
+      link: /feed_rss_created.xml
+      name: Writing (RSS feed)
 
 extra_css:
   - stylesheets/notebook.css
