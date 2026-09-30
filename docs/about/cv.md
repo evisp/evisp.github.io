@@ -1,5 +1,6 @@
 ---
 title: CV
+description: "Curriculum vitae of Evis Plaku: experience, education, courses, skills and languages."
 ---
 
 <div class="ev-pagehead" markdown>
@@ -9,8 +10,7 @@ Last updated June 2026
 
 # Curriculum vitae
 
-Research, teaching and education leadership in artificial intelligence and
-robotics. The full CV, with publications, is available as a PDF.
+Research, teaching and education leadership in AI and robotics.
 { .ev-lead }
 
 [Download CV (PDF)](../assets/cv/evis-plaku-cv.pdf){ .ev-btn .ev-btn--primary download }

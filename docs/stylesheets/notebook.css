@@ -431,8 +431,16 @@ body {
   opacity: 0.28;
 }
 
-/* The tour is 63 short moves. Early moves are faint, later ones darker,
-   so the eye reads direction and time. Each move draws in turn. */
+/* The signature moment, in three beats:
+   1. the knight's tour draws move by move (discrete search),
+   2. it fades back,
+   3. a smooth trajectory with a mint safety tube is drawn over it.
+   With reduced motion, visitors see the final frame. */
+.ev-board__path {
+  opacity: 0.2;
+  animation: ev-fade-back 0.6s 3.7s ease-out both;
+}
+
 .ev-board__path line {
   fill: none;
   stroke: var(--ev-ink);
@@ -440,7 +448,27 @@ body {
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
-  animation: ev-tour 0.16s calc(0.4s + var(--i) * 0.07s) linear both;
+  animation: ev-tour 0.14s calc(0.3s + var(--i) * 0.05s) linear both;
+}
+
+.ev-board__traj path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: ev-tour 2.2s 4s cubic-bezier(0.45, 0.05, 0.35, 1) both;
+}
+
+.ev-board__tube {
+  stroke: var(--ev-mint);
+  stroke-width: 10;
+  opacity: 0.75;
+}
+
+.ev-board__line {
+  stroke: var(--ev-ink);
+  stroke-width: 2;
 }
 
 .ev-board__start {
@@ -452,7 +480,7 @@ body {
 .ev-board__end {
   transform-box: fill-box;
   transform-origin: center;
-  animation: ev-arrive 0.6s 4.9s ease-out both;
+  animation: ev-arrive 0.6s 6.1s ease-out both;
 }
 
 .ev-board__end circle { fill: var(--ev-ink); }
@@ -725,6 +753,11 @@ body {
   to   { stroke-dashoffset: 0; }
 }
 
+@keyframes ev-fade-back {
+  from { opacity: 1; }
+  to   { opacity: 0.2; }
+}
+
 @keyframes ev-arrive {
   from { opacity: 0; transform: scale(0.6); }
   to   { opacity: 1; transform: scale(1); }
@@ -732,7 +765,9 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .ev-hero h1 mark,
+  .ev-board__path,
   .ev-board__path line,
+  .ev-board__traj path,
   .ev-board__end {
     animation: none;
   }

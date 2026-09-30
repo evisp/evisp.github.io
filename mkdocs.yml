@@ -79,8 +79,6 @@ extra:
 
 extra_css:
   - stylesheets/notebook.css
-extra_javascript:
-  - javascripts/knight-tour.js
 
 # Markdown extensions: none listed on purpose. Zensical then enables its full
 # default set (admonitions, attr_list, md_in_html, footnotes, ==highlight==,

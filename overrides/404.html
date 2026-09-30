@@ -1,5 +1,12 @@
 {% extends "main.html" %}
 {% block content %}
-  <h1>Illegal move.</h1>
-  <p>That square isn't on the board. <a href="{{ config.site_url }}">Back to the start</a>.</p>
+  <div class="ev-pagehead ev-404">
+    <p class="ev-kicker">Page not found</p>
+    <h1>Illegal move.</h1>
+    <p class="ev-lead">That square isn't on the board. The page may have moved, or the link has a typo.</p>
+    <p class="ev-actions">
+      <a class="ev-btn ev-btn--primary" href="{{ config.site_url }}">Back to the start</a>
+      <a class="ev-btn ev-btn--ghost" href="{{ config.site_url }}research/">See my research</a>
+    </p>
+  </div>
 {% endblock %}

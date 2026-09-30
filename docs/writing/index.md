@@ -1,5 +1,6 @@
 ---
 title: Writing
+description: "Essays and notes on algorithms, learning and AI, including the Ancient Algorithms series."
 ---
 
 <div class="ev-pagehead" markdown>

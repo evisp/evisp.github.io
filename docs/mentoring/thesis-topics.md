@@ -1,5 +1,6 @@
 ---
 title: Thesis Topics
+description: "Open bachelor and master thesis topics in AI agents, agentic RAG and robotics."
 render_macros: true
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Initiatives
+description: "AI and machine learning specializations and AI training for teachers and companies."
 hide:
   - navigation
 ---

@@ -1,5 +1,6 @@
 ---
 title: Publications
+description: "Journal and conference papers by Evis Plaku on motion planning and safe autonomous navigation."
 render_macros: true
 ---
 
@@ -10,9 +11,7 @@ Journal and conference papers, 2017 to 2026
 
 # Publications
 
-Papers on motion planning, risk-aware navigation, predictive control and
-perception for autonomous robots. The list is kept in one data file, so new
-papers appear here, grouped and tagged, as soon as they are added.
+Papers on motion planning, safe navigation, predictive control and perception.
 { .ev-lead }
 
 [Google Scholar](https://scholar.google.com/citations?user=NRYpvpcAAAAJ){ .ev-btn .ev-btn--ghost }

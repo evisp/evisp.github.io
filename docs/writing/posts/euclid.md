@@ -5,7 +5,7 @@ draft: true
 slug: euclid
 categories:
   - Ancient Algorithms
-description: Sample post. Replace with the first essay of the series.
+description: "Sample post. Replace with the first essay of the series."
 ---
 
 # Euclid's algorithm: two thousand years of finding common ground

@@ -1,5 +1,6 @@
 ---
 title: Contact
+description: "How to contact Evis Plaku by email, with office hours at UMT."
 ---
 
 <div class="ev-pagehead" markdown>
@@ -21,7 +22,7 @@ sentences of context help me reply sooner.
 <div class="ev-rows">
   <div class="ev-rows__row">
     <div class="ev-rows__who">Students</div>
-    <div class="ev-rows__what">Write from your university address and include your course and group. Office hours and thesis questions are covered on <a href="../../teaching/for-students/">For students</a>.</div>
+    <div class="ev-rows__what">Write from your university address and include your course and group. Office hours and thesis questions are covered on <a href="../teaching/for-students.md">For students</a>.</div>
   </div>
   <div class="ev-rows__row">
     <div class="ev-rows__who">Researchers</div>

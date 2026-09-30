@@ -1,5 +1,6 @@
 ---
 title: For Students
+description: "Office hours, how to email, recommendation letters and thesis supervision."
 ---
 
 <div class="ev-pagehead" markdown>
