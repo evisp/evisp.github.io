@@ -74,6 +74,7 @@ plugins:
         - data/publications.yml
         - data/topics.yml
         - data/cv.yml
+        - data/research.yml
 
 extra:
   generator: false
