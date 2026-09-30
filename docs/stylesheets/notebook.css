@@ -5,6 +5,8 @@
    3. Tokens: night         8. Header and tabs         13. Footer
    4. Theme mapping         9. Home: hero              14. Responsive
    5. Paper and type       10. Home: the board         15. Motion
+  16. Inner pages          18. Publications            20. CV
+  17. Research             19. About                   21. Contact
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -260,6 +262,7 @@ body {
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.2;
+  white-space: nowrap;
   text-decoration: none;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
@@ -733,6 +736,654 @@ body {
   }
 
   .md-typeset a.ev-btn {
+    transition: none;
+  }
+}
+
+/* 16. Inner pages ---------------------------------------------------------- */
+
+.md-typeset .ev-pagehead {
+  margin: 0 0 2.4rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-pagehead h1 {
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.8rem, 1.3rem + 1.6vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.md-typeset .ev-pagehead h1 .headerlink {
+  display: none;
+}
+
+.md-typeset .ev-pagehead .ev-lead {
+  margin-top: 0;
+}
+
+.md-typeset .ev-pagehead .ev-actions {
+  margin-top: 1.4rem;
+}
+
+.md-typeset h2 {
+  margin: 2.6rem 0 1rem;
+}
+
+.md-typeset .ev-note {
+  max-width: 36em;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--ev-mint);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-callout,
+.md-typeset .ev-empty {
+  margin: 2.6rem 0 1rem;
+  padding: 1.2rem 1.4rem 1.1rem;
+  border-radius: 14px;
+}
+
+.md-typeset .ev-callout {
+  background-color: var(--ev-mint-soft);
+  box-shadow: inset 3px 0 0 var(--ev-teal-ink);
+}
+
+.md-typeset .ev-empty {
+  border: 1px dashed var(--ev-line-strong);
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-callout p,
+.md-typeset .ev-empty p {
+  margin: 0 0 0.8rem;
+  font-size: 0.86rem;
+}
+
+.md-typeset .ev-callout p:last-child,
+.md-typeset .ev-empty p:last-child {
+  margin: 0;
+}
+
+.md-typeset .ev-callout strong,
+.md-typeset .ev-empty strong {
+  font-family: var(--ev-sans);
+  font-weight: 600;
+}
+
+/* Collapsible blocks (BibTeX, bios) as quiet notebook tabs */
+.md-typeset details.cite,
+.md-typeset details.quote {
+  padding: 0;
+  margin: 0.7rem 0 0;
+  border: 1px solid var(--ev-line);
+  border-radius: 10px;
+  background-color: var(--ev-sheet);
+  box-shadow: none;
+  font-size: 0.78rem;
+}
+
+.md-typeset details.cite > summary,
+.md-typeset details.quote > summary {
+  margin: 0;
+  padding: 0.5rem 2rem 0.5rem 0.9rem;
+  line-height: 1.4;
+  border-radius: 10px;
+  background-color: transparent;
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset details.cite > summary::before,
+.md-typeset details.quote > summary::before {
+  display: none;
+}
+
+.md-typeset details.cite > summary::after,
+.md-typeset details.quote > summary::after {
+  top: 0.5rem;
+  background-color: var(--ev-teal-ink);
+}
+
+.md-typeset details.cite .highlight,
+.md-typeset details.quote .highlight {
+  margin: 0 0.6rem 0.6rem;
+}
+
+.md-typeset details.quote .language-text code {
+  white-space: pre-wrap;
+  font-family: var(--ev-serif);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+/* 17. Research ------------------------------------------------------------- */
+
+.md-typeset .ev-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  margin: 1.6rem 0 0.6rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 12px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--ev-sans);
+  font-size: 0.74rem;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-glyph {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 0.3rem;
+  border-radius: 6px;
+  font-family: var(--ev-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.md-typeset .ev-glyph--key  { background-color: var(--ev-tag-talk-bg);    color: var(--ev-oxblood); }
+.md-typeset .ev-glyph--idea { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
+.md-typeset .ev-glyph--open { background-color: var(--ev-mint-soft);      color: var(--ev-teal-ink); }
+
+.md-typeset ul.ev-annotated {
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset ul.ev-annotated li {
+  display: grid;
+  grid-template-columns: 1.9rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+  margin: 0;
+  padding: 0.75rem 0;
+  border-top: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset ul.ev-annotated li:last-child {
+  border-bottom: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset ul.ev-annotated .ev-glyph {
+  margin-top: 0.1rem;
+}
+
+.md-typeset ul.ev-annotated p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.md-typeset ul.ev-annotated strong {
+  font-family: var(--ev-sans);
+  font-weight: 600;
+}
+
+.md-typeset ul.ev-annotated a {
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.md-typeset ul.ev-annotated li:has(.ev-glyph--open) p {
+  font-style: italic;
+  color: var(--ev-ink-2);
+}
+
+/* 18. Publications --------------------------------------------------------- */
+
+/* BibTeX sits as a small pill until opened */
+.md-typeset .ev-pub details.cite:not([open]) {
+  display: inline-block;
+  margin-top: 0.55rem;
+  border-radius: 999px;
+}
+
+.md-typeset .ev-pub details.cite:not([open]) > summary {
+  padding: 0.2rem 1.7rem 0.2rem 0.75rem;
+  font-size: 0.66rem;
+}
+
+.md-typeset .ev-pub details.cite:not([open]) > summary::after {
+  top: 0.24rem;
+  right: 0.45rem;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.md-typeset .ev-pub {
+  margin: 0;
+  padding: 1.1rem 0 1.2rem;
+  border-top: 1px dashed var(--ev-line-strong);
+  scroll-margin-top: 6rem;
+}
+
+.md-typeset .ev-pub:target {
+  margin: 0 -1rem;
+  padding: 1.1rem 1rem 1.2rem;
+  border-radius: 12px;
+  background-color: var(--ev-mint-soft);
+}
+
+.md-typeset .ev-pub p {
+  margin: 0;
+}
+
+.md-typeset .ev-pub__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.4rem !important;
+}
+
+.md-typeset .ev-pub__year {
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ev-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset .ev-pub__title {
+  font-family: var(--ev-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-pub__authors {
+  margin-top: 0.3rem !important;
+  font-size: 0.8rem;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-pub__venue {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-pub__links {
+  margin-top: 0.35rem !important;
+}
+
+.md-typeset .ev-pub__links a {
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.md-typeset .ev-tag--motion     { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
+.md-typeset .ev-tag--safety     { background-color: var(--ev-tag-program-bg); color: var(--ev-tag-program); }
+.md-typeset .ev-tag--control    { background-color: var(--ev-tag-talk-bg);    color: var(--ev-tag-talk); }
+.md-typeset .ev-tag--perception { background-color: var(--ev-board-dark);     color: var(--ev-ink-2); }
+.md-typeset .ev-tag--learning   { background-color: var(--ev-line);           color: var(--ev-ink-2); }
+
+/* 19. About ---------------------------------------------------------------- */
+
+.md-typeset .ev-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 2.4rem;
+  align-items: start;
+}
+
+.md-typeset .ev-about__text > p:first-child {
+  margin-top: 0;
+}
+
+/* The key-facts card: a chess scoresheet with a tear-off stub. */
+.md-typeset .ev-sheet {
+  --notch: 4.4rem;
+  position: sticky;
+  top: 7rem;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: var(--ev-sheet);
+  filter: drop-shadow(0 0 1px var(--ev-line-strong));
+  -webkit-mask:
+    radial-gradient(circle at 0 calc(100% - var(--notch)), transparent 0.6rem, #000 calc(0.6rem + 0.5px)) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% calc(100% - var(--notch)), transparent 0.6rem, #000 calc(0.6rem + 0.5px)) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle at 0 calc(100% - var(--notch)), transparent 0.6rem, #000 calc(0.6rem + 0.5px)) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% calc(100% - var(--notch)), transparent 0.6rem, #000 calc(0.6rem + 0.5px)) right / 51% 100% no-repeat;
+}
+
+.md-typeset .ev-sheet__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem 0.8rem;
+  border-bottom: 2px solid var(--ev-ink);
+  font-family: var(--ev-sans);
+  font-size: 0.72rem;
+}
+
+.md-typeset .ev-sheet__head span:first-child {
+  font-weight: 700;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-sheet__head span:last-child {
+  color: var(--ev-muted);
+}
+
+.md-typeset dl.ev-sheet__rows {
+  margin: 0;
+  padding: 0 1.2rem;
+}
+
+.md-typeset .ev-sheet__rows > div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--ev-line);
+}
+
+.md-typeset .ev-sheet__rows > div:last-child {
+  border-bottom: 0;
+}
+
+.md-typeset .ev-sheet__rows dt {
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-sheet__rows dd {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-sheet__stub {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-sizing: border-box;
+  height: var(--notch);
+  padding: 1rem 1.2rem;
+  border-top: 2px dashed var(--ev-line-strong);
+  background-color: var(--ev-mint-soft);
+}
+
+.md-typeset .ev-sheet__stub .ev-textlink {
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+/* 20. CV ------------------------------------------------------------------- */
+
+.md-typeset ol.ev-waypoints {
+  position: relative;
+  margin: 1.2rem 0 0;
+  padding: 0 0 0 1.8rem;
+  list-style: none;
+}
+
+.md-typeset ol.ev-waypoints::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  bottom: 0.6rem;
+  left: 0.42rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--ev-teal-ink), var(--ev-line-strong) 60%);
+}
+
+.md-typeset ol.ev-waypoints li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin: 0 0 1.4rem;
+}
+
+.md-typeset ol.ev-waypoints li::before {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: -1.8rem;
+  box-sizing: border-box;
+  width: 0.95rem;
+  height: 0.95rem;
+  border: 2px solid var(--ev-line-strong);
+  border-radius: 50%;
+  background-color: var(--ev-paper);
+}
+
+.md-typeset ol.ev-waypoints li.ev-waypoints__now::before {
+  border-color: var(--ev-ink);
+  background-color: var(--ev-ink);
+  box-shadow: 0 0 0 0.3rem var(--ev-mint);
+}
+
+.md-typeset .ev-waypoints__when {
+  font-family: var(--ev-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.md-typeset ol.ev-waypoints strong {
+  font-family: var(--ev-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-waypoints__where {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset ol.ev-waypoints p {
+  margin: 0.25rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-courses {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.md-typeset .ev-courses > div {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 12px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-courses strong {
+  font-family: var(--ev-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.md-typeset .ev-courses p {
+  margin: 0.3rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset dl.ev-skills,
+.md-typeset dl.ev-langs {
+  margin: 0;
+}
+
+.md-typeset .ev-skills > div,
+.md-typeset .ev-langs > div {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 0.4rem 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-skills dt,
+.md-typeset .ev-langs dt {
+  font-family: var(--ev-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-skills dd,
+.md-typeset .ev-langs dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-skills dd span {
+  padding: 0.05rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  box-shadow: inset 0 0 0 1px var(--ev-line);
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--ev-ink-2);
+}
+
+/* 21. Contact -------------------------------------------------------------- */
+
+.md-typeset .ev-rows {
+  overflow: hidden;
+  border: 1px solid var(--ev-line);
+  border-radius: 16px;
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-rows__row {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.95rem 1.2rem;
+  border-top: 1px solid var(--ev-line);
+}
+
+.md-typeset .ev-rows__row:first-child {
+  border-top: 0;
+}
+
+.md-typeset .ev-rows__who {
+  font-family: var(--ev-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-rows__what {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-profiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 0 0 1.4rem;
+}
+
+.md-typeset .ev-profiles a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 12px;
+  background-color: var(--ev-sheet);
+  color: var(--ev-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.md-typeset .ev-profiles a:hover {
+  border-color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-profiles strong {
+  font-family: var(--ev-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.md-typeset .ev-profiles span {
+  font-family: var(--ev-sans);
+  font-size: 0.68rem;
+  color: var(--ev-muted);
+}
+
+/* Responsive for sections 16 to 21 */
+
+@media screen and (max-width: 76.1875em) {
+  .md-typeset .ev-about {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-sheet {
+    position: static;
+    max-width: 26rem;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .ev-courses,
+  .md-typeset .ev-profiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-skills > div,
+  .md-typeset .ev-langs > div,
+  .md-typeset .ev-rows__row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .ev-profiles a {
     transition: none;
   }
 }

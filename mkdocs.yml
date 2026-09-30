@@ -39,6 +39,10 @@ plugins:
   - search
   - blog:
       blog_dir: writing
+  - macros:
+      render_by_default: false    # only pages with render_macros: true use {{ }}
+      include_yaml:
+        - data/publications.yml
 
 extra:
   generator: false

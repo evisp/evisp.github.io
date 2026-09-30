@@ -1,0 +1,115 @@
+# Publications. Add a new paper by copying one entry and editing it.
+# type: journal | conference
+# thread: motion | safety | control | perception | learning
+# doi and pages are optional. Newest first within each type.
+
+threads:
+  motion: Motion planning
+  safety: Risk-aware planning
+  control: Predictive control
+  perception: Perception
+  learning: Applied machine learning
+
+publications:
+
+  - id: plaku-2026-diverse
+    type: journal
+    authors: E. Plaku, A. Çela, E. Plaku
+    title: Generating Diverse Trajectories Using Roadmap Search and Sampling-Based Motion Planning
+    venue: IEEE Access
+    year: 2026
+    month: May
+    doi: 10.1109/ACCESS.2026.11506360
+    thread: motion
+
+  - id: plaku-2026-semantic
+    type: journal
+    authors: E. Plaku
+    title: Semantic-Aware Graphs for Safe Path Planning in Urban Driving Environments
+    venue: International Journal of Control, Automation and Systems
+    year: 2026
+    doi: 10.1007/s12555-026-00116-4
+    thread: safety
+
+  - id: plaku-2024-safety-zones
+    type: journal
+    authors: E. Plaku, A. Çela, E. Plaku
+    title: "Enhancing Robot Navigation: Integrating Safety Zones into Path Planning"
+    venue: Lecture Notes in Electrical Engineering, Springer
+    year: 2024
+    thread: safety
+
+  - id: plaku-2018-clearance
+    type: journal
+    authors: E. Plaku, E. Plaku, P. Simari
+    title: Clearance-Driven Motion Planning for Mobile Agents with Differential Constraints
+    venue: Robotica, Cambridge University Press
+    year: 2018
+    thread: motion
+
+  - id: plaku-2017-superfacets
+    type: journal
+    authors: E. Plaku, E. Plaku, P. Simari
+    title: "Direct Path Superfacets: An Intermediate Representation for Motion Planning"
+    venue: IEEE Robotics and Automation Letters
+    year: 2017
+    thread: motion
+
+  - id: plaku-2026-urban-route
+    type: conference
+    authors: E. Plaku, G. Lici, S.-I. Niculescu, A. Çela
+    title: Safe Urban Route Planning via Semantic Graphs and Neural Cost Shaping
+    venue: 34th Mediterranean Conference on Control and Automation (MED)
+    year: 2026
+    thread: safety
+
+  - id: lici-2026-adaptive-mpc
+    type: conference
+    authors: G. Lici, E. Plaku, S.-I. Niculescu, A. Çela
+    title: An Adaptive-Horizon Model Predictive Control Approach for Robot Navigation in Dynamic Environments
+    venue: 34th Mediterranean Conference on Control and Automation (MED)
+    year: 2026
+    thread: control
+
+  - id: plaku-2025-llm-paths
+    type: conference
+    authors: E. Plaku
+    title: "Motion Planning with Large Language Models: Language-to-Paths Guidance over Superfacets"
+    venue: 3rd International Conference on Information Technologies and Educational Engineering (ICITEE)
+    year: 2025
+    thread: motion
+
+  - id: plaku-2024-safety-analysis
+    type: conference
+    authors: E. Plaku, A. Çela, N. Civici
+    title: Safety Analysis for Autonomous Mobile Robot Navigation Using Traffic Sign Recognition, Dynamic Object Detection, and Semantic Segmentation
+    venue: International Conference on Computing, Networking, Telecommunications and Smart Applications (CoNTESA)
+    year: 2024
+    month: Dec
+    pages: 5–10
+    doi: 10.1109/CoNTESA64738.2024.10891271
+    thread: perception
+
+  - id: plaku-2024-albanian-news
+    type: conference
+    authors: E. Plaku, K. Jahaj, A. Çela, N. Civici
+    title: A Machine Learning Framework for Automated Albanian News Article Title Classification
+    venue: 18th International Conference on Innovations in Intelligent Systems and Applications (INISTA)
+    year: 2024
+    thread: learning
+
+  - id: plaku-2023-safety-zones
+    type: conference
+    authors: E. Plaku, A. Çela, E. Plaku
+    title: Robot Path Planning with Safety Zones
+    venue: 20th International Conference on Informatics in Control, Automation and Robotics (ICINCO)
+    year: 2023
+    thread: safety
+
+  - id: plaku-2017-irl
+    type: conference
+    authors: E. Plaku
+    title: Inverse Reinforcement Learning for Computing Navigation Actions From Demonstrations
+    venue: International Conference on Computing, Information Technology and Business Applications
+    year: 2017
+    thread: motion
