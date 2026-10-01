@@ -10,6 +10,7 @@
   22. Teaching             23. Mentoring               24. Initiatives
   25. Writing              26. Manuscript (Ancient Algorithms)
   28. Filter chips         29. About: one page         30. Teaching header
+  31. Teaching & Mentoring
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -3064,5 +3065,129 @@ body {
   .ev-grow__trail,
   .ev-grow__queen {
     animation: none;
+  }
+}
+
+/* 31. Teaching & Mentoring: one page ---------------------------------------- */
+
+/* In-page menu under the header */
+.md-typeset .ev-pagenav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: -1.2rem 0 2.4rem;
+}
+
+.md-typeset .ev-pagenav a {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ev-ink-2);
+  text-decoration: none;
+  transition: border-color 0.12s ease, color 0.12s ease;
+}
+
+.md-typeset .ev-pagenav a:hover {
+  border-color: var(--ev-teal-ink);
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset h2#courses,
+.md-typeset h2#thesis,
+.md-typeset h2#process,
+.md-typeset h2#for-students {
+  scroll-margin-top: 6rem;
+}
+
+/* Four cards in a row: three courses, then the thesis they lead to */
+.md-typeset .ev-courses-row--path {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.md-typeset .ev-course--thesis {
+  border-style: dashed;
+  border-color: var(--ev-teal-ink);
+  background-color: var(--ev-mint-soft);
+}
+
+.md-typeset .ev-course--thesis .ev-chips span {
+  box-shadow: inset 0 0 0 1px var(--ev-line-strong);
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-course--thesis .ev-course__links {
+  border-top-color: var(--ev-teal-ink);
+}
+
+/* Four topic cards per row, with the open invitation as the last one */
+.md-typeset .ev-topics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.md-typeset .ev-topic--own {
+  border-style: dashed;
+  border-color: var(--ev-line-strong);
+  background-color: transparent;
+}
+
+.md-typeset .ev-topic--own .ev-topic__skills a {
+  font-size: 0.72rem;
+}
+
+/* Expectations as one quiet line each */
+.md-typeset .ev-expect {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem 1.6rem;
+  margin: 0 0 0.6rem;
+}
+
+.md-typeset .ev-expect p {
+  margin: 0;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--ev-mint);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-expect span {
+  display: block;
+  font-family: var(--ev-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+@media screen and (max-width: 76.1875em) {
+  .md-typeset .ev-courses-row--path,
+  .md-typeset .ev-topics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md-typeset .ev-courses-row--path .ev-course:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .ev-courses-row--path,
+  .md-typeset .ev-topics,
+  .md-typeset .ev-expect {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-pagenav {
+    margin-top: -0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .ev-pagenav a {
+    transition: none;
   }
 }

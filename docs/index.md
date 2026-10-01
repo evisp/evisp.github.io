@@ -48,7 +48,7 @@ Courses, office hours and thesis topics.
 
 - [Courses](teaching/index.md)
 - [Office hours](teaching/index.md#for-students)
-- [Thesis topics](mentoring/index.md)
+- [Thesis topics](teaching/index.md#thesis)
 </div>
 
 <div class="ev-door" markdown>

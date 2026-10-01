@@ -64,7 +64,7 @@ by design, and adapt as the world around them changes.
 {% if q.papers %}<ul class="ev-q__papers">
 {% for pid in q.papers %}{% set p = pubs[pid] %}<li><a href="publications/#{{ p.id }}"><span class="ev-q__year">{{ p.year }}</span><span class="ev-q__venue">{{ p.short }}</span><span class="ev-q__ptitle">{{ p.title }}</span></a></li>
 {% endfor %}</ul>
-{% else %}<p class="ev-q__invite">Interested in this question? It could be a <a href="../mentoring/">thesis</a> or <a href="../about/#contact">joint work</a>.</p>{% endif %}
+{% else %}<p class="ev-q__invite">Interested in this question? It could be a <a href="../teaching/#thesis">thesis</a> or <a href="../about/#contact">joint work</a>.</p>{% endif %}
 </article>
 {% endfor %}
 </div>

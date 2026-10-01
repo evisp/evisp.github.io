@@ -1,6 +1,7 @@
 ---
-title: Teaching
-description: "Courses taught by Evis Plaku at UMT and Holberton, with open course materials, office hours and how to reach him."
+title: Teaching & Mentoring
+description: "Courses, thesis topics and supervision with Evis Plaku: open course materials, topics in AI agents, agentic RAG and robotics, and office hours."
+render_macros: true
 hide:
   - navigation
   - toc
@@ -10,14 +11,14 @@ hide:
 
 <div class="ev-pagehead__text" markdown>
 
-Algorithms, programming and machine learning
+Courses, theses and first research steps
 { .ev-kicker }
 
-# Teaching
+# Teaching & Mentoring
 
-I teach the way a good plan works: start from where students are, set a clear
-goal, and make every step one they can take ==on their own==. Every course
-builds one real project, and all materials are open for anyone to learn from.
+I teach and mentor the way a good plan works: start from where students are,
+set a clear goal, and make every step one they can take ==on their own==. All
+course materials are open for anyone to learn from.
 { .ev-lead }
 
 <p class="ev-hourspill"><span>Office hours</span>Mon 12:00 to 14:00, Wed 08:30 to 10:30, Room 104 <a href="#for-students">Details</a></p>
@@ -31,7 +32,14 @@ builds one real project, and all materials are open for anyone to learn from.
 
 </div>
 
-## Courses
+<nav class="ev-pagenav" aria-label="On this page">
+<a href="#courses">Courses</a>
+<a href="#thesis">Thesis topics</a>
+<a href="#process">How a thesis works</a>
+<a href="#for-students">Office hours</a>
+</nav>
+
+## Courses { #courses }
 
 <div class="ev-courses-row ev-courses-row--path">
 
@@ -55,8 +63,16 @@ builds one real project, and all materials are open for anyone to learn from.
 <p class="ev-course__where">UMT, bachelor year 3, 14 weeks</p>
 <h3>Machine Learning</h3>
 <p class="ev-course__line">Building things that work on real data. Three team projects, and a system you defend in front of the room.</p>
-<p class="ev-chips"><span>Problem framing</span><span>Honest evaluation</span><span>Feature engineering</span><span>Tree models</span><span>PCA</span></p>
+<p class="ev-chips"><span>Problem framing</span><span>Honest evaluation</span><span>Features</span><span>Tree models</span><span>PCA</span></p>
 <p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/ml-course-umt/">Open the course</a><a class="ev-course__alt" href="https://evisp.github.io/ml-handbook/">Holberton ML Handbook</a></p>
+</article>
+
+<article class="ev-course ev-course--thesis">
+<p class="ev-course__where">Bachelor or master</p>
+<h3>Your thesis</h3>
+<p class="ev-course__line">The next move: one project of your own, in AI agents, agentic retrieval or robotics, supervised step by step.</p>
+<p class="ev-chips"><span>Your question</span><span>Your code</span><span>Possibly a paper</span></p>
+<p class="ev-course__links"><a class="ev-textlink" href="#thesis">See the topics</a></p>
 </article>
 
 </div>
@@ -67,7 +83,45 @@ builds one real project, and all materials are open for anyone to learn from.
 <p><strong>Defend what you build.</strong> A result you can explain beats a score that flatters you.</p>
 </div>
 
-## For students { #for-students }
+## Thesis topics { #thesis }
+
+<div class="ev-filter" data-filter="#ev-topics" role="group" aria-label="Filter topics by area">
+<button type="button" data-value="all">All</button>
+{% for key, label in areas.items() %}<button type="button" data-value="{{ key }}">{{ label }}</button>{% endfor %}
+<span class="ev-filter__count" data-filter-count aria-live="polite"></span>
+</div>
+
+<div class="ev-topics" id="ev-topics">
+{% for t in topics %}<article class="ev-topic{% if t.status == 'taken' %} ev-topic--taken{% endif %}" data-tags="{{ t.area }}">
+<p class="ev-topic__meta"><span class="ev-tag ev-tag--{{ t.area }}">{{ areas[t.area] }}</span><span class="ev-topic__level">{{ t.level }}</span>{% if t.status == 'taken' %}<span class="ev-topic__status">Taken</span>{% endif %}</p>
+<h3 class="ev-topic__title">{{ t.title }}</h3>
+<p class="ev-topic__summary">{{ t.summary }}</p>
+<p class="ev-topic__skills">{% for s in t.skills %}<span>{{ s }}</span>{% endfor %}</p>
+</article>
+{% endfor %}<article class="ev-topic ev-topic--own">
+<p class="ev-topic__meta"><span class="ev-topic__level">Any area</span></p>
+<h3 class="ev-topic__title">Your own idea?</h3>
+<p class="ev-topic__summary">Bring a question you care about. If it fits the time you have and something I can supervise well, we shape it together.</p>
+<p class="ev-topic__skills"><a class="ev-textlink" href="#for-students">Write to me</a></p>
+</article>
+</div>
+
+## How a thesis works { #process }
+
+<ol class="ev-stepper">
+<li><strong>Pick a topic</strong><span>From the list, or your own idea</span></li>
+<li><strong>One-page plan</strong><span>Question, approach, what "done" means</span></li>
+<li><strong>Build and test</strong><span>Short meetings every two weeks</span></li>
+<li><strong>Write it up</strong><span>Reviewed chapter by chapter</span></li>
+<li><strong>Defend</strong><span>With a rehearsal first</span></li>
+</ol>
+
+<div class="ev-expect">
+<p><span>What I expect</span>Steady work, honest updates when you are stuck, and code you can explain line by line.</p>
+<p><span>What you can expect</span>Focused meetings, feedback within a week, and help turning strong work into a paper.</p>
+</div>
+
+## Office hours and email { #for-students }
 
 <div class="ev-students">
 
@@ -84,8 +138,8 @@ builds one real project, and all materials are open for anyone to learn from.
 <p class="ev-students__label">Emailing me</p>
 <dl class="ev-mini">
 <div><dt>To</dt><dd><a href="mailto:evis.plaku@umt.edu.al">evis.plaku@umt.edu.al</a>, from your university address</dd></div>
-<div><dt>Subject</dt><dd>Course first: <em>DSA: assignment 2</em></dd></div>
-<div><dt>Include</dt><dd>Your group, the question, and what you tried</dd></div>
+<div><dt>Subject</dt><dd>Course first, <em>DSA: assignment 2</em>, or <em>Thesis:</em> and the topic title</dd></div>
+<div><dt>Include</dt><dd>Your group or program, the question, and what you tried</dd></div>
 </dl>
 </div>
 

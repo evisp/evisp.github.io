@@ -55,13 +55,14 @@ plugins:
         about/cv.md: about/index.md#career
         about/contact.md: about/index.md#contact
         research/code.md: research/publications.md
-        mentoring/students.md: mentoring/index.md
-        mentoring/thesis-topics.md: mentoring/index.md
+        mentoring/index.md: teaching/index.md#thesis
+        mentoring/students.md: teaching/index.md#thesis
+        mentoring/thesis-topics.md: teaching/index.md#thesis
         about/beyond-work.md: about/index.md
         teaching/dsa.md: teaching/index.md
         teaching/oop-java.md: teaching/index.md
         teaching/machine-learning.md: teaching/index.md
-        teaching/for-students.md: teaching/index.md
+        teaching/for-students.md: teaching/index.md#for-students
   - rss:
       match_path: "writing/posts/.*"
       date_from_meta:
@@ -106,8 +107,7 @@ nav:
   - Research:
       - research/index.md
       - Publications: research/publications.md
-  - Teaching: teaching/index.md
-  - Mentoring: mentoring/index.md
+  - Teaching & Mentoring: teaching/index.md
   - Initiatives: initiatives/index.md
   - Writing:
       - writing/index.md
