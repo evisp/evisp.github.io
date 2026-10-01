@@ -67,7 +67,7 @@ course materials are open for anyone to learn from.
 <p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/ml-course-umt/">Open the course</a><a class="ev-course__alt" href="https://evisp.github.io/ml-handbook/">Holberton ML Handbook</a></p>
 </article>
 
-<article class="ev-course ev-course--thesis">
+<article class="ev-course ev-course--thesis ev-ink">
 <p class="ev-course__where">Bachelor or master</p>
 <h3>Your thesis</h3>
 <p class="ev-course__line">The next move: one project of your own, in AI agents, agentic retrieval or robotics, supervised step by step.</p>

@@ -31,9 +31,9 @@ learning, and teachers and teams learning to ==use AI well== in their own work.
 
 </div>
 
-<article class="ev-feature">
+<article class="ev-feature ev-ink">
 <div class="ev-feature__main">
-<p class="ev-program__meta"><span class="ev-tag ev-tag--robotics">National competition</span><span>Metropolitan University of Tirana</span></p>
+<p class="ev-program__meta"><span class="ev-tag ev-tag--program">National competition</span><span>Metropolitan University of Tirana</span></p>
 <h2 class="ev-feature__title">RoboTech</h2>
 <p class="ev-feature__lead">A national robotics competition for high school students across Albania, organized by UMT. Teams of four to seven students design and build a robot, work with mentors, and present it to a panel of experts at the final.</p>
 <p class="ev-feature__role"><strong>My role:</strong> I co-lead the competition, train the trainers who mentor the school teams, and focus on expanding its AI and robotics content.</p>
@@ -62,7 +62,7 @@ learning, and teachers and teams learning to ==use AI well== in their own work.
 </article>
 
 <article class="ev-program">
-<p class="ev-program__meta"><span class="ev-tag ev-tag--paper">Training</span><span>Schools and universities</span></p>
+<p class="ev-program__meta"><span class="ev-tag ev-tag--program">Training</span><span>Schools and universities</span></p>
 <h3>AI training for teachers</h3>
 <p>Hands-on sessions on using AI to prepare lessons, give feedback and design assessments, and on talking with students about using AI responsibly.</p>
 <dl class="ev-program__facts">
@@ -71,7 +71,7 @@ learning, and teachers and teams learning to ==use AI well== in their own work.
 </article>
 
 <article class="ev-program">
-<p class="ev-program__meta"><span class="ev-tag ev-tag--talk">Training</span><span>Companies</span></p>
+<p class="ev-program__meta"><span class="ev-tag ev-tag--program">Training</span><span>Companies</span></p>
 <h3>AI training for companies</h3>
 <p>Training shaped around a team's real work, so people leave with workflows they use the next day. Delivered, for example, to a construction company in New York.</p>
 <dl class="ev-program__facts">

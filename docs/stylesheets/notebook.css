@@ -12,6 +12,7 @@
   28. Filter chips         29. About: one page         30. Teaching header
   31. Teaching & Mentoring  32. About: tracks and thread
   33. Initiatives: reach and RoboTech  34. Home: now and closing
+  35. Refinement: ink panels, doors, rhythm
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -55,6 +56,8 @@
   --md-text-font: "IBM Plex Sans";
   --md-code-font: "IBM Plex Mono";
   --ev-radius: 10px;
+  --ev-r: 14px;        /* cards and panels */
+  --ev-r-sm: 8px;      /* icon tiles, small boxes */
   --ev-grid-size: 24px;
 }
 
@@ -66,7 +69,7 @@
   --ev-paper: #F3F7F5;
   --ev-paper-glass: rgba(243, 247, 245, 0.86);
   --ev-sheet: #FFFFFF;
-  --ev-grid: rgba(11, 110, 99, 0.075);
+  --ev-grid: rgba(11, 110, 99, 0.05);
   --ev-line: #D6E1DD;
   --ev-line-strong: #B7C8C2;
 
@@ -85,6 +88,17 @@
   --ev-tag-program-bg: #E3F6F1;  --ev-tag-program: #0B5E55;
   --ev-tag-paper-bg: #E9EDFB;    --ev-tag-paper: #2C3E8F;
   --ev-tag-talk-bg: #F8ECE9;     --ev-tag-talk: #8B2E2E;
+
+  /* Site-wide meaning of the three accents */
+  --ev-research: var(--ev-tag-paper);      --ev-research-bg: var(--ev-tag-paper-bg);
+  --ev-learning: var(--ev-tag-program);    --ev-learning-bg: var(--ev-tag-program-bg);
+  --ev-building: var(--ev-tag-talk);       --ev-building-bg: var(--ev-tag-talk-bg);
+
+  /* The ink panel: one focal element per page */
+  --ev-panel: #16213A;
+  --ev-panel-ink: #F3F7F5;
+  --ev-panel-muted: #B9C3D6;
+  --ev-panel-line: rgba(243, 247, 245, 0.16);
 }
 
 /* 3. Tokens: night notebook ------------------------------------------------ */
@@ -93,7 +107,7 @@
   --ev-paper: #121C30;
   --ev-paper-glass: rgba(18, 28, 48, 0.86);
   --ev-sheet: #18243D;
-  --ev-grid: rgba(185, 245, 233, 0.045);
+  --ev-grid: rgba(185, 245, 233, 0.035);
   --ev-line: #26344F;
   --ev-line-strong: #34456A;
 
@@ -112,6 +126,15 @@
   --ev-tag-program-bg: rgba(127, 224, 207, 0.14);  --ev-tag-program: #8FE7D8;
   --ev-tag-paper-bg: rgba(150, 170, 255, 0.14);    --ev-tag-paper: #B8C5FF;
   --ev-tag-talk-bg: rgba(240, 154, 142, 0.14);     --ev-tag-talk: #F5B3AA;
+
+  --ev-research: var(--ev-tag-paper);      --ev-research-bg: var(--ev-tag-paper-bg);
+  --ev-learning: var(--ev-tag-program);    --ev-learning-bg: var(--ev-tag-program-bg);
+  --ev-building: var(--ev-tag-talk);       --ev-building-bg: var(--ev-tag-talk-bg);
+
+  --ev-panel: #0B1222;
+  --ev-panel-ink: #E9EEF6;
+  --ev-panel-muted: #A9B5CB;
+  --ev-panel-line: rgba(233, 238, 246, 0.14);
 }
 
 /* 4. Theme mapping: Zensical variables read from our tokens ---------------- */
@@ -140,11 +163,28 @@
 
 body {
   background-color: var(--ev-paper);
+}
+
+/* The notebook grid: full strength around the page header, then it fades
+   to a whisper behind the reading content. */
+.md-main {
+  position: relative;
+  isolation: isolate;
+}
+
+.md-main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background-image:
     linear-gradient(var(--ev-grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--ev-grid) 1px, transparent 1px);
   background-size: var(--ev-grid-size) var(--ev-grid-size);
   background-position: -1px -1px;
+  -webkit-mask-image: linear-gradient(#000 0, #000 30rem, rgba(0, 0, 0, 0.3) 46rem, rgba(0, 0, 0, 0.3) 100%);
+  mask-image: linear-gradient(#000 0, #000 30rem, rgba(0, 0, 0, 0.3) 46rem, rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
 }
 
 .md-typeset {
@@ -298,15 +338,15 @@ body {
   padding: 0.12rem 0.55rem;
   border-radius: 999px;
   font-family: var(--ev-sans);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.5;
   white-space: nowrap;
 }
 
-.md-typeset .ev-tag--program { background-color: var(--ev-tag-program-bg); color: var(--ev-tag-program); }
-.md-typeset .ev-tag--paper   { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
-.md-typeset .ev-tag--talk    { background-color: var(--ev-tag-talk-bg);    color: var(--ev-tag-talk); }
+.md-typeset .ev-tag--program { background-color: var(--ev-building-bg); color: var(--ev-building); }
+.md-typeset .ev-tag--paper   { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-tag--talk    { background-color: var(--ev-research-bg); color: var(--ev-research); }
 
 /* 8. Header and tabs ------------------------------------------------------- */
 
@@ -518,7 +558,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border: 1px solid var(--ev-line);
-  border-radius: 16px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -529,7 +569,7 @@ body {
 }
 
 .md-typeset .ev-door + .ev-door {
-  border-left: 1px dashed var(--ev-line-strong);
+  border-left: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-door > p:first-child {
@@ -606,7 +646,7 @@ body {
   align-items: baseline;
   margin: 0;
   padding: 0.85rem 0;
-  border-bottom: 1px dashed var(--ev-line-strong);
+  border-bottom: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-moves time,
@@ -671,7 +711,7 @@ body {
 
   .md-typeset .ev-door + .ev-door {
     border-left: 0;
-    border-top: 1px dashed var(--ev-line-strong);
+    border-top: 1px solid var(--ev-line);
   }
 
   .md-typeset ol.ev-moves li {
@@ -722,7 +762,7 @@ body {
 .md-typeset .ev-pagehead {
   margin: 0 0 2.4rem;
   padding-bottom: 1.8rem;
-  border-bottom: 1px dashed var(--ev-line-strong);
+  border-bottom: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-pagehead h1 {
@@ -762,7 +802,7 @@ body {
 .md-typeset .ev-empty {
   margin: 2.6rem 0 1rem;
   padding: 1.2rem 1.4rem 1.1rem;
-  border-radius: 14px;
+  border-radius: var(--ev-r);
 }
 
 .md-typeset h2 + .ev-empty,
@@ -803,7 +843,7 @@ body {
   padding: 0;
   margin: 0.7rem 0 0;
   border: 1px solid var(--ev-line);
-  border-radius: 10px;
+  border-radius: var(--ev-r-sm);
   background-color: var(--ev-sheet);
   box-shadow: none;
   font-size: 0.78rem;
@@ -814,7 +854,7 @@ body {
   margin: 0;
   padding: 0.5rem 2rem 0.5rem 0.9rem;
   line-height: 1.4;
-  border-radius: 10px;
+  border-radius: var(--ev-r-sm);
   background-color: transparent;
   font-family: var(--ev-sans);
   font-size: 0.72rem;
@@ -849,10 +889,10 @@ body {
    Content comes from data/research.yml. Each direction has one accent colour,
    shared with its tag on the Publications page. */
 
-.ev-dir--motion     { --dir: var(--ev-tag-paper);   --dir-bg: var(--ev-tag-paper-bg); }
-.ev-dir--safety     { --dir: var(--ev-tag-program); --dir-bg: var(--ev-tag-program-bg); }
-.ev-dir--control    { --dir: var(--ev-tag-talk);    --dir-bg: var(--ev-tag-talk-bg); }
-.ev-dir--perception { --dir: var(--ev-ink-2);       --dir-bg: var(--ev-board-dark); }
+.ev-dir--motion,
+.ev-dir--safety,
+.ev-dir--control,
+.ev-dir--perception { --dir: var(--ev-research); --dir-bg: var(--ev-research-bg); }
 
 .md-typeset .ev-dirs {
   display: grid;
@@ -867,7 +907,7 @@ body {
   flex-direction: column;
   padding: 1.05rem 1rem 0.9rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
   color: var(--ev-ink);
   text-decoration: none;
@@ -922,7 +962,7 @@ body {
   width: 2.2rem;
   height: 2.2rem;
   margin: 0 0 0.9rem;
-  border-radius: 10px;
+  border-radius: var(--ev-r-sm);
   background-color: var(--dir-bg);
   color: var(--dir);
 }
@@ -950,7 +990,7 @@ body {
   margin-top: auto;
   padding-top: 0.8rem;
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--dir);
 }
@@ -972,7 +1012,7 @@ body {
   gap: 0.2rem 0.9rem;
   margin: 0 0 1rem;
   padding-bottom: 0.7rem;
-  border-bottom: 1px dashed var(--ev-line-strong);
+  border-bottom: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-dirpanel__head h2 {
@@ -997,7 +1037,7 @@ body {
   flex-direction: column;
   padding: 1.05rem 1.2rem 1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -1010,7 +1050,7 @@ body {
   align-items: center;
   gap: 0.45rem;
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-muted);
 }
@@ -1027,9 +1067,7 @@ body {
   line-height: 1;
 }
 
-.md-typeset .ev-q--result .ev-q__glyph    { background-color: var(--ev-tag-talk-bg);  color: var(--ev-oxblood); }
-.md-typeset .ev-q--exploring .ev-q__glyph { background-color: var(--ev-tag-paper-bg); color: var(--ev-tag-paper); }
-.md-typeset .ev-q--open .ev-q__glyph      { background-color: var(--ev-mint-soft);    color: var(--ev-teal-ink); }
+.md-typeset .ev-q__glyph { background-color: var(--ev-board-dark); color: var(--ev-oxblood); }
 
 .md-typeset h3.ev-q__title {
   margin: 0.55rem 0 0.4rem;
@@ -1058,7 +1096,7 @@ body {
 
 .md-typeset ul.ev-q__papers li:first-child {
   margin-top: 0.1rem;
-  border-top: 1px dashed var(--ev-line-strong);
+  border-top: 1px solid var(--ev-line);
 }
 
 .md-typeset ul.ev-q__papers a {
@@ -1067,7 +1105,7 @@ body {
   align-items: baseline;
   gap: 0.6rem;
   padding: 0.5rem 0;
-  border-bottom: 1px dashed var(--ev-line);
+  border-bottom: 1px solid var(--ev-line);
   color: var(--ev-ink);
   text-decoration: none;
 }
@@ -1079,7 +1117,7 @@ body {
 
 .md-typeset .ev-q__year {
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-muted);
   font-variant-numeric: tabular-nums;
@@ -1090,7 +1128,7 @@ body {
   border-radius: 999px;
   box-shadow: inset 0 0 0 1px var(--ev-line-strong);
   font-family: var(--ev-sans);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 600;
   white-space: nowrap;
   color: var(--ev-ink-2);
@@ -1278,7 +1316,7 @@ body {
 
 .md-typeset .ev-pub details.cite:not([open]) > summary {
   padding: 0.2rem 1.7rem 0.2rem 0.75rem;
-  font-size: 0.66rem;
+  font-size: 0.7rem;
 }
 
 .md-typeset .ev-pub details.cite:not([open]) > summary::after {
@@ -1291,14 +1329,14 @@ body {
 .md-typeset .ev-pub {
   margin: 0;
   padding: 1.1rem 0 1.2rem;
-  border-top: 1px dashed var(--ev-line-strong);
+  border-top: 1px solid var(--ev-line);
   scroll-margin-top: 6rem;
 }
 
 .md-typeset .ev-pub:target {
   margin: 0 -1rem;
   padding: 1.1rem 1rem 1.2rem;
-  border-radius: 12px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-mint-soft);
 }
 
@@ -1351,11 +1389,11 @@ body {
   font-weight: 600;
 }
 
-.md-typeset .ev-tag--motion     { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
-.md-typeset .ev-tag--safety     { background-color: var(--ev-tag-program-bg); color: var(--ev-tag-program); }
-.md-typeset .ev-tag--control    { background-color: var(--ev-tag-talk-bg);    color: var(--ev-tag-talk); }
-.md-typeset .ev-tag--perception { background-color: var(--ev-board-dark);     color: var(--ev-ink-2); }
-.md-typeset .ev-tag--learning   { background-color: var(--ev-line);           color: var(--ev-ink-2); }
+.md-typeset .ev-tag--motion { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-tag--safety { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-tag--control { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-tag--perception { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-tag--learning { background-color: var(--ev-research-bg); color: var(--ev-research); }
 
 /* 19. About ---------------------------------------------------------------- */
 
@@ -1376,7 +1414,7 @@ body {
   position: sticky;
   top: 7rem;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
   filter: drop-shadow(0 0 1px var(--ev-line-strong));
   -webkit-mask:
@@ -1425,7 +1463,7 @@ body {
 
 .md-typeset .ev-sheet__rows dt {
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.6;
   color: var(--ev-muted);
@@ -1467,7 +1505,7 @@ body {
   margin: 0 0 2.4rem;
   padding: 1.2rem 1.3rem 0.9rem;
   border: 1px solid var(--ev-line);
-  border-radius: 16px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -1486,7 +1524,7 @@ body {
   height: 1.4rem;
   margin-left: var(--name);
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-muted);
   font-variant-numeric: tabular-nums;
@@ -1511,7 +1549,7 @@ body {
   grid-template-columns: var(--name) minmax(0, 1fr);
   align-items: center;
   min-height: 3.1rem;
-  border-top: 1px dashed var(--ev-line);
+  border-top: 1px solid var(--ev-line);
 }
 
 .ev-lane__name {
@@ -1557,9 +1595,10 @@ body {
 }
 
 .ev-lane--education .ev-bar { --bar: var(--ev-mint); --bar-ink: #0B4F47; }
-.ev-lane--academia .ev-bar  { --bar: var(--ev-ink); --bar-ink: var(--ev-paper); }
-.ev-lane--programs .ev-bar  { --bar: var(--ev-tag-paper); --bar-ink: #FFFFFF; }
+.ev-lane--academia .ev-bar  { --bar: var(--ev-learning); --bar-ink: #FFFFFF; }
+.ev-lane--programs .ev-bar  { --bar: var(--ev-building); --bar-ink: #FFFFFF; }
 
+[data-md-color-scheme="slate"] .ev-lane--academia .ev-bar,
 [data-md-color-scheme="slate"] .ev-lane--programs .ev-bar { --bar-ink: #121C30; }
 
 /* Ongoing roles run off the end of the axis with an arrow */
@@ -1581,7 +1620,7 @@ body {
 .ev-bar__label {
   overflow: hidden;
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   white-space: nowrap;
   text-overflow: clip;
@@ -1605,11 +1644,11 @@ body {
   width: max-content;
   max-width: 16rem;
   padding: 0.55rem 0.75rem;
-  border-radius: 10px;
+  border-radius: var(--ev-r-sm);
   background-color: var(--ev-ink);
   box-shadow: 0 10px 24px -12px rgba(15, 27, 61, 0.5);
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   line-height: 1.45;
   color: var(--ev-paper);
   opacity: 0;
@@ -1636,7 +1675,7 @@ body {
   max-width: none;
   margin: 0.6rem 0 0;
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   text-align: left;
   color: var(--ev-muted);
 }
@@ -1669,13 +1708,13 @@ body {
   column-gap: 0.8rem;
   margin: 0;
   padding: 0.55rem 0;
-  border-top: 1px dashed var(--ev-line-strong);
+  border-top: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-cvlist__when {
   grid-row: span 2;
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.9;
   color: var(--ev-teal-ink);
@@ -1719,7 +1758,7 @@ body {
   margin: 0;
   padding: 0.9rem 1.1rem;
   border-left: 3px solid var(--ev-mint);
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 var(--ev-r) var(--ev-r) 0;
   background-color: var(--ev-sheet);
   font-size: 0.86rem;
   color: var(--ev-ink-2);
@@ -1730,7 +1769,7 @@ body {
 .md-typeset .ev-rows {
   overflow: hidden;
   border: 1px solid var(--ev-line);
-  border-radius: 16px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -1772,7 +1811,7 @@ body {
   gap: 0.15rem;
   padding: 0.85rem 1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 12px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
   color: var(--ev-ink);
   text-decoration: none;
@@ -1791,7 +1830,7 @@ body {
 
 .md-typeset .ev-profiles span {
   font-family: var(--ev-sans);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--ev-muted);
 }
 
@@ -1888,7 +1927,7 @@ body {
   flex-direction: column;
   padding: 1.1rem 1.15rem 1.1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -1898,7 +1937,7 @@ body {
 
 .md-typeset .ev-course__where {
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-teal-ink);
 }
@@ -1929,7 +1968,7 @@ body {
   border-radius: 999px;
   box-shadow: inset 0 0 0 1px var(--ev-line);
   font-family: var(--ev-sans);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 500;
   line-height: 1.7;
   color: var(--ev-ink-2);
@@ -2001,18 +2040,17 @@ body {
   gap: 0.15rem;
   padding: 0.8rem 0.9rem;
   border: 1px solid var(--ev-line);
-  border-radius: 12px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
 .md-typeset .ev-hours > .ev-hours__where {
-  border-style: dashed;
   background-color: var(--ev-mint-soft);
 }
 
 .md-typeset .ev-hours span {
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-muted);
 }
@@ -2029,7 +2067,7 @@ body {
 .md-typeset dl.ev-mini {
   margin: 0;
   border: 1px solid var(--ev-line);
-  border-radius: 12px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -2047,7 +2085,7 @@ body {
 
 .md-typeset .ev-mini dt {
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.8;
   color: var(--ev-muted);
@@ -2072,7 +2110,7 @@ body {
   flex-direction: column;
   padding: 1rem 1.1rem 1.1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -2094,7 +2132,7 @@ body {
 .md-typeset .ev-topic__level,
 .md-typeset .ev-topic__status {
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-muted);
 }
@@ -2125,13 +2163,12 @@ body {
 
 .md-typeset .ev-topic--taken {
   opacity: 0.6;
-  border-style: dashed;
   background-color: transparent;
 }
 
-.md-typeset .ev-tag--agents   { background-color: var(--ev-tag-paper-bg);   color: var(--ev-tag-paper); }
-.md-typeset .ev-tag--rag      { background-color: var(--ev-tag-program-bg); color: var(--ev-tag-program); }
-.md-typeset .ev-tag--robotics { background-color: var(--ev-tag-talk-bg);    color: var(--ev-tag-talk); }
+.md-typeset .ev-tag--agents { background-color: var(--ev-learning-bg); color: var(--ev-learning); }
+.md-typeset .ev-tag--rag { background-color: var(--ev-learning-bg); color: var(--ev-learning); }
+.md-typeset .ev-tag--robotics { background-color: var(--ev-learning-bg); color: var(--ev-learning); }
 
 /* The thesis process as one horizontal line of five waypoints */
 .md-typeset ol.ev-stepper {
@@ -2168,7 +2205,7 @@ body {
   border-radius: 50%;
   background-color: var(--ev-paper);
   font-family: var(--ev-sans);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--ev-ink);
 }
@@ -2210,7 +2247,7 @@ body {
 .md-typeset .ev-two__col {
   padding: 0.9rem 1.1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -2238,7 +2275,7 @@ body {
   flex-direction: column;
   padding: 1.1rem 1.2rem 1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
 }
 
@@ -2274,12 +2311,12 @@ body {
   grid-template-columns: 3.6rem minmax(0, 1fr);
   gap: 0.6rem;
   padding: 0.45rem 0;
-  border-top: 1px dashed var(--ev-line-strong);
+  border-top: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-program__facts dt {
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.7;
   color: var(--ev-muted);
@@ -2370,7 +2407,7 @@ body {
 .md-post--excerpt {
   margin: 0;
   padding: 1.4rem 0 1.5rem;
-  border-top: 1px dashed var(--ev-line-strong);
+  border-top: 1px solid var(--ev-line);
 }
 
 .md-post--excerpt:first-of-type {
@@ -2384,7 +2421,7 @@ body {
 
 .md-post__meta .md-meta__list {
   font-family: var(--ev-sans);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--ev-muted);
 }
 
@@ -2398,7 +2435,7 @@ body {
   border-radius: 999px;
   background-color: var(--ev-tag-talk-bg);
   font-family: var(--ev-sans);
-  font-size: 0.62rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-oxblood);
 }
@@ -2554,7 +2591,7 @@ body {
 .md-typeset .ev-filter__count {
   margin-left: 0.4rem;
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   color: var(--ev-muted);
 }
 
@@ -2589,7 +2626,7 @@ body {
   border-radius: 999px;
   background-color: var(--ev-sheet);
   font-family: var(--ev-sans);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-ink);
   text-decoration: none;
@@ -2629,7 +2666,7 @@ body {
 
 .md-typeset .ev-sheet__updated {
   font-family: var(--ev-sans);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   color: var(--ev-muted);
 }
 
@@ -2757,7 +2794,7 @@ body {
   border-radius: 999px;
   background-color: var(--ev-sheet);
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-ink-2);
   cursor: pointer;
@@ -2795,7 +2832,7 @@ body {
 
 .md-typeset .ev-audiences > div + div {
   padding-left: 1.1rem;
-  border-left: 1px dashed var(--ev-line-strong);
+  border-left: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-audiences strong {
@@ -2822,7 +2859,7 @@ body {
 
 .md-typeset .ev-hoursline span {
   font-family: var(--ev-sans);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-teal-ink);
 }
@@ -2835,7 +2872,7 @@ body {
   margin: 1.8rem 0 0;
   padding: 0.9rem 1.1rem;
   border-left: 3px solid var(--ev-mint);
-  border-radius: 0 12px 12px 0;
+  border-radius: 0 var(--ev-r) var(--ev-r) 0;
   background-color: var(--ev-sheet);
 }
 
@@ -2846,7 +2883,7 @@ body {
 .md-typeset .ev-orgbio__label {
   grid-column: 1 / -1;
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-muted);
 }
@@ -2865,7 +2902,7 @@ body {
   .md-typeset .ev-audiences > div + div {
     padding-left: 0;
     border-left: 0;
-    border-top: 1px dashed var(--ev-line-strong);
+    border-top: 1px solid var(--ev-line);
   }
 
   .md-typeset .ev-orgbio {
@@ -3000,7 +3037,7 @@ body {
   padding: 0.1rem 0.55rem;
   border-radius: 999px;
   background-color: var(--ev-mint-soft);
-  font-size: 0.64rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-teal-ink);
 }
@@ -3037,7 +3074,7 @@ body {
   gap: 0.4rem 1rem;
   margin-top: 1rem !important;
   padding-top: 0.8rem;
-  border-top: 1px dashed var(--ev-line-strong);
+  border-top: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-course__links a.ev-textlink {
@@ -3077,7 +3114,7 @@ body {
 
   .md-typeset .ev-hourspill {
     display: flex;
-    border-radius: 14px;
+    border-radius: var(--ev-r);
     padding: 0.6rem 0.8rem;
   }
 }
@@ -3129,20 +3166,7 @@ body {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.md-typeset .ev-course--thesis {
-  border-style: dashed;
-  border-color: var(--ev-teal-ink);
-  background-color: var(--ev-mint-soft);
-}
 
-.md-typeset .ev-course--thesis .ev-chips span {
-  box-shadow: inset 0 0 0 1px var(--ev-line-strong);
-  background-color: var(--ev-sheet);
-}
-
-.md-typeset .ev-course--thesis .ev-course__links {
-  border-top-color: var(--ev-teal-ink);
-}
 
 /* Four topic cards per row, with the open invitation as the last one */
 .md-typeset .ev-topics {
@@ -3179,7 +3203,7 @@ body {
 .md-typeset .ev-expect span {
   display: block;
   font-family: var(--ev-sans);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-teal-ink);
 }
@@ -3323,9 +3347,9 @@ body {
 }
 
 /* The three tracks as connected cards */
-.ev-track--research  { --tr: var(--ev-tag-paper);   --tr-bg: var(--ev-tag-paper-bg); }
-.ev-track--teaching  { --tr: var(--ev-tag-program); --tr-bg: var(--ev-tag-program-bg); }
-.ev-track--mentoring { --tr: var(--ev-tag-talk);    --tr-bg: var(--ev-tag-talk-bg); }
+.ev-track--research  { --tr: var(--ev-research); --tr-bg: var(--ev-research-bg); }
+.ev-track--teaching,
+.ev-track--mentoring { --tr: var(--ev-learning); --tr-bg: var(--ev-learning-bg); }
 
 .md-typeset .ev-tracks {
   display: grid;
@@ -3340,7 +3364,7 @@ body {
   flex-direction: column;
   padding: 1.1rem 1.1rem 1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
   color: var(--ev-ink);
   text-decoration: none;
@@ -3373,7 +3397,7 @@ body {
   width: 2.2rem;
   height: 2.2rem;
   margin-bottom: 0.8rem;
-  border-radius: 10px;
+  border-radius: var(--ev-r-sm);
   background-color: var(--tr-bg);
   color: var(--tr);
 }
@@ -3400,7 +3424,7 @@ body {
   margin-top: auto;
   padding-top: 0.8rem;
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--tr);
 }
@@ -3443,7 +3467,7 @@ body {
   border-radius: 999px;
   background-color: var(--ev-paper);
   font-family: var(--ev-sans);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.3;
   text-align: center;
@@ -3455,7 +3479,7 @@ body {
   position: relative;
   height: 2.6rem;
   margin: 0 calc(100% / 6) 0;
-  border: 2px dashed var(--ev-line-strong);
+  border: 2px solid var(--ev-line-strong);
   border-top: 0;
   border-radius: 0 0 16px 16px;
 }
@@ -3480,7 +3504,7 @@ body {
   border-radius: 999px;
   background-color: var(--ev-paper);
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   white-space: nowrap;
   color: var(--ev-ink-2);
@@ -3658,7 +3682,7 @@ body {
   border-radius: 999px;
   background-color: var(--ev-sheet);
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-ink-2);
 }
@@ -3684,9 +3708,9 @@ body {
   margin: 0 0 1rem;
   padding: 1.5rem 1.6rem 1.4rem;
   border: 1px solid var(--ev-line);
-  border-radius: 18px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
-  box-shadow: inset 0 3px 0 var(--ev-tag-talk);
+  box-shadow: inset 0 3px 0 var(--ev-building);
 }
 
 .md-typeset .ev-feature p {
@@ -3708,7 +3732,7 @@ body {
 .md-typeset .ev-feature__role {
   margin-top: 0.9rem !important;
   padding: 0.7rem 0.9rem;
-  border-radius: 10px;
+  border-radius: var(--ev-r-sm);
   background-color: var(--ev-mint-soft);
   font-size: 0.82rem;
   line-height: 1.55;
@@ -3730,16 +3754,16 @@ body {
   grid-template-columns: 5.4rem minmax(0, 1fr);
   gap: 0.8rem;
   padding: 0.6rem 0;
-  border-top: 1px dashed var(--ev-line-strong);
+  border-top: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-feature__facts > div:last-child {
-  border-bottom: 1px dashed var(--ev-line-strong);
+  border-bottom: 1px solid var(--ev-line);
 }
 
 .md-typeset .ev-feature__facts dt {
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   line-height: 1.8;
   color: var(--ev-muted);
@@ -3796,7 +3820,7 @@ body {
 
 /* 34. Home: Now and closing line -------------------------------------------- */
 
-.md-typeset .ev-tag--event { background-color: var(--ev-tag-talk-bg); color: var(--ev-tag-talk); }
+.md-typeset .ev-tag--event { background-color: var(--ev-building-bg); color: var(--ev-building); }
 
 .md-typeset .ev-now {
   display: grid;
@@ -3809,7 +3833,7 @@ body {
   display: block;
   margin: 0 0 0.6rem;
   font-family: var(--ev-sans);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-teal-ink);
 }
@@ -3836,7 +3860,7 @@ body {
   gap: 0.35rem;
   padding: 1rem 1.1rem;
   border: 1px solid var(--ev-line);
-  border-radius: 14px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
   color: var(--ev-ink);
   text-decoration: none;
@@ -3856,7 +3880,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--ev-sans);
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   color: var(--ev-muted);
 }
@@ -3897,7 +3921,7 @@ body {
   gap: 1rem 2rem;
   margin: 0 0 3rem;
   padding: 1.4rem 1.6rem;
-  border-radius: 18px;
+  border-radius: var(--ev-r);
   background-color: var(--ev-sheet);
   border: 1px solid var(--ev-line);
 }
@@ -3931,4 +3955,104 @@ body {
   .md-typeset a.ev-nowcard {
     transition: none;
   }
+}
+
+/* 35. Refinement: the ink panel and small hierarchy fixes -------------------
+   Three levels across the site: paper (no box), sheet (white card) and ink
+   (dark panel). Ink is used at most once per page, for its focal element. */
+
+.md-typeset .ev-ink {
+  border-color: var(--ev-panel) !important;
+  background: var(--ev-panel) !important;
+  box-shadow: 0 18px 40px -28px rgba(15, 27, 61, 0.55) !important;
+  color: var(--ev-panel-ink);
+}
+
+.md-typeset .ev-ink h2,
+.md-typeset .ev-ink h3,
+.md-typeset .ev-ink strong,
+.md-typeset .ev-ink .ev-closing__title {
+  color: var(--ev-panel-ink);
+}
+
+.md-typeset .ev-ink p,
+.md-typeset .ev-ink dd,
+.md-typeset .ev-ink .ev-course__line,
+.md-typeset .ev-ink .ev-feature__lead {
+  color: var(--ev-panel-muted);
+}
+
+.md-typeset .ev-ink dt,
+.md-typeset .ev-ink .ev-course__where,
+.md-typeset .ev-ink .ev-program__meta {
+  color: var(--ev-mint) !important;
+}
+
+.md-typeset .ev-ink a,
+.md-typeset .ev-ink a.ev-textlink {
+  color: var(--ev-panel-ink);
+  text-decoration-color: var(--ev-mint);
+}
+
+.md-typeset .ev-ink a:hover,
+.md-typeset .ev-ink a.ev-textlink:hover {
+  color: var(--ev-mint);
+}
+
+.md-typeset .ev-ink .ev-chips span {
+  box-shadow: inset 0 0 0 1px var(--ev-panel-line);
+  color: var(--ev-panel-muted);
+}
+
+.md-typeset .ev-ink .ev-course__links,
+.md-typeset .ev-ink .ev-feature__facts > div,
+.md-typeset .ev-ink .ev-feature__facts > div:last-child {
+  border-color: var(--ev-panel-line);
+}
+
+.md-typeset .ev-ink .ev-feature__role {
+  background-color: rgba(185, 245, 233, 0.1);
+  color: var(--ev-panel-ink);
+}
+
+.md-typeset .ev-ink .ev-feature__role strong {
+  color: var(--ev-mint);
+}
+
+.md-typeset .ev-ink .ev-tag {
+  background-color: rgba(240, 154, 142, 0.18);
+  color: #F5B3AA;
+}
+
+.md-typeset .ev-ink a.ev-chip {
+  border-color: var(--ev-panel-line);
+  background-color: transparent;
+  color: var(--ev-panel-ink);
+}
+
+.md-typeset .ev-ink a.ev-chip:hover {
+  border-color: var(--ev-mint);
+  color: var(--ev-mint);
+}
+
+/* the research callout as an ink panel: no side bar */
+.md-typeset .ev-callout.ev-ink {
+  box-shadow: 0 18px 40px -28px rgba(15, 27, 61, 0.55) !important;
+}
+
+/* home doors: each audience in its site-wide colour */
+.md-typeset .ev-door:nth-child(1) .twemoji.ev-door__piece { background-color: var(--ev-learning-bg); color: var(--ev-learning); }
+.md-typeset .ev-door:nth-child(2) .twemoji.ev-door__piece { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-door:nth-child(3) .twemoji.ev-door__piece { background-color: var(--ev-building-bg); color: var(--ev-building); }
+
+/* the doors divide with plain hairlines now */
+.md-typeset .ev-door + .ev-door {
+  border-left-style: solid;
+  border-left-color: var(--ev-line);
+}
+
+/* In the night notebook the ink panel sits darker than the page, with a mint edge */
+[data-md-color-scheme="slate"] .md-typeset .ev-ink {
+  border-color: rgba(185, 245, 233, 0.28) !important;
+  box-shadow: none !important;
 }

@@ -71,7 +71,7 @@ by design, and adapt as the world around them changes.
 </section>
 {% endfor %}
 
-<div class="ev-callout" markdown>
+<div class="ev-callout ev-ink" markdown>
 
 **Working on something related?** I'm open to collaborations, co-supervision and
 joint proposals. All papers, with citations, are on [Publications](publications.md).
