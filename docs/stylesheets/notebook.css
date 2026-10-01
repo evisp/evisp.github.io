@@ -10,7 +10,7 @@
   22. Teaching             23. Mentoring               24. Initiatives
   25. Writing              26. Manuscript (Ancient Algorithms)
   28. Filter chips         29. About: one page         30. Teaching header
-  31. Teaching & Mentoring
+  31. Teaching & Mentoring  32. About: tracks and thread
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -3188,6 +3188,345 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .ev-pagenav a {
+    transition: none;
+  }
+}
+
+/* 32. About: three tracks, one thread --------------------------------------- */
+
+.md-typeset figure.ev-loop {
+  display: block;
+  width: 100%;
+  max-width: 17rem;
+  margin: 0 1rem 0 auto;
+}
+
+.ev-loop__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ev-loop__spokes line {
+  stroke: var(--ev-line-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.ev-loop__thread {
+  fill: none;
+  stroke: var(--ev-teal-ink);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.8;
+  animation: ev-tour 2.4s 0.3s cubic-bezier(0.45, 0.05, 0.35, 1) both;
+}
+
+/* a small dot travels the thread once, then rests at Research */
+.ev-loop__traveler {
+  fill: var(--ev-oxblood);
+  offset-rotate: 0deg;
+  offset-distance: 0%;
+  animation: ev-travel 3.2s 2.7s ease-in-out both;
+}
+
+@keyframes ev-travel {
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
+}
+
+.ev-loop__hub circle {
+  fill: #16213A;
+  stroke: var(--ev-teal-ink);
+  stroke-width: 1.5;
+}
+
+.ev-loop__hub text {
+  font-family: var(--ev-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+  fill: #B9F5E9;
+}
+
+.ev-loop__halo {
+  fill: var(--ev-mint);
+  opacity: 0.45;
+}
+
+.ev-loop__disc {
+  fill: var(--ev-sheet);
+  stroke: var(--ev-ink);
+  stroke-width: 1.4;
+}
+
+.ev-loop__icon {
+  fill: none;
+  stroke: var(--ev-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ev-loop__label {
+  font-family: var(--ev-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  text-anchor: middle;
+  fill: var(--ev-ink);
+}
+
+.ev-loop__node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-arrive 0.5s ease-out both;
+}
+
+.ev-loop__node--research  { animation-delay: 0.2s; }
+.ev-loop__node--teaching  { animation-delay: 0.9s; }
+.ev-loop__node--mentoring { animation-delay: 1.6s; }
+
+.md-typeset .ev-loop figcaption {
+  max-width: none;
+  margin: 0.6rem 0 0 1rem;
+  padding-left: 0.7rem;
+  border-left: 2px solid var(--ev-mint);
+  font-size: 0.7rem;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--ev-muted);
+}
+
+/* The three tracks as connected cards */
+.ev-track--research  { --tr: var(--ev-tag-paper);   --tr-bg: var(--ev-tag-paper-bg); }
+.ev-track--teaching  { --tr: var(--ev-tag-program); --tr-bg: var(--ev-tag-program-bg); }
+.ev-track--mentoring { --tr: var(--ev-tag-talk);    --tr-bg: var(--ev-tag-talk-bg); }
+
+.md-typeset .ev-tracks {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 6.5rem minmax(0, 1fr) 6.5rem minmax(0, 1fr);
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.md-typeset a.ev-track {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.1rem 1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+  color: var(--ev-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.md-typeset a.ev-track::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 1rem;
+  right: 1rem;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background-color: var(--tr);
+}
+
+.md-typeset a.ev-track:hover {
+  border-color: var(--tr);
+}
+
+.md-typeset a.ev-track:focus-visible {
+  outline: 2px solid var(--tr);
+  outline-offset: 3px;
+}
+
+.md-typeset .ev-track__icon {
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: 0.8rem;
+  border-radius: 10px;
+  background-color: var(--tr-bg);
+  color: var(--tr);
+}
+
+.md-typeset .ev-track__icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.md-typeset a.ev-track strong {
+  font-family: var(--ev-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.md-typeset .ev-track__line {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-track__fact {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--tr);
+}
+
+/* The connector between two cards: a line with what flows along it */
+.md-typeset .ev-track__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-typeset .ev-track__link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0.3rem;
+  border-top: 2px solid var(--ev-teal-ink);
+  opacity: 0.6;
+}
+
+.md-typeset .ev-track__link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0.1rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: 2px solid var(--ev-teal-ink);
+  border-right: 2px solid var(--ev-teal-ink);
+  opacity: 0.6;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.md-typeset .ev-track__link span {
+  position: relative;
+  z-index: 1;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  background-color: var(--ev-paper);
+  font-family: var(--ev-sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  color: var(--ev-teal-ink);
+}
+
+/* The way back: a dashed return line under the row */
+.md-typeset .ev-tracks__return {
+  position: relative;
+  height: 2.6rem;
+  margin: 0 calc(100% / 6) 0;
+  border: 2px dashed var(--ev-line-strong);
+  border-top: 0;
+  border-radius: 0 0 16px 16px;
+}
+
+.md-typeset .ev-tracks__return::before {
+  content: "";
+  position: absolute;
+  top: -0.1rem;
+  left: -0.42rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-top: 2px solid var(--ev-line-strong);
+  border-left: 2px solid var(--ev-line-strong);
+  transform: rotate(45deg);
+}
+
+.md-typeset .ev-tracks__return span {
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  padding: 0.12rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--ev-paper);
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--ev-ink-2);
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset figure.ev-loop {
+    max-width: 14rem;
+    margin: 0;
+  }
+
+  .md-typeset .ev-tracks {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-track__link {
+    height: 2.4rem;
+  }
+
+  .md-typeset .ev-track__link::before {
+    top: 0;
+    bottom: 0.3rem;
+    left: 50%;
+    right: auto;
+    border-top: 0;
+    border-left: 2px solid var(--ev-teal-ink);
+  }
+
+  .md-typeset .ev-track__link::after {
+    top: auto;
+    bottom: 0.15rem;
+    right: auto;
+    left: calc(50% - 0.2rem);
+    transform: rotate(135deg);
+  }
+
+  .md-typeset .ev-tracks__return {
+    height: auto;
+    margin: 1rem 0 0;
+    border: 0;
+  }
+
+  .md-typeset .ev-tracks__return::before {
+    display: none;
+  }
+
+  .md-typeset .ev-tracks__return span {
+    position: static;
+    display: inline-block;
+    transform: none;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-loop__thread,
+  .ev-loop__traveler,
+  .ev-loop__node {
+    animation: none;
+  }
+
+  .ev-loop__traveler {
+    offset-distance: 0%;
+  }
+
+  .md-typeset a.ev-track {
     transition: none;
   }
 }
