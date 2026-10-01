@@ -1,0 +1,19 @@
+# Recent moves on the home page. Newest first; the page shows the first four.
+# kind: paper | program | event | talk
+# link: optional, a site path (research/publications/#id) or a full URL
+
+news:
+  - label: Jun 2026
+    kind: paper
+    text: "Safe urban route planning with semantic graphs and neural cost shaping, presented at MED 2026 in Ancona, Italy."
+    link: research/publications/#plaku-2026-urban-route
+
+  - label: Jun 2026
+    kind: paper
+    text: "Adaptive-horizon model predictive control for robot navigation among moving people, presented at MED 2026."
+    link: research/publications/#lici-2026-adaptive-mpc
+
+  - label: May 2026
+    kind: paper
+    text: "Generating diverse trajectories with roadmap search and sampling-based planning, published in IEEE Access."
+    link: research/publications/#plaku-2026-diverse

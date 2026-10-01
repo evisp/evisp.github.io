@@ -11,7 +11,7 @@
   25. Writing              26. Manuscript (Ancient Algorithms)
   28. Filter chips         29. About: one page         30. Teaching header
   31. Teaching & Mentoring  32. About: tracks and thread
-  33. Initiatives: reach and RoboTech
+  33. Initiatives: reach and RoboTech  34. Home: now and closing
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -428,6 +428,24 @@ body {
   font-weight: 500;
   fill: var(--ev-muted);
   text-anchor: middle;
+  opacity: 0.35;
+}
+
+/* Each square lights up as the knight lands on it */
+.ev-board__lit rect {
+  fill: var(--ev-mint);
+  opacity: 0.38;
+  animation: ev-light 0.35s calc(0.3s + var(--i) * 0.06s) ease-out both;
+}
+
+@keyframes ev-light {
+  0%   { opacity: 0; }
+  40%  { opacity: 0.85; }
+  100% { opacity: 0.38; }
+}
+
+.ev-board__path {
+  opacity: 0.3;
 }
 
 .ev-board__dots circle {
@@ -445,7 +463,7 @@ body {
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
-  animation: ev-tour 0.14s calc(0.3s + var(--i) * 0.05s) linear both;
+  animation: ev-tour 0.14s calc(0.3s + var(--i) * 0.06s) linear both;
 }
 
 .ev-board__start {
@@ -457,7 +475,7 @@ body {
 .ev-board__end {
   transform-box: fill-box;
   transform-origin: center;
-  animation: ev-arrive 0.6s 3.6s ease-out both;
+  animation: ev-arrive 0.6s 4.3s ease-out both;
 }
 
 .ev-board__end circle { fill: var(--ev-ink); }
@@ -591,7 +609,8 @@ body {
   border-bottom: 1px dashed var(--ev-line-strong);
 }
 
-.md-typeset .ev-moves time {
+.md-typeset .ev-moves time,
+.md-typeset .ev-moves__when {
   font-family: var(--ev-sans);
   font-size: 0.72rem;
   font-weight: 600;
@@ -688,6 +707,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .ev-hero h1 mark,
   .ev-board__path line,
+  .ev-board__lit rect,
   .ev-board__end {
     animation: none;
   }
@@ -3771,5 +3791,144 @@ body {
   .ev-reach__n1 circle,
   .ev-reach__n2 circle {
     animation: none;
+  }
+}
+
+/* 34. Home: Now and closing line -------------------------------------------- */
+
+.md-typeset .ev-tag--event { background-color: var(--ev-tag-talk-bg); color: var(--ev-tag-talk); }
+
+.md-typeset .ev-now {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.md-typeset .ev-now__label {
+  display: block;
+  margin: 0 0 0.6rem;
+  font-family: var(--ev-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-moves p a {
+  color: var(--ev-ink-2);
+  text-decoration: none;
+}
+
+.md-typeset .ev-moves p a:hover {
+  color: var(--ev-teal-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ev-teal-ink);
+}
+
+.md-typeset .ev-now__side {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.md-typeset a.ev-nowcard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 14px;
+  background-color: var(--ev-sheet);
+  color: var(--ev-ink);
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.md-typeset a.ev-nowcard:hover {
+  border-color: var(--ev-teal-ink);
+}
+
+.md-typeset a.ev-nowcard .ev-now__label {
+  margin: 0;
+}
+
+.md-typeset .ev-nowcard__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ev-muted);
+}
+
+.md-typeset a.ev-nowcard strong {
+  font-family: var(--ev-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.md-typeset .ev-nowcard__line {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-nowcard__more {
+  margin-top: 0.3rem;
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset a.ev-nowcard--call {
+  border-style: dashed;
+  border-color: var(--ev-teal-ink);
+  background-color: var(--ev-mint-soft);
+}
+
+/* Closing line */
+.md-typeset .ev-closing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin: 0 0 3rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 18px;
+  background-color: var(--ev-sheet);
+  border: 1px solid var(--ev-line);
+}
+
+.md-typeset .ev-closing__title {
+  margin: 0;
+  font-family: var(--ev-sans);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-closing .ev-chips-row {
+  align-items: center;
+  margin: 0;
+}
+
+.md-typeset .ev-closing .ev-chips-row a.ev-textlink {
+  margin-left: 0.4rem;
+  font-size: 0.72rem;
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset .ev-now {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset a.ev-nowcard {
+    transition: none;
   }
 }
