@@ -68,7 +68,7 @@ Motion planning and safe autonomy for robots.
 
 ### Institutions and partners
 
-AI specializations and training programs.
+AI and robotics programs, from high school to companies.
 
 - [Initiatives](initiatives/index.md)
 - [CV](about/index.md#career)

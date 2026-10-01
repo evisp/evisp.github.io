@@ -11,6 +11,7 @@
   25. Writing              26. Manuscript (Ancient Algorithms)
   28. Filter chips         29. About: one page         30. Teaching header
   31. Teaching & Mentoring  32. About: tracks and thread
+  33. Initiatives: reach and RoboTech
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -3528,5 +3529,247 @@ body {
 
   .md-typeset a.ev-track {
     transition: none;
+  }
+}
+
+/* 33. Initiatives: reach graphic and RoboTech feature ----------------------- */
+
+.md-typeset figure.ev-reach {
+  display: block;
+  width: 100%;
+  max-width: 17rem;
+  margin: 0 1rem 0 auto;
+}
+
+.ev-reach__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ev-reach__rings circle {
+  fill: none;
+  stroke: var(--ev-line-strong);
+  stroke-width: 1;
+  stroke-dasharray: 3 5;
+}
+
+.ev-reach__e1 line,
+.ev-reach__e2 line {
+  stroke: var(--ev-teal-ink);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.7;
+}
+
+.ev-reach__e1 line {
+  animation: ev-tour 0.5s calc(0.3s + var(--i) * 0.15s) ease-out both;
+}
+
+.ev-reach__e2 line {
+  stroke-width: 1.1;
+  opacity: 0.5;
+  animation: ev-tour 0.4s calc(1.1s + var(--i) * 0.07s) ease-out both;
+}
+
+.ev-reach__n1 circle {
+  fill: var(--ev-teal-ink);
+  stroke: var(--ev-paper);
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-arrive 0.4s calc(0.7s + var(--i) * 0.15s) ease-out both;
+}
+
+.ev-reach__n2 circle {
+  fill: var(--ev-sheet);
+  stroke: var(--ev-ink);
+  stroke-width: 1.4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-arrive 0.35s calc(1.4s + var(--i) * 0.07s) ease-out both;
+}
+
+.ev-reach__core circle {
+  fill: var(--ev-ink);
+}
+
+.ev-reach__core circle.ev-reach__halo {
+  fill: var(--ev-mint);
+  opacity: 0.8;
+}
+
+.ev-reach__label {
+  font-family: var(--ev-sans);
+  font-size: 10px;
+  font-weight: 600;
+  text-anchor: middle;
+  fill: var(--ev-muted);
+}
+
+.md-typeset .ev-reach figcaption {
+  max-width: none;
+  margin: 0.6rem 0 0 1rem;
+  padding-left: 0.7rem;
+  border-left: 2px solid var(--ev-mint);
+  font-size: 0.7rem;
+  font-style: italic;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--ev-muted);
+}
+
+/* Audiences, from first robot to the workplace */
+.md-typeset .ev-audience {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 1.2rem 0 0;
+}
+
+.md-typeset .ev-audience span {
+  position: relative;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-sheet);
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-audience span + span {
+  margin-left: 0.9rem;
+}
+
+.md-typeset .ev-audience span + span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.85rem;
+  width: 0.6rem;
+  border-top: 2px solid var(--ev-line-strong);
+}
+
+/* RoboTech: one wide featured card */
+.md-typeset .ev-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 2rem;
+  margin: 0 0 1rem;
+  padding: 1.5rem 1.6rem 1.4rem;
+  border: 1px solid var(--ev-line);
+  border-radius: 18px;
+  background-color: var(--ev-sheet);
+  box-shadow: inset 0 3px 0 var(--ev-tag-talk);
+}
+
+.md-typeset .ev-feature p {
+  margin: 0;
+}
+
+.md-typeset h2.ev-feature__title {
+  margin: 0.6rem 0 0.5rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.025em;
+}
+
+.md-typeset .ev-feature__lead {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-feature__role {
+  margin-top: 0.9rem !important;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  background-color: var(--ev-mint-soft);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.md-typeset .ev-feature__role strong {
+  font-family: var(--ev-sans);
+  font-weight: 600;
+  color: var(--ev-teal-ink);
+}
+
+.md-typeset dl.ev-feature__facts {
+  align-self: center;
+  margin: 0;
+}
+
+.md-typeset .ev-feature__facts > div {
+  display: grid;
+  grid-template-columns: 5.4rem minmax(0, 1fr);
+  gap: 0.8rem;
+  padding: 0.6rem 0;
+  border-top: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-feature__facts > div:last-child {
+  border-bottom: 1px dashed var(--ev-line-strong);
+}
+
+.md-typeset .ev-feature__facts dt {
+  font-family: var(--ev-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.8;
+  color: var(--ev-muted);
+}
+
+.md-typeset .ev-feature__facts dd {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.md-typeset .ev-programs--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.md-typeset .ev-programs--three .ev-course__links {
+  margin-top: 0.6rem !important;
+}
+
+.md-typeset .ev-program > p.ev-course__links {
+  margin-top: 0.6rem;
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset figure.ev-reach {
+    max-width: 13rem;
+    margin: 0;
+  }
+
+  .md-typeset .ev-feature,
+  .md-typeset .ev-programs--three {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset .ev-audience span + span {
+    margin-left: 0;
+  }
+
+  .md-typeset .ev-audience span + span::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-reach__e1 line,
+  .ev-reach__e2 line,
+  .ev-reach__n1 circle,
+  .ev-reach__n2 circle {
+    animation: none;
   }
 }
