@@ -32,20 +32,20 @@ questions:
   - direction: motion
     status: result
     question: How can high-level guidance make sampling-based planners faster?
-    media:
-       poster: assets/research/superfacets.jpg
-       video: assets/research/superfacets.mp4
-       alt: "high-level guidance"
+    # media:
+    #   poster: assets/research/superfacets.jpg
+    #   video: assets/research/superfacets.mp4
+    #   alt: ""
     finding: Superfacets, a layer between geometry and search that points planners toward direct paths.
     papers: [plaku-2017-superfacets, plaku-2018-clearance]
 
   - direction: motion
     status: result
     question: How do we generate trajectories that are meaningfully different?
-    media:
-       poster: assets/research/diverse-trajectories.jpg
-       video: assets/research/diverse-trajectories.mp4
-       alt: "spatially different trajectories"
+    # media:
+    #   poster: assets/research/diverse-trajectories.jpg
+    #   video: assets/research/diverse-trajectories.mp4
+    #   alt: ""
     finding: Roadmap search combined with sampling-based planning to produce distinct routes, not small variations.
     papers: [plaku-2026-diverse]
 
@@ -72,10 +72,10 @@ questions:
   - direction: safety
     status: result
     question: How can safety margins be built into the planner itself?
-    media:
-       poster: assets/research/safety-zones.jpg
-       video: assets/research/safety-zones.mp4
-       alt: "Certified detours to safety zones"
+    # media:
+    #   poster: assets/research/safety-zones.jpg
+    #   video: assets/research/safety-zones.mp4
+    #   alt: ""
     finding: Explicit safety zones around hazards, planned with rather than checked afterwards.
     papers: [plaku-2023-safety-zones, plaku-2024-safety-zones]
 

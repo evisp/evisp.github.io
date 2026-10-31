@@ -33,7 +33,7 @@ learning, and teachers and teams learning to ==use AI well== in their own work.
 
 <article class="ev-feature ev-ink">
 <div class="ev-feature__main">
-<p class="ev-program__meta"><span class="ev-tag ev-tag--program">National competition</span><span>Metropolitan University of Tirana</span></p>
+<p class="ev-program__meta"><span class="ev-tag ev-tag--program">National competition</span><span>University Metropolitan Tirana</span></p>
 <h2 class="ev-feature__title">RoboTech</h2>
 <p class="ev-feature__lead">A national robotics competition for high school students across Albania, organized by UMT. Teams of four to seven students design and build a robot, work with mentors, and present it to a panel of experts at the final.</p>
 <p class="ev-feature__role"><strong>My role:</strong> I co-lead the competition, train the trainers who mentor the school teams, and focus on expanding its AI and robotics content.</p>
@@ -54,7 +54,7 @@ learning, and teachers and teams learning to ==use AI well== in their own work.
 <article class="ev-program">
 <p class="ev-program__meta"><span class="ev-tag ev-tag--program">Specialization</span><span>Holberton School</span></p>
 <h3>Machine Learning Specialization</h3>
-<p>An intensive program that takes software engineers from the math and code of machine learning to deep learning and modern AI systems. I lead its curriculum across Holberton's international campuses.</p>
+<p>An intensive program that takes software engineers from the math and code of machine learning to deep learning and modern AI systems. I lead its curriculum.</p>
 <dl class="ev-program__facts">
 <div><dt>For</dt><dd>Software engineers and graduates</dd></div>
 </dl>

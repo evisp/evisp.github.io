@@ -9,51 +9,23 @@ areas:
 
 topics:
 
-  - title: A tool-using AI agent for university services
+  - title: An AI agent that plans with a motion planner
     area: agents
     level: BSc or MSc
-    summary: Build an agent that answers student questions by calling real tools (timetables, course pages, forms) and knows when to hand over to a person.
-    skills: [Python, LLM APIs, Tool calling]
+    summary: An LLM agent turns a task in plain language into goals and constraints, calls a sampling-based motion planner as a tool, and checks the path it gets back.
+    skills: [Python, LLM tool calling, Motion planning]
     status: open
 
-  - title: Evaluating AI agents on multi-step tasks
-    area: agents
-    level: MSc
-    summary: Design a small benchmark and measure where agents fail on tasks that need planning, memory and recovery from errors.
-    skills: [Python, Evaluation design, Statistics]
-    status: open
-
-  - title: An agentic RAG teaching assistant that cites its sources
+  - title: An agentic RAG assistant that cites its sources
     area: rag
     level: BSc or MSc
-    summary: A course assistant that searches lecture notes, decides when to search again, and answers with citations students can check.
-    skills: [Python, Embeddings, LangChain or similar]
+    summary: An assistant for course material that decides when to search again, answers with citations students can check, and is measured on how often it is right.
+    skills: [Python, Embeddings, Evaluation]
     status: open
 
-  - title: Agentic RAG for Albanian-language documents
-    area: rag
-    level: MSc
-    summary: Retrieval and reasoning over Albanian texts, where tokenization, embeddings and evaluation data are all less mature than for English.
-    skills: [Python, NLP, Hugging Face]
-    status: open
-
-  - title: Language-guided robot navigation in simulation
+  - title: Safety zones around moving people, in simulation
     area: robotics
     level: MSc
-    summary: Turn plain-language instructions into navigation goals and constraints for a simulated robot, and test how reliably it follows them.
-    skills: [ROS 2, Gazebo, LLMs]
-    status: open
-
-  - title: Safe path planning with safety zones in ROS 2
-    area: robotics
-    level: BSc or MSc
-    summary: Implement a planner that keeps safety margins around hazards and compare it with a standard planner on the same maps.
-    skills: [ROS 2, C++ or Python, Motion planning]
-    status: open
-
-  - title: Coordinating a small team of warehouse robots
-    area: robotics
-    level: MSc
-    summary: Plan paths for several robots that share narrow aisles without collisions or deadlocks, first in simulation.
-    skills: [Python, Multi-agent planning, Simulation]
+    summary: Extend safety-zone path planning so the margins adapt to how people move, and compare it with a fixed-margin planner in ROS 2.
+    skills: [ROS 2, Gazebo, Risk-aware planning]
     status: open

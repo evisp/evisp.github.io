@@ -41,7 +41,7 @@ cv_roles:
   - lane: education
     label: PhD
     title: PhD in AI and Intelligent Systems
-    place: Metropolitan University of Tirana
+    place: University Metropolitan Tirana
     start: 2022.75
     end: 2026.83
 
@@ -54,7 +54,7 @@ cv_roles:
   - lane: academia
     label: UMT
     title: Lecturer in Computer Science
-    place: Metropolitan University of Tirana
+    place: University Metropolitan Tirana
     start: 2017.2
     end: 2018.7
   - lane: academia
@@ -66,7 +66,7 @@ cv_roles:
   - lane: academia
     label: UMT
     title: Lecturer, Researcher and Program Director for AI
-    place: Metropolitan University of Tirana
+    place: University Metropolitan Tirana
     start: 2022.75
     end:
 

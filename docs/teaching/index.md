@@ -34,6 +34,7 @@ course materials are open for anyone to learn from.
 
 <nav class="ev-pagenav" aria-label="On this page">
 <a href="#courses">Courses</a>
+<a href="#how-i-teach">How I teach</a>
 <a href="#thesis">Thesis topics</a>
 <a href="#process">How a thesis works</a>
 <a href="#for-students">Office hours</a>
@@ -47,7 +48,7 @@ course materials are open for anyone to learn from.
 <p class="ev-course__where">UMT, bachelor, 14 weeks</p>
 <h3>Object-Oriented Programming in Java</h3>
 <p class="ev-course__line">Learn to think in objects. One application, built in three sprints and public on GitHub from week one.</p>
-<p class="ev-chips"><span>Class design</span><span>Error handling</span><span>Testing</span><span>Saving data</span><span>A desktop GUI</span></p>
+<p class="ev-chips"><span>Object modelling</span><span>Interfaces &amp; polymorphism</span><span>Records &amp; streams</span><span>Lambdas</span><span>JUnit testing</span><span>Git workflow</span><span>Desktop GUI</span></p>
 <p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/java-oop-course/">Open the course</a></p>
 </article>
 
@@ -55,7 +56,7 @@ course materials are open for anyone to learn from.
 <p class="ev-course__where">UMT, bachelor year 2</p>
 <h3>Data Structures &amp; Algorithms</h3>
 <p class="ev-course__line">Programs that stay correct and fast as the input grows. Slides and practice for every lecture, and a three-sprint project.</p>
-<p class="ev-chips"><span>Complexity</span><span>Linked lists</span><span>Recursion</span><span>Search trees</span><span>Dijkstra and A*</span></p>
+<p class="ev-chips"><span>Big-O thinking</span><span>Hash maps in practice</span><span>Recursion &amp; backtracking</span><span>Trees &amp; BSTs</span><span>Graph search: BFS, Dijkstra, A*</span><span>Problem solving with AI</span></p>
 <p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/dsa-algorithms/">Open the course</a></p>
 </article>
 
@@ -63,7 +64,7 @@ course materials are open for anyone to learn from.
 <p class="ev-course__where">UMT, bachelor year 3, 14 weeks</p>
 <h3>Machine Learning</h3>
 <p class="ev-course__line">Building things that work on real data. Three team projects, and a system you defend in front of the room.</p>
-<p class="ev-chips"><span>Problem framing</span><span>Honest evaluation</span><span>Features</span><span>Tree models</span><span>PCA</span></p>
+<p class="ev-chips"><span>End-to-end pipelines</span><span>Leakage &amp; honest evaluation</span><span>scikit-learn</span><span>Tree ensembles</span><span>PCA &amp; clustering</span><span>AI-assisted workflows</span></p>
 <p class="ev-course__links"><a class="ev-textlink" href="https://evisp.github.io/ml-course-umt/">Open the course</a><a class="ev-course__alt" href="https://evisp.github.io/ml-handbook/">Holberton ML Handbook</a></p>
 </article>
 
@@ -77,19 +78,33 @@ course materials are open for anyone to learn from.
 
 </div>
 
-<div class="ev-principles">
-<p><strong>One project, not twelve exercises.</strong> Each course builds one thing that grows across the semester.</p>
-<p><strong>Public from week one.</strong> Work lives on GitHub, so students leave with a portfolio.</p>
-<p><strong>Defend what you build.</strong> A result you can explain beats a score that flatters you.</p>
+## How I teach { #how-i-teach }
+
+<div class="ev-teach">
+
+<figure class="ev-teach__fig" markdown="0">
+<svg class="ev-teach__svg" viewBox="0 0 340 344" role="img" aria-labelledby="ev-teach-title"><title id="ev-teach-title">A learning loop of five steps, first principles, ask why, build, defend and share, around understanding, with AI as a companion ring around the whole loop</title><circle class="ev-teach__ring" cx="170" cy="166" r="152"/><circle class="ev-teach__loop" cx="170" cy="166" r="98" pathLength="1" transform="rotate(-90 170 166)"/><g class="ev-teach__chev"><path d="M-4 -5 L3 0 L-4 5" transform="translate(227.6 86.7) rotate(36.0)"/><path d="M-4 -5 L3 0 L-4 5" transform="translate(263.2 196.3) rotate(108.0)"/><path d="M-4 -5 L3 0 L-4 5" transform="translate(170.0 264.0) rotate(180.0)"/><path d="M-4 -5 L3 0 L-4 5" transform="translate(76.8 196.3) rotate(252.0)"/><path d="M-4 -5 L3 0 L-4 5" transform="translate(112.4 86.7) rotate(324.0)"/></g><g class="ev-teach__core"><circle cx="170" cy="166" r="40"/><text x="170" y="170">understanding</text></g><g class="ev-teach__step" style="--i:0"><rect x="99.6" y="54.0" width="140.8" height="28" rx="14"/><circle cx="113.6" cy="68.0" r="8.5"/><text class="ev-teach__num" x="113.6" y="71.6">1</text><text class="ev-teach__name" x="127.6" y="72.0">First principles</text></g><g class="ev-teach__step" style="--i:1"><rect x="221.2" y="121.7" width="84.1" height="28" rx="14"/><circle cx="235.2" cy="135.7" r="8.5"/><text class="ev-teach__num" x="235.2" y="139.3">2</text><text class="ev-teach__name" x="249.2" y="139.7">Ask why</text></g><g class="ev-teach__step" style="--i:2"><rect x="191.9" y="231.3" width="71.5" height="28" rx="14"/><circle cx="205.9" cy="245.3" r="8.5"/><text class="ev-teach__num" x="205.9" y="248.9">3</text><text class="ev-teach__name" x="219.9" y="249.3">Build</text></g><g class="ev-teach__step" style="--i:3"><rect x="73.5" y="231.3" width="77.8" height="28" rx="14"/><circle cx="87.5" cy="245.3" r="8.5"/><text class="ev-teach__num" x="87.5" y="248.9">4</text><text class="ev-teach__name" x="101.5" y="249.3">Defend</text></g><g class="ev-teach__step" style="--i:4"><rect x="41.0" y="121.7" width="71.5" height="28" rx="14"/><circle cx="55.0" cy="135.7" r="8.5"/><text class="ev-teach__num" x="55.0" y="139.3">5</text><text class="ev-teach__name" x="69.0" y="139.7">Share</text></g><g class="ev-teach__ai"><rect x="108" y="305" width="124" height="26" rx="13"/><text x="170" y="322.5">AI as a companion</text></g></svg>
+</figure>
+
+<ol class="ev-teach__steps">
+<li><strong>First principles</strong><span>Start from the idea, not the syntax or the tool.</span></li>
+<li><strong>Ask why</strong><span>Trace every algorithm by hand until it makes sense.</span></li>
+<li><strong>Build</strong><span>One real project that grows across the whole semester.</span></li>
+<li><strong>Defend</strong><span>Explain your choices. A result you can explain beats a score that flatters you.</span></li>
+<li><strong>Share</strong><span>Work is public on GitHub, and explaining it to others locks it in.</span></li>
+</ol>
+
+<p class="ev-teach__ai-note"><strong>AI as a companion.</strong> It sits around every step, never inside it: it explains, reviews and challenges, but the thinking stays yours.</p>
+
 </div>
 
 ## Thesis topics { #thesis }
 
-<div class="ev-filter" data-filter="#ev-topics" role="group" aria-label="Filter topics by area">
+{% if topics | length > 4 %}<div class="ev-filter" data-filter="#ev-topics" role="group" aria-label="Filter topics by area">
 <button type="button" data-value="all">All</button>
 {% for key, label in areas.items() %}<button type="button" data-value="{{ key }}">{{ label }}</button>{% endfor %}
 <span class="ev-filter__count" data-filter-count aria-live="polite"></span>
-</div>
+</div>{% endif %}
 
 <div class="ev-topics" id="ev-topics">
 {% for t in topics %}<article class="ev-topic{% if t.status == 'taken' %} ev-topic--taken{% endif %}" data-tags="{{ t.area }}">

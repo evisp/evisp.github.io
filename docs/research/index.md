@@ -40,7 +40,7 @@ by design, and adapt as the world around them changes.
 <p class="ev-thesis__title">Enhancing Autonomy of Mobile Robots Operating in Complex Environments</p>
 <p class="ev-thesis__sub">Discrete Structure as a Guide for Kinodynamic Planning</p>
 </div>
-<p class="ev-thesis__meta">Metropolitan University of Tirana<br>Artificial Intelligence and Intelligent Systems</p>
+<p class="ev-thesis__meta">University Metropolitan Tirana<br>Artificial Intelligence and Intelligent Systems</p>
 </aside>
 
 {% set pubs = {} %}{% for p in publications %}{% set _ = pubs.update({p.id: p}) %}{% endfor %}
