@@ -2,6 +2,12 @@
 # status: result | exploring | open
 # papers: ids from data/publications.yml (leave empty for open questions)
 # icon: the inner markup of a 24x24 line icon (from lucide.dev)
+# media (optional): a picture that plays a video when clicked
+#   poster: assets/research/<name>.jpg   still image, 16:9, about 1280x720
+#   video:  assets/research/<name>.mp4   a short MP4 hosted with the site
+#   youtube: <video id>                  instead of video, for longer clips
+#   alt:    one sentence describing the image
+#   length: "0:40"                       optional, shown on the picture
 
 directions:
   - id: motion
@@ -26,12 +32,20 @@ questions:
   - direction: motion
     status: result
     question: How can high-level guidance make sampling-based planners faster?
+    media:
+       poster: assets/research/superfacets.jpg
+       video: assets/research/superfacets.mp4
+       alt: "high-level guidance"
     finding: Superfacets, a layer between geometry and search that points planners toward direct paths.
     papers: [plaku-2017-superfacets, plaku-2018-clearance]
 
   - direction: motion
     status: result
     question: How do we generate trajectories that are meaningfully different?
+    media:
+       poster: assets/research/diverse-trajectories.jpg
+       video: assets/research/diverse-trajectories.mp4
+       alt: "spatially different trajectories"
     finding: Roadmap search combined with sampling-based planning to produce distinct routes, not small variations.
     papers: [plaku-2026-diverse]
 
@@ -58,6 +72,10 @@ questions:
   - direction: safety
     status: result
     question: How can safety margins be built into the planner itself?
+    media:
+       poster: assets/research/safety-zones.jpg
+       video: assets/research/safety-zones.mp4
+       alt: "Certified detours to safety zones"
     finding: Explicit safety zones around hazards, planned with rather than checked afterwards.
     papers: [plaku-2023-safety-zones, plaku-2024-safety-zones]
 

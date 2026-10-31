@@ -92,3 +92,35 @@ document$.subscribe(function () {
     if (location.hash) show(location.hash.slice(1), false);
   };
 });
+
+// Research media: a picture that turns into its video when clicked.
+// MP4 files play in place; YouTube ids load the privacy-friendly player.
+document$.subscribe(function () {
+  document.querySelectorAll("button.ev-media__frame").forEach(function (frame) {
+    if (frame.dataset.ready) return;
+    frame.dataset.ready = "1";
+    frame.addEventListener("click", function () {
+      const holder = document.createElement("div");
+      holder.className = "ev-media__frame";
+      if (frame.dataset.video) {
+        const video = document.createElement("video");
+        video.src = "../" + frame.dataset.video;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.poster = frame.querySelector("img").src;
+        holder.appendChild(video);
+      } else if (frame.dataset.youtube) {
+        const iframe = document.createElement("iframe");
+        iframe.src = "https://www.youtube-nocookie.com/embed/" + frame.dataset.youtube + "?autoplay=1&rel=0";
+        iframe.title = frame.getAttribute("aria-label");
+        iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+        iframe.allowFullscreen = true;
+        holder.appendChild(iframe);
+      } else {
+        return;
+      }
+      frame.replaceWith(holder);
+    });
+  });
+});

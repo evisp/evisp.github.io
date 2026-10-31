@@ -14,6 +14,7 @@
   33. Initiatives: reach and RoboTech  34. Home: now and closing
   35. Refinement: ink panels, doors, rhythm
   36. Home: roles line, door pills, milestone
+  37. Research: dissertation, media, invitation
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -1203,14 +1204,27 @@ body {
   height: auto;
 }
 
+/* The roadmap story: obstacles, then sampled points, then edges that stay
+   clear of the safety zones, then the shortest route, then the robot drives it. */
 .ev-illus__edges line {
   stroke: var(--ev-line-strong);
   stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: ev-tour 0.35s calc(0.8s + var(--i) * 0.018s) ease-out both;
 }
 
 .ev-illus__nodes circle {
   fill: var(--ev-ink);
-  opacity: 0.22;
+  opacity: 0.35;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ev-node 0.3s calc(0.2s + var(--i) * 0.025s) ease-out both;
+}
+
+@keyframes ev-node {
+  from { opacity: 0; transform: scale(0.3); }
+  to   { opacity: 0.35; transform: scale(1); }
 }
 
 .ev-illus__obstacle {
@@ -1226,19 +1240,15 @@ body {
   opacity: 0.55;
 }
 
-.ev-illus__cone {
-  fill: var(--ev-mint);
-  opacity: 0.45;
-}
-
 .ev-illus__path {
   fill: none;
   stroke: var(--ev-ink);
-  stroke-width: 2.2;
+  stroke-width: 2.4;
   stroke-linecap: round;
+  stroke-linejoin: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
-  animation: ev-tour 1.8s 0.3s cubic-bezier(0.45, 0.05, 0.35, 1) both;
+  animation: ev-tour 0.9s 2.1s cubic-bezier(0.45, 0.05, 0.35, 1) both;
 }
 
 .ev-illus__start {
@@ -1258,7 +1268,28 @@ body {
 .ev-illus__goal {
   transform-box: fill-box;
   transform-origin: center;
-  animation: ev-arrive 0.5s 2s ease-out both;
+  animation: ev-arrive 0.5s 2.8s ease-out both;
+}
+
+/* the robot follows the route once, then waits at the goal */
+.ev-illus__robot {
+  offset-rotate: 0deg;
+  offset-distance: 100%;
+  animation: ev-drive 2s 3.1s cubic-bezier(0.45, 0.05, 0.35, 1) both;
+}
+
+@keyframes ev-drive {
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
+}
+
+.ev-illus__robot-halo {
+  fill: var(--ev-mint);
+  opacity: 0.9;
+}
+
+.ev-illus__robot-body {
+  fill: var(--ev-teal-ink);
 }
 
 @media screen and (max-width: 60em) {
@@ -1275,7 +1306,10 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .ev-illus__path,
-  .ev-illus__goal {
+  .ev-illus__goal,
+  .ev-illus__edges line,
+  .ev-illus__nodes circle,
+  .ev-illus__robot {
     animation: none;
   }
 }
@@ -4157,6 +4191,215 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .ev-door > ul a {
+    transition: none;
+  }
+}
+
+/* 37. Research: dissertation, media and the closing invitation ------------- */
+
+/* The dissertation, as one quiet line of record under the page head */
+.md-typeset .ev-thesis {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.6rem 1.6rem;
+  margin: -0.8rem 0 2.2rem;
+  padding: 1rem 1.3rem;
+  border: 1px solid var(--ev-line);
+  border-left: 3px solid var(--ev-research);
+  border-radius: var(--ev-r);
+  background-color: var(--ev-sheet);
+}
+
+.md-typeset .ev-thesis p {
+  margin: 0;
+}
+
+.md-typeset .ev-thesis__label {
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--ev-research);
+  white-space: nowrap;
+}
+
+.md-typeset .ev-thesis__title {
+  font-family: var(--ev-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--ev-ink);
+}
+
+.md-typeset .ev-thesis__sub {
+  margin-top: 0.15rem !important;
+  font-size: 0.84rem;
+  font-style: italic;
+  color: var(--ev-ink-2);
+}
+
+.md-typeset .ev-thesis__meta {
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  text-align: right;
+  color: var(--ev-muted);
+}
+
+/* Media on a question card: a picture that becomes a video when clicked */
+.md-typeset .ev-q--media {
+  padding-top: 0.75rem;
+}
+
+.md-typeset figure.ev-media {
+  display: block;
+  width: auto;
+  max-width: none;
+  margin: 0 -0.45rem 0.9rem;
+}
+
+.md-typeset .ev-media__frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid var(--ev-line);
+  border-radius: var(--ev-r-sm);
+  background-color: var(--ev-board-dark);
+  cursor: pointer;
+}
+
+.md-typeset div.ev-media__frame {
+  cursor: default;
+}
+
+.md-typeset .ev-media__frame img,
+.md-typeset .ev-media__frame video,
+.md-typeset .ev-media__frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.md-typeset .ev-media__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: rgba(22, 33, 58, 0.82);
+  box-shadow: 0 0 0 0.35rem rgba(185, 245, 233, 0.5);
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.md-typeset .ev-media__play svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-left: 0.15rem;
+  fill: #F3F7F5;
+}
+
+.md-typeset button.ev-media__frame:hover .ev-media__play,
+.md-typeset button.ev-media__frame:focus-visible .ev-media__play {
+  box-shadow: 0 0 0 0.5rem rgba(185, 245, 233, 0.75);
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.md-typeset button.ev-media__frame:focus-visible {
+  outline: 2px solid var(--ev-teal-ink);
+  outline-offset: 3px;
+}
+
+.md-typeset .ev-media__length {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 6px;
+  background-color: rgba(22, 33, 58, 0.82);
+  font-family: var(--ev-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #F3F7F5;
+}
+
+/* The closing invitation, in three clear lines */
+.md-typeset .ev-invite {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.2rem 2rem;
+  padding: 1.4rem 1.6rem;
+}
+
+.md-typeset .ev-invite p {
+  margin: 0;
+}
+
+.md-typeset .ev-invite__title {
+  font-family: var(--ev-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ev-panel-ink) !important;
+}
+
+.md-typeset .ev-invite__text {
+  grid-column: 1;
+  font-size: 0.9rem;
+}
+
+.md-typeset .ev-invite__actions {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.2rem;
+}
+
+.md-typeset .ev-invite a.ev-btn--light {
+  background-color: var(--ev-mint);
+  color: #16213A;
+  text-decoration: none;
+}
+
+.md-typeset .ev-invite a.ev-btn--light:hover {
+  background-color: #FFFFFF;
+  color: #16213A;
+}
+
+@media screen and (max-width: 60em) {
+  .md-typeset .ev-thesis {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 0;
+  }
+
+  .md-typeset .ev-thesis__meta {
+    text-align: left;
+  }
+
+  .md-typeset .ev-invite {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .md-typeset .ev-invite__actions {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0.8rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .ev-media__play {
     transition: none;
   }
 }

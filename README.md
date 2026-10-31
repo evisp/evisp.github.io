@@ -17,3 +17,8 @@ Where things live:
 - `docs/stylesheets/notebook.css`  the whole design system, in numbered sections
 - `docs/javascripts/filters.js`  filter chips and copy buttons; research direction selector
 - `overrides/`               home page, 404 and link-preview templates
+
+Research videos and pictures:
+
+1. Put `name.jpg` (16:9 still) and `name.mp4` in `docs/assets/research/`.
+2. In `data/research.yml`, uncomment the `media:` lines under the question.
