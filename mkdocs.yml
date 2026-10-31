@@ -1,8 +1,8 @@
 site_name: Evis Plaku
 site_url: https://evisp.github.io/
-site_description: Lecturer, AI researcher and mentor in Tirana. Teaching algorithms, researching autonomous navigation, and helping people grow.
+site_description: Dr. Evis Plaku, AI researcher, lecturer and mentor. Researching autonomous navigation, teaching and mentoring engineers, and helping people and machines find their own way.
 site_author: Evis Plaku
-copyright: © 2026 Evis Plaku
+copyright: © 2026 Evis Plaku. Helping people and machines find their own way.
 
 theme:
   name: material

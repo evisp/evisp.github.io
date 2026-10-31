@@ -13,6 +13,7 @@
   31. Teaching & Mentoring  32. About: tracks and thread
   33. Initiatives: reach and RoboTech  34. Home: now and closing
   35. Refinement: ink panels, doors, rhythm
+  36. Home: roles line, door pills, milestone
    ========================================================================== */
 
 /* 1. Fonts (self-hosted, SIL Open Font License) ---------------------------- */
@@ -83,6 +84,7 @@
   --ev-oxblood: #8B2E2E;
 
   --ev-board-dark: #E3F1ED;
+  --ev-board-seen: #CCDAD5;
   --ev-board-light: #FFFFFF;
 
   --ev-tag-program-bg: #E3F6F1;  --ev-tag-program: #0B5E55;
@@ -121,6 +123,7 @@
   --ev-oxblood: #F09A8E;
 
   --ev-board-dark: #1F3050;
+  --ev-board-seen: #2C3F63;
   --ev-board-light: #18243D;
 
   --ev-tag-program-bg: rgba(127, 224, 207, 0.14);  --ev-tag-program: #8FE7D8;
@@ -378,10 +381,10 @@ body {
 
 .md-typeset .ev-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 3.5rem;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 3rem;
   align-items: center;
-  margin: 0.4rem 0 4.2rem;
+  margin: -0.6rem 0 3.6rem;
 }
 
 .md-typeset .ev-kicker {
@@ -407,7 +410,7 @@ body {
 
 .md-typeset .ev-hero h1 {
   margin: 0;
-  font-size: clamp(2rem, 1.2rem + 2.4vw, 3rem);
+  font-size: clamp(2rem, 1.3rem + 1.7vw, 2.55rem);
   font-weight: 600;
   line-height: 1.06;
   letter-spacing: -0.032em;
@@ -423,7 +426,7 @@ body {
 
 .md-typeset .ev-lead {
   max-width: 33em;
-  margin: 1.4rem 0 0;
+  margin: 1.2rem 0 0;
   font-size: 0.95rem;
   line-height: 1.65;
   color: var(--ev-ink-2);
@@ -433,18 +436,23 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.7rem;
-  margin: 1.9rem 0 0;
+  margin: 1.6rem 0 0;
 }
 
-/* 10. Home: the board ------------------------------------------------------ */
+/* 10. Home: the board -------------------------------------------------------
+   A knight crosses the board one move at a time. Everything already visited
+   is muted; only the knight and its last few moves are highlighted. Visitors
+   with reduced motion see the finished board. */
 
 .md-typeset figure.ev-board {
   width: 100%;
-  max-width: 24rem;
+  max-width: 19.5rem;
   margin: 0 0 0 auto;
 }
 
 .ev-board__svg {
+  --ev-step: 0.075s;
+  --ev-t0: 0.6s;
   display: block;
   width: 100%;
   height: auto;
@@ -452,9 +460,12 @@ body {
 }
 
 .ev-board__svg rect { shape-rendering: crispEdges; }
-.ev-board__dark rect { fill: var(--ev-board-dark); }
 
-/* Soft edges: the board sits on the notebook, it doesn't frame it */
+.ev-board__dark rect {
+  fill: var(--ev-board-dark);
+  opacity: 0.75;
+}
+
 .ev-board__svg rect.ev-board__edge {
   fill: none;
   stroke: var(--ev-line-strong);
@@ -471,71 +482,84 @@ body {
   opacity: 0.35;
 }
 
-/* Each square lights up as the knight lands on it */
-.ev-board__lit rect {
-  fill: var(--ev-mint);
-  opacity: 0.38;
-  animation: ev-light 0.35s calc(0.3s + var(--i) * 0.06s) ease-out both;
+/* Visited squares: a brief mint flash when the knight lands, then muted */
+.ev-board__seen rect {
+  fill: var(--ev-board-seen);
+  opacity: 0.5;
+  animation: ev-seen calc(var(--ev-step) * 7) calc(var(--ev-t0) + var(--i) * var(--ev-step)) linear both;
 }
 
-@keyframes ev-light {
-  0%   { opacity: 0; }
-  40%  { opacity: 0.85; }
-  100% { opacity: 0.38; }
+@keyframes ev-seen {
+  0%   { fill: var(--ev-mint); opacity: 0; }
+  5%   { fill: var(--ev-mint); opacity: 0.95; }
+  100% { fill: var(--ev-board-seen); opacity: 0.5; }
 }
 
-.ev-board__path {
-  opacity: 0.3;
-}
-
-.ev-board__dots circle {
-  fill: var(--ev-ink);
-  opacity: 0.2;
-}
-
-/* The signature moment: the tour draws itself move by move.
-   Early moves are faint, later ones darker, so the eye reads direction.
-   With reduced motion, visitors see the finished tour. */
+/* Past moves fade to grey; the last four stay teal */
 .ev-board__path line {
   fill: none;
-  stroke: var(--ev-ink);
-  stroke-width: 1.4;
+  stroke: var(--ev-line-strong);
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 0;
-  animation: ev-tour 0.14s calc(0.3s + var(--i) * 0.06s) linear both;
+  animation: ev-trail calc(var(--ev-step) * 5) calc(var(--ev-t0) + var(--i) * var(--ev-step)) linear both;
+}
+
+.ev-board__path line.is-recent {
+  stroke: var(--ev-teal-ink);
+  stroke-width: 1.8;
+  animation-name: ev-trail-keep;
+}
+
+@keyframes ev-trail {
+  0%   { stroke-dashoffset: 1; stroke: var(--ev-teal-ink); stroke-width: 1.8; }
+  20%  { stroke-dashoffset: 0; stroke: var(--ev-teal-ink); stroke-width: 1.8; }
+  55%  { stroke: var(--ev-teal-ink); stroke-width: 1.8; }
+  100% { stroke-dashoffset: 0; stroke: var(--ev-line-strong); stroke-width: 1; }
+}
+
+@keyframes ev-trail-keep {
+  0%   { stroke-dashoffset: 1; }
+  20%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
 }
 
 .ev-board__start {
-  fill: var(--ev-board-light);
-  stroke: var(--ev-ink);
-  stroke-width: 2;
+  fill: var(--ev-sheet);
+  stroke: var(--ev-muted);
+  stroke-width: 1.2;
 }
 
-.ev-board__end {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ev-arrive 0.6s 4.3s ease-out both;
+/* The knight: the one highlighted thing on the board */
+.ev-board__knight {
+  offset-rotate: 0deg;
+  offset-distance: 100%;
+  animation: ev-knight calc(var(--ev-step) * 63) var(--ev-t0) linear both;
 }
 
-.ev-board__end circle { fill: var(--ev-ink); }
-.ev-board__end circle.ev-board__halo { fill: var(--ev-mint); opacity: 0.85; }
+@keyframes ev-knight {
+  from { offset-distance: 0%; }
+  to   { offset-distance: 100%; }
+}
 
-.ev-board__glyph {
-  font-family: var(--ev-sans);
-  font-size: 15px;
-  font-weight: 700;
-  fill: var(--ev-oxblood);
+.ev-board__halo {
+  fill: var(--ev-mint);
+  opacity: 0.85;
+}
+
+.ev-board__piece {
+  fill: var(--ev-ink);
 }
 
 .md-typeset .ev-board figcaption {
   max-width: none;
-  margin: 1rem 0 0 1.6rem;
+  margin: 0.9rem 0 0 1.6rem;
   padding-left: 0.8rem;
   border-left: 2px solid var(--ev-mint);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-style: italic;
-  line-height: 1.55;
+  line-height: 1.5;
   text-align: left;
   color: var(--ev-muted);
 }
@@ -747,8 +771,8 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .ev-hero h1 mark,
   .ev-board__path line,
-  .ev-board__lit rect,
-  .ev-board__end {
+  .ev-board__seen rect,
+  .ev-board__knight {
     animation: none;
   }
 
@@ -4041,8 +4065,8 @@ body {
 }
 
 /* home doors: each audience in its site-wide colour */
-.md-typeset .ev-door:nth-child(1) .twemoji.ev-door__piece { background-color: var(--ev-learning-bg); color: var(--ev-learning); }
-.md-typeset .ev-door:nth-child(2) .twemoji.ev-door__piece { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-door:nth-child(1) .twemoji.ev-door__piece { background-color: var(--ev-research-bg); color: var(--ev-research); }
+.md-typeset .ev-door:nth-child(2) .twemoji.ev-door__piece { background-color: var(--ev-learning-bg); color: var(--ev-learning); }
 .md-typeset .ev-door:nth-child(3) .twemoji.ev-door__piece { background-color: var(--ev-building-bg); color: var(--ev-building); }
 
 /* the doors divide with plain hairlines now */
@@ -4055,4 +4079,84 @@ body {
 [data-md-color-scheme="slate"] .md-typeset .ev-ink {
   border-color: rgba(185, 245, 233, 0.28) !important;
   box-shadow: none !important;
+}
+
+/* 36. Home: roles line, door pills, milestone tag --------------------------- */
+
+.md-typeset .ev-kicker--roles {
+  gap: 0.7rem;
+  font-weight: 600;
+}
+
+.md-typeset .ev-kicker--roles span + span {
+  padding-left: 0.7rem;
+  border-left: 1px solid var(--ev-line-strong);
+}
+
+/* "Where to start": shorter cards, links as a row of pills */
+.md-typeset .ev-door {
+  padding: 1.3rem 1.4rem 1.3rem;
+}
+
+.md-typeset .ev-door > p:first-child {
+  margin-bottom: 0.8rem;
+}
+
+.md-typeset .ev-door > p:not(:first-child) {
+  margin-bottom: 0.2rem;
+}
+
+.md-typeset .ev-door > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: auto 0 0;
+  padding: 1rem 0 0;
+  border-top: 0;
+}
+
+.md-typeset .ev-door > ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.md-typeset .ev-door > ul a {
+  display: inline-flex;
+  align-items: center;
+  height: 1.75rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--ev-line-strong);
+  border-radius: 999px;
+  background-color: var(--ev-paper);
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: border-color 0.12s ease, color 0.12s ease;
+}
+
+.md-typeset .ev-door > ul a:hover {
+  border-color: var(--ev-teal-ink);
+  color: var(--ev-teal-ink);
+  text-decoration: none;
+}
+
+/* Milestones use the ink colour, so they stand apart from papers and programs */
+.md-typeset .ev-tag--milestone {
+  background-color: var(--ev-panel);
+  color: var(--ev-mint);
+}
+
+.md-typeset ol.ev-moves li {
+  grid-template-columns: 4.6rem 5.8rem minmax(0, 1fr);
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset ol.ev-moves li {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .ev-door > ul a {
+    transition: none;
+  }
 }

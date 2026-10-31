@@ -1,8 +1,13 @@
 # Recent moves on the home page. Newest first; the page shows the first four.
-# kind: paper | program | event | talk
+# kind: milestone | paper | program | event | talk
 # link: optional, a site path (research/publications/#id) or a full URL
 
 news:
+  - label: Oct 2026
+    kind: milestone
+    text: "Defended my PhD in Artificial Intelligence and Intelligent Systems at UMT, on enhancing the autonomy of mobile robots in complex environments."
+    link: about/#career
+
   - label: Jun 2026
     kind: paper
     text: "Safe urban route planning with semantic graphs and neural cost shaping, presented at MED 2026 in Ancona, Italy."

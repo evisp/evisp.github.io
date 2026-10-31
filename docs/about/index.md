@@ -47,7 +47,8 @@ become the next papers. AI is the thread through all three: what I study, what
 I teach, and how I build programs for others to learn it.
 
 I lecture at the Metropolitan University of Tirana, where I am Program Director
-for AI and am completing my PhD on autonomous navigation. At Holberton School I
+for AI and earned my PhD in Artificial Intelligence and Intelligent Systems,
+with a dissertation on the autonomy of mobile robots in complex environments. At Holberton School I
 lead AI education and the machine learning curriculum across its international
 campuses. Away from work you will find me at a chessboard or with a book of
 poems.
@@ -56,7 +57,7 @@ poems.
 
 <aside class="ev-sheet" aria-label="Key facts" markdown="0">
 <div class="ev-sheet__head">
-<span>Evis Plaku</span>
+<span>Dr. Evis Plaku</span>
 <span>Tirana, Albania</span>
 </div>
 <dl class="ev-sheet__rows">
@@ -177,7 +178,7 @@ Twenty years of studying, university teaching and building AI programs.
 
 <div class="ev-orgbio">
 <p class="ev-orgbio__label">Short bio for organizers</p>
-<p class="ev-orgbio__text" id="ev-orgbio">Evis Plaku is a lecturer and AI researcher at the Metropolitan University of Tirana, working on motion planning and safe navigation for autonomous robots.</p>
+<p class="ev-orgbio__text" id="ev-orgbio">Dr. Evis Plaku is a lecturer and AI researcher at the Metropolitan University of Tirana, working on motion planning and safe navigation for autonomous robots.</p>
 <button type="button" class="ev-copy" data-copy-from="#ev-orgbio" aria-label="Copy short bio">Copy</button>
 </div>
 

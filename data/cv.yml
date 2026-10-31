@@ -40,10 +40,10 @@ cv_roles:
     end: 2016.7
   - lane: education
     label: PhD
-    title: PhD candidate, AI and Intelligent Systems
+    title: PhD in AI and Intelligent Systems
     place: Metropolitan University of Tirana
     start: 2022.75
-    end:
+    end: 2026.83
 
   - lane: academia
     label: TA Freiburg

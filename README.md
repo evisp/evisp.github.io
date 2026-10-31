@@ -10,7 +10,7 @@ Where things live:
 - `docs/`                    pages (Markdown)
 - `data/publications.yml`    papers, rendered on Research > Publications
 - `data/topics.yml`          thesis topics, rendered on Teaching & Mentoring
-- `data/news.yml`            Recent moves on the home page (newest first)
+- `data/news.yml`            Recent moves on the home page (newest first; kind: milestone, paper, program, event, talk)
 - `data/research.yml`        research directions and questions
 - `data/cv.yml`              roles on the CV career chart
 - `docs/writing/posts/`      blog posts (remove `draft: true` to publish)
