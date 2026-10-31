@@ -1,4 +1,15 @@
+# Python virtual environment
 .venv/
+__pycache__/
+*.pyc
+
+# Zensical build output and cache (GitHub Actions builds the site itself)
 site/
 .cache/
-__pycache__/
+
+# Files Windows and editors leave behind
+*:Zone.Identifier
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
